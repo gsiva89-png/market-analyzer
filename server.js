@@ -1012,6 +1012,15 @@ function initHistoricalOIDatabase() {
     { key: 'sensex', baseOI: 2100000, cycleOI: 800000, defaultSpot: 80000 }
   ];
 
+  function getDeterministicSeed(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = ((hash << 5) - hash) + str.charCodeAt(i);
+      hash |= 0;
+    }
+    return (Math.abs(hash) % 10000) / 10000;
+  }
+
   indexConfigs.forEach(cfg => {
     const history = [];
     const indexPath = path.join(DB_DIR, `index-data-${cfg.key}-1Y.json`);
@@ -1047,7 +1056,8 @@ function initHistoricalOIDatabase() {
 
         const x = Math.max(0, Math.min(1, (30 - daysRemaining) / 30));
         const cycleVol = cfg.cycleOI * Math.sin(Math.PI * x);
-        const variance = (Math.random() - 0.5) * (cfg.baseOI * 0.05);
+        const oiSeed = getDeterministicSeed(`oi-${cfg.key}-${candle.date}`);
+        const variance = (oiSeed - 0.5) * (cfg.baseOI * 0.05);
         const currentOI = Math.round(cfg.baseOI + cycleVol + variance);
         const oiChangeDelta = currentOI - prevOI;
         prevOI = currentOI;
@@ -1055,7 +1065,8 @@ function initHistoricalOIDatabase() {
         let futuresVolume = Math.round((candle.volume || 100000) * 0.45);
         if (!futuresVolume || futuresVolume === 0) {
           const dailyRange = Math.abs(candle.high - candle.low) / (candle.close || cfg.defaultSpot);
-          const baseVol = 80000 + Math.round(Math.random() * 60000);
+          const volSeed = getDeterministicSeed(`vol-${cfg.key}-${candle.date}`);
+          const baseVol = 80000 + Math.round(volSeed * 60000);
           futuresVolume = Math.round(baseVol * (1 + dailyRange * 12));
         }
 
