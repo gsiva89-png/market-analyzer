@@ -1,16 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  TrendingUp, TrendingDown, Activity, ShieldAlert, Target, RefreshCw, Info, CheckCircle2, AlertCircle, ArrowUpRight, ArrowDownRight, Zap, Award, Layers, Compass
+  TrendingUp, TrendingDown, Activity, ShieldAlert, Target, RefreshCw, Info, CheckCircle2, AlertCircle, ArrowUpRight, ArrowDownRight, Zap, Award, Layers, Compass, History, AlertTriangle
 } from 'lucide-react';
 import { generateLiveOptionRecommendation } from '../utils/liveOptionEngine';
 
 export default function LiveOptionSignalsModule({ indexData, liveTicks, historicalOI, onRefresh, formatNumber, themeColor }) {
   const [recommendation, setRecommendation] = useState(null);
+  const [signalHistory, setSignalHistory] = useState([]);
+  const [lastShiftAlert, setLastShiftAlert] = useState(null);
 
   useEffect(() => {
     if (indexData) {
       const rec = generateLiveOptionRecommendation(indexData, liveTicks, historicalOI);
       setRecommendation(rec);
+
+      if (rec && rec.signalType) {
+        setSignalHistory(prev => {
+          if (prev.length === 0) {
+            return [{ ...rec, time: rec.timestamp || new Date().toLocaleTimeString() }];
+          }
+          const lastRec = prev[prev.length - 1];
+          if (lastRec.signalType !== rec.signalType || lastRec.indexName !== rec.indexName) {
+            const shiftEvent = {
+              indexName: rec.indexName || 'Nifty 50',
+              fromSignal: lastRec.signalTitle,
+              toSignal: rec.signalTitle,
+              fromType: lastRec.signalType,
+              toType: rec.signalType,
+              fromBadge: lastRec.badgeClass,
+              toBadge: rec.badgeClass,
+              fromPrice: lastRec.spotPrice,
+              toPrice: rec.spotPrice,
+              fromTime: lastRec.timestamp || lastRec.time,
+              toTime: rec.timestamp || new Date().toLocaleTimeString(),
+              fromScore: lastRec.consensusScore,
+              toScore: rec.consensusScore,
+              fromAction: lastRec.suggestedAction,
+              toAction: rec.suggestedAction,
+            };
+            setLastShiftAlert(shiftEvent);
+            return [...prev, { ...rec, time: rec.timestamp || new Date().toLocaleTimeString() }];
+          }
+          return prev;
+        });
+      }
     }
   }, [indexData, liveTicks, historicalOI]);
 
@@ -134,12 +167,48 @@ export default function LiveOptionSignalsModule({ indexData, liveTicks, historic
         </div>
       </div>
 
-      {/* 3. "WHY THIS CALL WAS TAKEN" — Detailed Rationale Panel */}
+      {/* 3. SIGNAL SHIFT & DIRECTIONAL REVERSAL ALERT CARD (IF SHIFT OCCURRED) */}
+      {lastShiftAlert && (
+        <div className="glass-panel" style={{ padding: '20px 24px', marginBottom: '24px', background: 'rgba(245, 158, 11, 0.08)', border: '1px solid rgba(245, 158, 11, 0.3)', borderLeft: '5px solid #f59e0b' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+            <AlertTriangle size={22} color="#f59e0b" />
+            <h3 style={{ fontSize: '16px', fontWeight: '800', margin: 0, color: '#fde047' }}>
+              INTRADAY SIGNAL DIRECTION SHIFT DETECTED
+            </h3>
+          </div>
+          <p style={{ fontSize: '13px', color: 'var(--text-main)', margin: '0 0 14px 0', lineHeight: '1.5' }}>
+            The trade signal for <strong>{lastShiftAlert.indexName}</strong> transitioned from <span className={`badge ${lastShiftAlert.fromBadge}`} style={{ fontSize: '11px', padding: '2px 8px' }}>{lastShiftAlert.fromSignal}</span> at {lastShiftAlert.fromTime} to <span className={`badge ${lastShiftAlert.toBadge}`} style={{ fontSize: '11px', padding: '2px 8px' }}>{lastShiftAlert.toSignal}</span> at {lastShiftAlert.toTime}.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', background: 'rgba(0,0,0,0.3)', padding: '14px', borderRadius: '8px' }}>
+            <div>
+              <div style={{ fontSize: '11px', color: 'var(--text-dim)' }}>SPOT PRICE SHIFT</div>
+              <div style={{ fontSize: '14px', fontWeight: '700', fontFamily: 'JetBrains Mono', marginTop: '2px' }}>
+                ₹{formatNumber(lastShiftAlert.fromPrice)} ➔ ₹{formatNumber(lastShiftAlert.toPrice)}
+              </div>
+            </div>
+            <div>
+              <div style={{ fontSize: '11px', color: 'var(--text-dim)' }}>CONSENSUS SCORE SHIFT</div>
+              <div style={{ fontSize: '14px', fontWeight: '700', fontFamily: 'JetBrains Mono', marginTop: '2px' }}>
+                {lastShiftAlert.fromScore > 0 ? `+${lastShiftAlert.fromScore}` : lastShiftAlert.fromScore} ➔ {lastShiftAlert.toScore > 0 ? `+${lastShiftAlert.toScore}` : lastShiftAlert.toScore} / 100
+              </div>
+            </div>
+            <div>
+              <div style={{ fontSize: '11px', color: 'var(--text-dim)' }}>SETUP TRANSITION</div>
+              <div style={{ fontSize: '12px', fontWeight: '600', marginTop: '2px', color: 'var(--text-muted)' }}>
+                {lastShiftAlert.fromAction} ➔ {lastShiftAlert.toAction}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 4. "WHY THIS CALL WAS TAKEN" — Detailed Rationale Panel */}
       <div className="glass-panel" style={{ padding: '24px', marginBottom: '24px', borderLeft: `5px solid ${themeColor || 'var(--nifty-color)'}` }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
           <Info size={20} color={themeColor || 'var(--nifty-color)'} />
           <h3 style={{ fontSize: '18px', fontWeight: '800', margin: 0 }}>
-            WHY THIS CALL WAS TAKEN (Trade Rationale & Key Triggers)
+            WHY THIS CALL WAS TAKEN (Trade Rationale &amp; Key Triggers)
           </h3>
         </div>
 
@@ -174,9 +243,9 @@ export default function LiveOptionSignalsModule({ indexData, liveTicks, historic
         )}
       </div>
 
-      {/* 4. Trade Execution Blueprint Cards (4 Grid Cards) */}
+      {/* 5. Trade Execution Blueprint Cards (4 Grid Cards) */}
       <h3 style={{ fontSize: '16px', fontWeight: '700', margin: '0 0 16px 0' }}>
-        Trade Execution Blueprint & Price Levels
+        Trade Execution Blueprint &amp; Price Levels
       </h3>
 
       <div className="backtester-kpi-grid" style={{ marginBottom: '24px' }}>
@@ -215,7 +284,7 @@ export default function LiveOptionSignalsModule({ indexData, liveTicks, historic
 
         {/* Card 4: Stop Loss & R:R */}
         <div className="glass-panel stat-group-card">
-          <div className="stat-label">Stop Loss & Risk / Reward</div>
+          <div className="stat-label">Stop Loss &amp; Risk / Reward</div>
           <div className="stat-val text-down" style={{ fontSize: '22px', fontWeight: '800', fontFamily: 'JetBrains Mono' }}>
             ₹{formatNumber(levels.stopLossSpot)}
           </div>
@@ -226,7 +295,7 @@ export default function LiveOptionSignalsModule({ indexData, liveTicks, historic
         </div>
       </div>
 
-      {/* 5. Live Technical Drivers Grid */}
+      {/* 6. Live Technical Drivers Grid */}
       <div className="glass-panel" style={{ padding: '24px' }}>
         <h3 style={{ fontSize: '16px', fontWeight: '700', margin: '0 0 16px 0' }}>
           Live Technical Indicators Summary
@@ -268,7 +337,7 @@ export default function LiveOptionSignalsModule({ indexData, liveTicks, historic
         </div>
       </div>
 
-      {/* 6. Quick Cheat Sheet for Open Interest (OI) Build-Up */}
+      {/* 7. Quick Cheat Sheet for Open Interest (OI) Build-Up */}
       <div className="glass-panel" style={{ padding: '24px', marginTop: '24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
           <Compass size={20} color={themeColor || 'var(--nifty-color)'} />
