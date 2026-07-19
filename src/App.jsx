@@ -5678,6 +5678,19 @@ export default function App() {
           />
         )}
 
+        {activeTab === 'liveChart' && (
+          <LiveChartModule
+            indexData={indexData}
+            activeIndex={activeIndex}
+            timeframe={timeframe}
+            liveTicks={liveTicks}
+            historicalOI={historicalOI}
+            onRefresh={handleRefresh}
+            formatNumber={formatNumber}
+            themeColor={activeThemeColor}
+          />
+        )}
+
        {activeTab === 'backtester' && (
          <BacktesterModule
            indexData={indexData}
