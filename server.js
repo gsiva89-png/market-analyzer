@@ -1127,6 +1127,24 @@ app.get('/api/futures-oi/historical', (req, res) => {
   }
 });
 
+// Endpoint to import official NSE daily Bhavcopy / OI records
+app.post('/api/futures-oi/upload', (req, res) => {
+  try {
+    const { index = 'nifty50', records } = req.body;
+    if (!Array.isArray(records) || records.length === 0) {
+      return res.status(400).json({ error: 'Please provide an array of official OI records.' });
+    }
+    const targetPath = path.join(DB_DIR, `futures_oi_history_${index.toLowerCase()}.json`);
+    fs.writeFileSync(targetPath, JSON.stringify(records, null, 2), 'utf8');
+    if (index.toLowerCase() === 'nifty50') {
+      fs.writeFileSync(HISTORICAL_OI_PATH, JSON.stringify(records, null, 2), 'utf8');
+    }
+    res.json({ status: 'SUCCESS', message: `Imported ${records.length} official OI records for ${index}.` });
+  } catch (error) {
+    res.status(500).json({ error: error.message || 'Failed to upload official OI records' });
+  }
+});
+
 app.post('/api/backtest', async (req, res) => {
   try {
     const { index = 'nifty50', timeframe = '1Y', ...config } = req.body;
