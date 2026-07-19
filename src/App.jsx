@@ -817,7 +817,7 @@ export default function App() {
       .then(res => res.ok ? res.json() : null)
       .then(data => data && setThresholdReport(data))
       .catch(e => console.error(e));
-    if (activeTab === 'futuresOI') {
+    if (activeTab === 'futuresOI' || activeTab === 'liveOptionSignals') {
       fetch('/api/futures-oi/historical')
         .then(res => res.ok ? res.json() : [])
         .then(data => setHistoricalOI(data))

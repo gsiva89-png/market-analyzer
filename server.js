@@ -88,9 +88,10 @@ app.get('/api/index-data/:index', async (req, res) => {
     return res.status(400).json({ error: `Invalid index. Choose from: ${Object.keys(INDEX_SYMBOLS).join(', ')}` });
   }
 
+  const forceSync = req.query.force === 'true';
   const cacheKey = `data-${index}-${timeframe}`;
   const cachedData = getCache(cacheKey);
-  if (cachedData) {
+  if (cachedData && !forceSync) {
     return res.json(cachedData);
   }
 
