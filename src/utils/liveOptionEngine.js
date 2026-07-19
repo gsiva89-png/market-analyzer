@@ -80,8 +80,8 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
     }
   }
 
-  // B. Fallback / Augment with historical daily OI database
-  if ((!totalOI || totalOI === 0) && Array.isArray(historicalOI) && historicalOI.length > 0) {
+  // B. Fallback / Augment with historical daily OI database (strictly for Nifty 50)
+  if (indexShortName === 'NIFTY' && (!totalOI || totalOI === 0) && Array.isArray(historicalOI) && historicalOI.length > 0) {
     const latestOiRecord = historicalOI[historicalOI.length - 1];
     if (latestOiRecord) {
       totalOI = latestOiRecord.oi;
@@ -152,7 +152,17 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
       reasonsList.push(`${indexShortName} Futures OI Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms LONG UNWINDING PRESSURE`);
     }
   } else {
-    reasonsList.push(`${indexShortName} Open Interest: Standard neutral distribution`);
+    // Derive price & volume dynamics for Bank Nifty / Sensex
+    const priceDiff = spotPrice - (lastCandle.open || spotPrice);
+    if (priceDiff > 0) {
+      consensusScore += 10;
+      reasonsList.push(`${indexShortName} Price Action & Volume: Positive intraday session (+₹${priceDiff.toFixed(2)})`);
+    } else if (priceDiff < 0) {
+      consensusScore -= 10;
+      reasonsList.push(`${indexShortName} Price Action & Volume: Negative intraday session (-₹${Math.abs(priceDiff).toFixed(2)})`);
+    } else {
+      reasonsList.push(`${indexShortName} Structure: Neutral session consolidation`);
+    }
   }
 
   // C. Momentum (RSI) Score
