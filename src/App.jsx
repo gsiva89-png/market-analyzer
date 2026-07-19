@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import OutOfBrowserWidget from './components/OutOfBrowserWidget';
+import BacktesterModule from './components/BacktesterModule';
+import LiveOptionSignalsModule from './components/LiveOptionSignalsModule';
 import {
   ResponsiveContainer,
   AreaChart,
@@ -39,7 +41,8 @@ import {
   Monitor,
   ChevronDown,
   Layout,
-  Pin
+  Pin,
+  Zap
 } from 'lucide-react';
 
 export default function App() {
@@ -753,7 +756,7 @@ export default function App() {
   useEffect(() => {
     let intervalId = null;
 
-    if (activeTab === 'futuresOI') {
+    if (activeTab === 'futuresOI' || activeTab === 'liveOptionSignals') {
       const fetchLiveTicks = async () => {
         try {
           const res = await fetch('/api/futures-oi/live');
@@ -1066,6 +1069,21 @@ export default function App() {
           >
             <Percent size={16} />
             Sensex option stimulator Tue Close - Thurs close
+          </button>
+          <button
+            className={`tab-btn ${activeTab === 'backtester' ? 'active' : ''}`}
+            onClick={() => setActiveTab('backtester')}
+          >
+            <Activity size={16} />
+            Back Tester
+          </button>
+          <button
+            className={`tab-btn ${activeTab === 'liveOptionSignals' ? 'active' : ''}`}
+            onClick={() => setActiveTab('liveOptionSignals')}
+            style={{ background: activeTab === 'liveOptionSignals' ? 'linear-gradient(135deg, #00f2fe 0%, #4facfe 100%)' : 'rgba(0, 242, 254, 0.1)', border: '1px solid rgba(0, 242, 254, 0.3)', color: activeTab === 'liveOptionSignals' ? '#000' : 'var(--nifty-color)', fontWeight: '700' }}
+          >
+            <Zap size={16} />
+            Live Option Signals
           </button>
         </div>
 
@@ -5639,6 +5657,27 @@ export default function App() {
                </div>
              </div>
            )}
+
+        {activeTab === 'liveOptionSignals' && (
+          <LiveOptionSignalsModule
+            indexData={indexData}
+            liveTicks={liveTicks}
+            historicalOI={historicalOI}
+            onRefresh={handleRefresh}
+            formatNumber={formatNumber}
+            themeColor={activeThemeColor}
+          />
+        )}
+
+       {activeTab === 'backtester' && (
+         <BacktesterModule
+           indexData={indexData}
+           activeIndex={activeIndex}
+           timeframe={timeframe}
+           formatNumber={formatNumber}
+           themeColor={activeThemeColor}
+         />
+       )}
            </>
          )
        )}

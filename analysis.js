@@ -1028,3 +1028,412 @@ export function calculateTuesdayThursdayOptionsAnalysis(candles, vixByDate = nul
   const extra = calculateExtendedMetrics(pairs, 'tuesdayDate');
   return { pairs, summary, ...extra };
 }
+
+/**
+ * Identify Indian Index Expiry Days (Weekly/Monthly Thursdays with holiday fallbacks)
+ * Maps each candle to its distance in trading days to the upcoming expiry.
+ */
+export function annotateExpiryDays(candles) {
+  if (!candles || candles.length === 0) return candles;
+
+  const parsed = candles.map(c => {
+    const d = new Date(c.date);
+    return {
+      ...c,
+      _dateObj: d,
+      _year: d.getFullYear(),
+      _month: d.getMonth(),
+      _day: d.getDate(),
+      _dow: d.getDay(), // 0=Sun, 4=Thu
+    };
+  });
+
+  // Group by calendar week (ISO Year-Week)
+  const weekMap = new Map();
+  parsed.forEach((c, idx) => {
+    const d = c._dateObj;
+    const year = d.getFullYear();
+    const firstJan = new Date(year, 0, 1);
+    const dayOfYear = Math.floor((d - firstJan) / (24 * 60 * 60 * 1000));
+    const weekNo = Math.ceil((dayOfYear + firstJan.getDay() + 1) / 7);
+    const weekKey = `${year}-W${weekNo}`;
+
+    if (!weekMap.has(weekKey)) {
+      weekMap.set(weekKey, []);
+    }
+    weekMap.get(weekKey).push({ ...c, _origIdx: idx });
+  });
+
+  const annotated = [...parsed];
+
+  // For each week, find expiry (prefer Thursday, else Wednesday if Thursday missing)
+  weekMap.forEach((weekCandles) => {
+    let expiryCandle = weekCandles.find(c => c._dow === 4);
+    if (!expiryCandle) {
+      // Holiday fallback: latest trading day on or before Thursday in that week
+      const sub = weekCandles.filter(c => c._dow <= 4);
+      if (sub.length > 0) {
+        expiryCandle = sub[sub.length - 1];
+      } else {
+        expiryCandle = weekCandles[weekCandles.length - 1];
+      }
+    }
+
+    const expiryIdx = weekCandles.findIndex(c => c._origIdx === expiryCandle._origIdx);
+    weekCandles.forEach((c, idx) => {
+      // Days before expiry in trading days
+      const daysBefore = expiryIdx - idx;
+      annotated[c._origIdx].daysBeforeExpiry = daysBefore >= 0 ? daysBefore : null;
+      annotated[c._origIdx].isExpiryDay = (daysBefore === 0);
+    });
+  });
+
+  return annotated;
+}
+
+/**
+ * Core Algorithmic Backtester Engine
+ */
+export function runBacktest(candlesInput, config = {}) {
+  if (!candlesInput || candlesInput.length < 20) {
+    return { error: 'Insufficient historical data for backtesting (minimum 20 trading days required).' };
+  }
+
+  // Configuration defaults
+  const {
+    strategy = 'EXPIRY_CYCLE',
+    entryDaysBeforeExpiry = 2,
+    exitDaysBeforeExpiry = 0,
+    priceType = 'close',
+    direction = 'LONG',
+    fastPeriod = 20,
+    slowPeriod = 50,
+    rsiPeriod = 14,
+    rsiOversold = 30,
+    rsiOverbought = 70,
+    bbPeriod = 20,
+    bbStdDev = 2,
+    initialCapital = 100000,
+    stopLossPct = 0,
+    targetProfitPct = 0,
+    slippagePct = 0.05,
+  } = config;
+
+  // Annotate expiry days
+  let candles = annotateExpiryDays(candlesInput);
+
+  // Compute indicators if missing
+  const closes = candles.map(c => c.close);
+  const fastMA = calculateSMA(closes, fastPeriod);
+  const slowMA = calculateSMA(closes, slowPeriod);
+  const rsi = calculateRSI(closes, rsiPeriod);
+  const bb = calculateBollingerBands(closes, bbPeriod, bbStdDev);
+
+  candles = candles.map((c, i) => ({
+    ...c,
+    _fastMA: fastMA[i],
+    _slowMA: slowMA[i],
+    _rsi: rsi[i],
+    _bbUpper: bb.upperBand[i],
+    _bbLower: bb.lowerBand[i],
+    _bbMiddle: bb.middleBand[i],
+  }));
+
+  let capital = initialCapital;
+  let peakCapital = initialCapital;
+  let position = null; // { entryDate, entryPrice, direction, size, stopLossPrice, targetPrice, daysHeld, entryIdx }
+  const trades = [];
+  const equityCurve = [];
+
+  const slippageFactor = slippagePct / 100;
+  const startIdx = Math.max(fastPeriod, slowPeriod, bbPeriod, rsiPeriod);
+
+  for (let i = startIdx; i < candles.length; i++) {
+    const c = candles[i];
+    const prevC = candles[i - 1];
+
+    const currentPrice = priceType === 'open' ? c.open : c.close;
+    const execPrice = currentPrice;
+
+    // Check exit if currently in position
+    if (position) {
+      position.daysHeld += 1;
+      let exitReason = null;
+      let exitPrice = currentPrice;
+
+      // 1. Check Stop Loss / Target Profit triggers during the day
+      if (stopLossPct > 0) {
+        if (position.direction === 'LONG' && c.low <= position.stopLossPrice) {
+          exitReason = 'Stop Loss Hit';
+          exitPrice = position.stopLossPrice;
+        } else if (position.direction === 'SHORT' && c.high >= position.stopLossPrice) {
+          exitReason = 'Stop Loss Hit';
+          exitPrice = position.stopLossPrice;
+        }
+      }
+
+      if (!exitReason && targetProfitPct > 0) {
+        if (position.direction === 'LONG' && c.high >= position.targetPrice) {
+          exitReason = 'Target Hit';
+          exitPrice = position.targetPrice;
+        } else if (position.direction === 'SHORT' && c.low <= position.targetPrice) {
+          exitReason = 'Target Hit';
+          exitPrice = position.targetPrice;
+        }
+      }
+
+      // 2. Strategy-Specific Exit Rules
+      if (!exitReason) {
+        if (strategy === 'EXPIRY_CYCLE') {
+          if (c.daysBeforeExpiry !== null && c.daysBeforeExpiry <= exitDaysBeforeExpiry) {
+            exitReason = c.isExpiryDay ? 'Expiry Exit' : `Exit ${exitDaysBeforeExpiry}D Before Expiry`;
+          }
+        } else if (strategy === 'MA_CROSSOVER') {
+          if (position.direction === 'LONG' && c._fastMA < c._slowMA) {
+            exitReason = 'MA Crossover Bearish';
+          } else if (position.direction === 'SHORT' && c._fastMA > c._slowMA) {
+            exitReason = 'MA Crossover Bullish';
+          }
+        } else if (strategy === 'RSI_REVERSION') {
+          if (position.direction === 'LONG' && c._rsi >= 50) {
+            exitReason = 'RSI Reached Neutral/Overbought';
+          } else if (position.direction === 'SHORT' && c._rsi <= 50) {
+            exitReason = 'RSI Reached Neutral/Oversold';
+          }
+        } else if (strategy === 'BOLLINGER_BANDS') {
+          if (position.direction === 'LONG' && c.close >= c._bbMiddle) {
+            exitReason = 'BB Middle Band Reached';
+          } else if (position.direction === 'SHORT' && c.close <= c._bbMiddle) {
+            exitReason = 'BB Middle Band Reached';
+          }
+        } else if (strategy === 'WEEKEND_HOLD') {
+          if (c._dow === 2) { // Tuesday exit
+            exitReason = 'Tuesday Close Exit';
+          }
+        }
+      }
+
+      // If last candle in dataset, force close
+      if (!exitReason && i === candles.length - 1) {
+        exitReason = 'End of History';
+      }
+
+      // Process trade closure
+      if (exitReason) {
+        // Apply slippage on exit
+        const finalExitPrice = position.direction === 'LONG' 
+          ? exitPrice * (1 - slippageFactor)
+          : exitPrice * (1 + slippageFactor);
+
+        const priceDiff = position.direction === 'LONG'
+          ? (finalExitPrice - position.entryPrice)
+          : (position.entryPrice - finalExitPrice);
+
+        const returnPct = (priceDiff / position.entryPrice) * 100;
+        const pnlAmount = position.size * priceDiff;
+
+        capital += pnlAmount;
+
+        trades.push({
+          tradeNo: trades.length + 1,
+          entryDate: position.entryDate,
+          entryPrice: Number(position.entryPrice.toFixed(2)),
+          exitDate: c.date,
+          exitPrice: Number(finalExitPrice.toFixed(2)),
+          direction: position.direction,
+          returnPct: Number(returnPct.toFixed(2)),
+          pnlAmount: Number(pnlAmount.toFixed(2)),
+          capitalAfter: Number(capital.toFixed(2)),
+          daysHeld: position.daysHeld,
+          exitReason,
+          status: pnlAmount >= 0 ? 'WIN' : 'LOSS',
+        });
+
+        position = null;
+      }
+    }
+
+    // Check entry if position is open
+    if (!position && i < candles.length - 1) {
+      let entrySignal = false;
+      let tradeDir = direction;
+
+      if (strategy === 'EXPIRY_CYCLE') {
+        if (c.daysBeforeExpiry === entryDaysBeforeExpiry) {
+          entrySignal = true;
+        }
+      } else if (strategy === 'MA_CROSSOVER') {
+        if (prevC._fastMA && prevC._slowMA && c._fastMA && c._slowMA) {
+          if (prevC._fastMA <= prevC._slowMA && c._fastMA > c._slowMA && (direction === 'LONG' || direction === 'BOTH')) {
+            entrySignal = true;
+            tradeDir = 'LONG';
+          } else if (prevC._fastMA >= prevC._slowMA && c._fastMA < c._slowMA && (direction === 'SHORT' || direction === 'BOTH')) {
+            entrySignal = true;
+            tradeDir = 'SHORT';
+          }
+        }
+      } else if (strategy === 'RSI_REVERSION') {
+        if (c._rsi !== null) {
+          if (c._rsi <= rsiOversold && (direction === 'LONG' || direction === 'BOTH')) {
+            entrySignal = true;
+            tradeDir = 'LONG';
+          } else if (c._rsi >= rsiOverbought && (direction === 'SHORT' || direction === 'BOTH')) {
+            entrySignal = true;
+            tradeDir = 'SHORT';
+          }
+        }
+      } else if (strategy === 'BOLLINGER_BANDS') {
+        if (c._bbLower && c._bbUpper) {
+          if (c.close <= c._bbLower && (direction === 'LONG' || direction === 'BOTH')) {
+            entrySignal = true;
+            tradeDir = 'LONG';
+          } else if (c.close >= c._bbUpper && (direction === 'SHORT' || direction === 'BOTH')) {
+            entrySignal = true;
+            tradeDir = 'SHORT';
+          }
+        }
+      } else if (strategy === 'WEEKEND_HOLD') {
+        if (c._dow === 5 || (c._dow === 4 && candles[i+1] && candles[i+1]._dow === 2)) { // Friday or Thu fallback
+          entrySignal = true;
+          tradeDir = 'LONG';
+        }
+      }
+
+      if (entrySignal) {
+        const finalEntryPrice = tradeDir === 'LONG'
+          ? execPrice * (1 + slippageFactor)
+          : execPrice * (1 - slippageFactor);
+
+        const stopLossPrice = tradeDir === 'LONG'
+          ? finalEntryPrice * (1 - stopLossPct / 100)
+          : finalEntryPrice * (1 + stopLossPct / 100);
+
+        const targetPrice = tradeDir === 'LONG'
+          ? finalEntryPrice * (1 + targetProfitPct / 100)
+          : finalEntryPrice * (1 - targetProfitPct / 100);
+
+        // Position size in index contracts / units
+        const size = capital / finalEntryPrice;
+
+        position = {
+          entryIdx: i,
+          entryDate: c.date,
+          entryPrice: finalEntryPrice,
+          direction: tradeDir,
+          size,
+          stopLossPrice,
+          targetPrice,
+          daysHeld: 0,
+        };
+      }
+    }
+
+    // Record equity point
+    let currentEquity = capital;
+    if (position) {
+      const unrealizedDiff = position.direction === 'LONG'
+        ? (c.close - position.entryPrice)
+        : (position.entryPrice - c.close);
+      currentEquity += position.size * unrealizedDiff;
+    }
+
+    if (currentEquity > peakCapital) peakCapital = currentEquity;
+    const drawdownPct = ((peakCapital - currentEquity) / peakCapital) * 100;
+
+    equityCurve.push({
+      date: c.date,
+      equity: Number(currentEquity.toFixed(2)),
+      benchmarkClose: c.close,
+      drawdownPct: Number(drawdownPct.toFixed(2)),
+    });
+  }
+
+  // Summary Metrics Computation
+  const initialBenchmark = candles[startIdx].close;
+  const finalBenchmark = candles[candles.length - 1].close;
+  const benchmarkReturnPct = ((finalBenchmark - initialBenchmark) / initialBenchmark) * 100;
+
+  const totalReturnPct = ((capital - initialCapital) / initialCapital) * 100;
+  const netProfit = capital - initialCapital;
+
+  const winningTrades = trades.filter(t => t.status === 'WIN');
+  const losingTrades = trades.filter(t => t.status === 'LOSS');
+
+  const winCount = winningTrades.length;
+  const lossCount = losingTrades.length;
+  const totalTrades = trades.length;
+  const winRate = totalTrades > 0 ? (winCount / totalTrades) * 100 : 0;
+
+  const grossProfit = winningTrades.reduce((sum, t) => sum + t.pnlAmount, 0);
+  const grossLoss = Math.abs(losingTrades.reduce((sum, t) => sum + t.pnlAmount, 0));
+  const profitFactor = grossLoss > 0 ? grossProfit / grossLoss : grossProfit > 0 ? 999 : 0;
+
+  const maxDrawdownPct = equityCurve.length > 0
+    ? Math.max(...equityCurve.map(e => e.drawdownPct))
+    : 0;
+
+  const avgTradeReturn = totalTrades > 0
+    ? trades.reduce((sum, t) => sum + t.returnPct, 0) / totalTrades
+    : 0;
+
+  const avgWinPct = winCount > 0
+    ? winningTrades.reduce((sum, t) => sum + t.returnPct, 0) / winCount
+    : 0;
+
+  const avgLossPct = lossCount > 0
+    ? losingTrades.reduce((sum, t) => sum + t.returnPct, 0) / lossCount
+    : 0;
+
+  const bestTrade = trades.length > 0
+    ? trades.reduce((best, t) => t.returnPct > best.returnPct ? t : best, trades[0])
+    : null;
+
+  const worstTrade = trades.length > 0
+    ? trades.reduce((worst, t) => t.returnPct < worst.returnPct ? t : worst, trades[0])
+    : null;
+
+  // Monthly breakdown of strategy P&L
+  const monthBuckets = {};
+  trades.forEach(t => {
+    const month = t.exitDate.slice(0, 7);
+    if (!monthBuckets[month]) monthBuckets[month] = { pnl: 0, count: 0, wins: 0 };
+    monthBuckets[month].pnl += t.pnlAmount;
+    monthBuckets[month].count += 1;
+    if (t.status === 'WIN') monthBuckets[month].wins += 1;
+  });
+
+  const monthlyMatrix = Object.entries(monthBuckets)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([month, data]) => ({
+      month,
+      pnl: Number(data.pnl.toFixed(2)),
+      count: data.count,
+      winRate: Number(((data.wins / data.count) * 100).toFixed(1)),
+    }));
+
+  return {
+    summary: {
+      initialCapital,
+      finalCapital: Number(capital.toFixed(2)),
+      netProfit: Number(netProfit.toFixed(2)),
+      totalReturnPct: Number(totalReturnPct.toFixed(2)),
+      benchmarkReturnPct: Number(benchmarkReturnPct.toFixed(2)),
+      totalTrades,
+      winCount,
+      lossCount,
+      winRate: Number(winRate.toFixed(2)),
+      profitFactor: Number(profitFactor.toFixed(2)),
+      maxDrawdownPct: Number(maxDrawdownPct.toFixed(2)),
+      avgTradeReturn: Number(avgTradeReturn.toFixed(2)),
+      avgWinPct: Number(avgWinPct.toFixed(2)),
+      avgLossPct: Number(avgLossPct.toFixed(2)),
+      bestTrade,
+      worstTrade,
+    },
+    equityCurve,
+    trades,
+    monthlyMatrix,
+    config,
+  };
+}
+

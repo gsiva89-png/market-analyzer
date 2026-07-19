@@ -16,7 +16,8 @@ import {
   detectCandlestickPatterns,
   calculateFridayTuesdayAnalysis,
   calculateTuesdayThursdayAnalysis,
-  calculateTuesdayThursdayOptionsAnalysis
+  calculateTuesdayThursdayOptionsAnalysis,
+  runBacktest
 } from './analysis.js';
 import { saveLocalData, loadLocalData } from './localStore.js';
 
@@ -1120,6 +1121,40 @@ app.get('/api/futures-oi/historical', (req, res) => {
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: error.message || 'Failed to read historical database' });
+  }
+});
+
+app.post('/api/backtest', async (req, res) => {
+  try {
+    const { index = 'nifty50', timeframe = '1Y', ...config } = req.body;
+    const symbol = INDEX_SYMBOLS[index] || '^NSEI';
+
+    // Fetch index candle history
+    let candles = [];
+    const localData = loadLocalData(`index-data-${index}-${timeframe}`);
+    if (localData && localData.history) {
+      candles = localData.history;
+    } else {
+      // Fallback: fetch historical range
+      const daysMap = { '1M': 30, '3M': 90, '6M': 180, '1Y': 365, '3Y': 1095, '5Y': 1825, 'MAX': 3650 };
+      const days = daysMap[timeframe] || 365;
+      const period1 = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
+      const result = await yahooFinance.historical(symbol, { period1, interval: '1d' });
+      candles = result.map(c => ({
+        date: c.date.toISOString().split('T')[0],
+        open: c.open,
+        high: c.high,
+        low: c.low,
+        close: c.close,
+        volume: c.volume,
+      }));
+    }
+
+    const backtestResult = runBacktest(candles, config);
+    res.json(backtestResult);
+  } catch (error) {
+    console.error('Backtest Endpoint Error:', error);
+    res.status(500).json({ error: error.message || 'Failed to execute backtest' });
   }
 });
 

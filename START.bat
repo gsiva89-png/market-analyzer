@@ -1,36 +1,4 @@
 @echo off
-title Market Historical Analyzer Launcher
-echo ===================================================
-echo   Starting Market Historical Analyzer...
-echo ===================================================
-echo.
-
-:: Add portable Node.js to PATH
-set "PORTABLE_NODE_PATH=d:\gps-tracking-system\node-portable\node-v18.16.0-win-x64"
-if exist "%PORTABLE_NODE_PATH%" (
-    set "PATH=%PORTABLE_NODE_PATH%;%PATH%"
-    echo [INFO] Added portable Node.js to environment PATH.
-) else (
-    echo [WARNING] Portable Node.js path not found at %PORTABLE_NODE_PATH%.
-    echo           Using default system Node/npm if available.
-)
-
-:: Check if node_modules exists, if not run npm install
-if not exist "node_modules\" (
-    echo [INFO] node_modules folder not found. Installing dependencies first...
-    call npm install
-    if %errorlevel% neq 0 (
-        echo [ERROR] npm install failed. Please check your Node/npm installation.
-        pause
-        exit /b %errorlevel%
-    )
-)
-
-:: Start the application in dev mode (runs both Express server and Vite client)
-echo [INFO] Launching frontend and backend servers...
-echo [INFO] Browser will open automatically at http://localhost:3000 once servers are ready...
-
-:: Open browser after 8 seconds in background (gives Vite + Node time to start)
-start "" cmd /c "timeout /t 8 /nobreak >nul && start http://localhost:3000"
-
-call npm run dev
+:: Launch Market Analyzer 100% silently in background with ZERO visible windows
+wscript.exe "%~dp0START_SILENT.vbs"
+exit

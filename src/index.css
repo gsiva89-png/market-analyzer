@@ -1401,3 +1401,335 @@ body.nightshift-theme .pivots-table th {
   padding-top: 6px;
 }
 
+/* ==========================================================================
+   Back Tester Module Styles
+   ========================================================================== */
+.backtester-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.backtester-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.form-hint {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.num-input, .select-input {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.num-input:focus, .select-input:focus {
+  border-color: var(--nifty-color);
+}
+
+.slider-input {
+  flex: 1;
+  accent-color: var(--nifty-color);
+  cursor: pointer;
+}
+
+.slider-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  min-width: 28px;
+}
+
+.backtester-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* Status Badges */
+.badge-long {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badge-short {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badge-win {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badge-loss {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Live Option Recommendation Badges */
+.badge-strong-buy {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  font-weight: 900;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
+}
+
+.badge-buy {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  font-weight: 800;
+}
+
+.badge-strong-sell {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  font-weight: 900;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.4);
+}
+
+.badge-sell {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  font-weight: 800;
+}
+
+.badge-neutral {
+  background: rgba(234, 179, 8, 0.2);
+  color: #fde047;
+  border: 1px solid rgba(234, 179, 8, 0.5);
+  font-weight: 800;
+}
+
+.live-signals-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   Mobile & Tablet Responsive Styles (iOS & Android Touch Support)
+   ========================================================================== */
+
+/* Touch Scroll Utilities for Tables and Tab Navigation */
+.table-responsive,
+.tabs-nav,
+.timeframe-selector {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.tabs-nav::-webkit-scrollbar,
+.timeframe-selector::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tabs-nav::-webkit-scrollbar-thumb,
+.timeframe-selector::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 4px;
+}
+
+/* Tablet Screens (<= 1024px) */
+@media (max-width: 1024px) {
+  .app-container {
+    padding: 16px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .backtester-kpi-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+/* Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 12px 10px;
+  }
+
+  /* Header adjustments */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .header h1 {
+    font-size: 18px !important;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Smooth horizontal touch scroll for top navigation tabs */
+  .tabs-nav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding-bottom: 8px !important;
+    gap: 8px !important;
+    width: 100%;
+  }
+
+  .tab-btn {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* Index Selector Cards Grid */
+  .index-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .index-card {
+    padding: 10px 12px !important;
+  }
+
+  /* Timeframe selector touch scroll */
+  .timeframe-selector {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding-bottom: 6px !important;
+    width: 100%;
+  }
+
+  .timeframe-btn {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* Form & KPI Grids */
+  .backtester-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .backtester-kpi-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  .stat-group-card {
+    padding: 12px !important;
+  }
+
+  .stat-val {
+    font-size: 18px !important;
+  }
+
+  /* Signal Hero & Recommendation Cards */
+  .signal-hero-card {
+    padding: 16px !important;
+  }
+
+  .signal-hero-card h1 {
+    font-size: 20px !important;
+  }
+
+  /* Inputs & Selects touch sizing (prevents iOS auto-zoom) */
+  input, select, button {
+    font-size: 14px !important;
+  }
+
+  .num-input, .select-input {
+    min-height: 40px;
+    padding: 8px 10px;
+  }
+
+  /* Table Horizontal Scrolling */
+  .correlation-matrix-table,
+  .trade-log-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .correlation-matrix-table th,
+  .correlation-matrix-table td {
+    padding: 8px 10px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* Small Smartphone Screens (<= 480px) */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 8px 6px;
+  }
+
+  .header h1 {
+    font-size: 16px !important;
+  }
+
+  .backtester-kpi-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .badge {
+    font-size: 12px !important;
+    padding: 4px 10px !important;
+  }
+}
+
+
+
+
