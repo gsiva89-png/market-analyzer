@@ -1,0 +1,2355 @@
+{
+  "indexName": "Bank Nifty",
+  "symbol": "^NSEBANK",
+  "quote": {
+    "price": 58521.4,
+    "change": 939.14844,
+    "changePercent": 1.6309687,
+    "open": 57662,
+    "dayHigh": 58596.85,
+    "dayLow": 57542.15,
+    "prevClose": 57582.25,
+    "volume": 0,
+    "fiftyTwoWeekHigh": 61764.85,
+    "fiftyTwoWeekLow": 49954.85
+  },
+  "stats": {
+    "periodReturn": 1.6260255805051402,
+    "annualizedVolatility": 16.059254801401853,
+    "maxDrawdown": 2.657160027619807,
+    "currentDrawdown": 0,
+    "pivots": {
+      "classic": {
+        "p": 58220.1328125,
+        "r1": 58898.1171875,
+        "s1": 57843.4140625,
+        "r2": 59274.8359375,
+        "s2": 57165.4296875,
+        "r3": 59952.8203125,
+        "s3": 56788.7109375
+      },
+      "fibonacci": {
+        "p": 58220.1328125,
+        "r1": 58623.02940625,
+        "s1": 57817.23621875,
+        "r2": 58871.93934375,
+        "s2": 57568.32628125,
+        "r3": 59274.8359375,
+        "s3": 57165.4296875
+      },
+      "camarilla": {
+        "p": 58220.1328125,
+        "r1": 58618.07955729167,
+        "s1": 58424.71731770833,
+        "r2": 58714.76067708333,
+        "s2": 58328.03619791667,
+        "r3": 58811.441796875,
+        "s3": 58231.355078125,
+        "r4": 59101.48515625,
+        "s4": 57941.31171875
+      }
+    },
+    "patterns": [
+      {
+        "date": "2026-07-16T03:45:00.000Z",
+        "pattern": "Bearish Engulfing",
+        "type": "Strong Bearish Reversal",
+        "description": "Large red candle completely engulfs the body of the previous green candle, indicating intense selling pressure."
+      }
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-06-17",
+      "open": 57434.05078125,
+      "high": 57646.1484375,
+      "low": 57222.3984375,
+      "close": 57585.05078125,
+      "volume": 583400,
+      "sma20": 54965.7724609375,
+      "sma50": 55080.881953125,
+      "sma200": 56996.72193359375,
+      "ema20": 55438.28621289902,
+      "ema50": 55320.033188507245,
+      "rsi": 69.15018138993408,
+      "macd": 613.5200847288434,
+      "macdSignal": 205.52500837481972,
+      "macdHist": 407.99507635402364,
+      "bbUpper": 57495.54833197018,
+      "bbMiddle": 54965.7724609375,
+      "bbLower": 52435.99658990482,
+      "drawdown": 0
+    },
+    {
+      "date": "2026-06-18",
+      "open": 57596.44921875,
+      "high": 58021.25,
+      "low": 57583.19921875,
+      "close": 57963.80078125,
+      "volume": 409600,
+      "sma20": 55185.8525390625,
+      "sma50": 55187.9759375,
+      "sma200": 57010.7939453125,
+      "ema20": 55678.811409884824,
+      "ema50": 55423.710349006964,
+      "rsi": 70.9705493546665,
+      "macd": 732.660662249531,
+      "macdSignal": 310.952139149762,
+      "macdHist": 421.708523099769,
+      "bbUpper": 57944.41306715525,
+      "bbMiddle": 55185.8525390625,
+      "bbLower": 52427.29201096975,
+      "drawdown": 0
+    },
+    {
+      "date": "2026-06-19",
+      "open": 57754.94921875,
+      "high": 57804.8984375,
+      "low": 57464.55078125,
+      "close": 57685.75,
+      "volume": 285800,
+      "sma20": 55398.1701171875,
+      "sma50": 55287.3659375,
+      "sma200": 57023.52619140625,
+      "ema20": 55869.948418467226,
+      "ema50": 55512.41778630081,
+      "rsi": 67.80725995519286,
+      "macd": 795.4743212073445,
+      "macdSignal": 407.85657556127853,
+      "macdHist": 387.61774564606594,
+      "bbUpper": 58238.80706134199,
+      "bbMiddle": 55398.1701171875,
+      "bbLower": 52557.533173033014,
+      "drawdown": -0.47969728951926016
+    },
+    {
+      "date": "2026-06-22",
+      "open": 57906.8984375,
+      "high": 58009.1015625,
+      "low": 57720.1015625,
+      "close": 57935.6015625,
+      "volume": 293500,
+      "sma20": 55592.1826171875,
+      "sma50": 55332,
+      "sma200": 57040.951953125,
+      "ema20": 56066.67728932749,
+      "ema50": 55607.44460105372,
+      "rsi": 69.13839436418368,
+      "macd": 855.5532462175033,
+      "macdSignal": 497.39590969252356,
+      "macdHist": 358.15733652497977,
+      "bbUpper": 58566.36051732055,
+      "bbMiddle": 55592.1826171875,
+      "bbLower": 52618.00471705445,
+      "drawdown": -0.04864970614404882
+    },
+    {
+      "date": "2026-06-23",
+      "open": 57886.75,
+      "high": 57970.8984375,
+      "low": 57078.44921875,
+      "close": 57183.75,
+      "volume": 267200,
+      "sma20": 55686.6876953125,
+      "sma50": 55379.241015625,
+      "sma200": 57057.7689453125,
+      "ema20": 56173.0651665344,
+      "ema50": 55669.26049905162,
+      "rsi": 60.96870310518315,
+      "macd": 832.8969716959182,
+      "macdSignal": 564.4961220932025,
+      "macdHist": 268.40084960271565,
+      "bbUpper": 58736.08143144964,
+      "bbMiddle": 55686.6876953125,
+      "bbLower": 52637.29395917537,
+      "drawdown": -1.3457550587371576
+    },
+    {
+      "date": "2026-06-24",
+      "open": 57074.8984375,
+      "high": 58256.3515625,
+      "low": 57074.8984375,
+      "close": 58150.3515625,
+      "volume": 283200,
+      "sma20": 55839.5603515625,
+      "sma50": 55423.993046875,
+      "sma200": 57080.2424609375,
+      "ema20": 56361.37815662636,
+      "ema50": 55766.5581878143,
+      "rsi": 66.456464932075,
+      "macd": 882.7624428349009,
+      "macdSignal": 628.1493862415423,
+      "macdHist": 254.61305659335858,
+      "bbUpper": 59056.50498202088,
+      "bbMiddle": 55839.5603515625,
+      "bbLower": 52622.61572110411,
+      "drawdown": 0
+    },
+    {
+      "date": "2026-06-25",
+      "open": 58493.8515625,
+      "high": 58706.05078125,
+      "low": 58109.8515625,
+      "close": 58177.05078125,
+      "volume": 296500,
+      "sma20": 56005.7203125,
+      "sma50": 55475.433046875,
+      "sma200": 57101.11546875,
+      "ema20": 56534.29935897147,
+      "ema50": 55861.087309125505,
+      "rsi": 66.59617067933655,
+      "macd": 913.9007132533661,
+      "macdSignal": 685.299651643907,
+      "macdHist": 228.60106160945907,
+      "bbUpper": 59342.896388671164,
+      "bbMiddle": 56005.7203125,
+      "bbLower": 52668.54423632884,
+      "drawdown": 0
+    },
+    {
+      "date": "2026-06-29",
+      "open": 58191.44921875,
+      "high": 58318.05078125,
+      "low": 57637.25,
+      "close": 57727.3515625,
+      "volume": 529800,
+      "sma20": 56180.1279296875,
+      "sma50": 55503.94109375,
+      "sma200": 57121.4472265625,
+      "ema20": 56647.92337835514,
+      "ema50": 55934.27414259117,
+      "rsi": 61.91845504179324,
+      "macd": 892.0085291709183,
+      "macdSignal": 726.6414271493093,
+      "macdHist": 165.36710202160907,
+      "bbUpper": 59494.30287571851,
+      "bbMiddle": 56180.1279296875,
+      "bbLower": 52865.95298365649,
+      "drawdown": -0.7729838702908853
+    },
+    {
+      "date": "2026-06-30",
+      "open": 58011.94921875,
+      "high": 58011.94921875,
+      "low": 57456.6484375,
+      "close": 57542.8984375,
+      "volume": 398700,
+      "sma20": 56375.1177734375,
+      "sma50": 55533.07109375,
+      "sma200": 57138.82396484375,
+      "ema20": 56733.159098273696,
+      "ema50": 55997.35744827387,
+      "rsi": 60.055152396433755,
+      "macd": 849.9769843294634,
+      "macdSignal": 751.3085385853401,
+      "macdHist": 98.66844574412335,
+      "bbUpper": 59524.05403034535,
+      "bbMiddle": 56375.1177734375,
+      "bbLower": 53226.18151652965,
+      "drawdown": -1.090038658257978
+    },
+    {
+      "date": "2026-07-01",
+      "open": 57573.3515625,
+      "high": 58134.1484375,
+      "low": 57487.8515625,
+      "close": 58033.05078125,
+      "volume": 260500,
+      "sma20": 56591.037890625,
+      "sma50": 55562.418125,
+      "sma200": 57158.61197265625,
+      "ema20": 56856.958306176195,
+      "ema50": 56077.188559370974,
+      "rsi": 63.22236244817926,
+      "macd": 846.4604112704183,
+      "macdSignal": 770.3389131223557,
+      "macdHist": 76.12149814806253,
+      "bbUpper": 59568.19131566541,
+      "bbMiddle": 56591.037890625,
+      "bbLower": 53613.88446558458,
+      "drawdown": -0.24752028173695265
+    },
+    {
+      "date": "2026-07-02",
+      "open": 58134.5,
+      "high": 58396.1015625,
+      "low": 57884.6015625,
+      "close": 58031.6484375,
+      "volume": 273300,
+      "sma20": 56783.3228515625,
+      "sma50": 55591.4040625,
+      "sma200": 57178.1974609375,
+      "ema20": 56968.83355677846,
+      "ema50": 56153.8340447878,
+      "rsi": 63.20692097198147,
+      "macd": 833.9471210672418,
+      "macdSignal": 783.060554711333,
+      "macdHist": 50.886566355908826,
+      "bbUpper": 59607.10222273443,
+      "bbMiddle": 56783.3228515625,
+      "bbLower": 53959.543480390574,
+      "drawdown": -0.24993075757092525
+    },
+    {
+      "date": "2026-07-03",
+      "open": 58343.25,
+      "high": 58343.25,
+      "low": 57799.05078125,
+      "close": 57938.5,
+      "volume": 326300,
+      "sma20": 56964.8552734375,
+      "sma50": 55602.745078125,
+      "sma200": 57196.95546875,
+      "ema20": 57061.18274184718,
+      "ema50": 56223.8209449922,
+      "rsi": 62.121579593527834,
+      "macd": 807.2089457391921,
+      "macdSignal": 787.8902329169049,
+      "macdHist": 19.31871282228724,
+      "bbUpper": 59588.44233784927,
+      "bbMiddle": 56964.8552734375,
+      "bbLower": 54341.26820902572,
+      "drawdown": -0.4100427540525705
+    },
+    {
+      "date": "2026-07-06",
+      "open": 57983.8984375,
+      "high": 58477.30078125,
+      "low": 57938.6484375,
+      "close": 58291.5,
+      "volume": 284400,
+      "sma20": 57154.6177734375,
+      "sma50": 55626.08609375,
+      "sma200": 57217.3324609375,
+      "ema20": 57178.35581405221,
+      "ema50": 56304.90639812976,
+      "rsi": 64.60220800358229,
+      "macd": 805.2208146902776,
+      "macdSignal": 791.3563492715796,
+      "macdHist": 13.864465418698046,
+      "bbUpper": 59577.914021488556,
+      "bbMiddle": 57154.6177734375,
+      "bbLower": 54731.32152538645,
+      "drawdown": 0
+    },
+    {
+      "date": "2026-07-07",
+      "open": 58567.8515625,
+      "high": 58581.1015625,
+      "low": 58110.1015625,
+      "close": 58200.69921875,
+      "volume": 261900,
+      "sma20": 57361.465234375,
+      "sma50": 55664.000078125,
+      "sma200": 57235.65595703125,
+      "ema20": 57275.721852594856,
+      "ema50": 56379.25121462467,
+      "rsi": 63.45111952844165,
+      "macd": 787.2434894133185,
+      "macdSignal": 790.5337772999275,
+      "macdHist": -3.2902878866090077,
+      "bbUpper": 59363.81030376331,
+      "bbMiddle": 57361.465234375,
+      "bbLower": 55359.120164986685,
+      "drawdown": -0.15577019162313546
+    },
+    {
+      "date": "2026-07-08",
+      "open": 57918.25,
+      "high": 58075.6015625,
+      "low": 56549.3984375,
+      "close": 56742.6015625,
+      "volume": 304900,
+      "sma20": 57438.8703125,
+      "sma50": 55677.057109375,
+      "sma200": 57246.02095703125,
+      "ema20": 57224.94849163344,
+      "ema50": 56393.50024787469,
+      "rsi": 48.50497075026294,
+      "macd": 647.8717720805071,
+      "macdSignal": 762.0013762560434,
+      "macdHist": -114.12960417553631,
+      "bbUpper": 59206.03481415255,
+      "bbMiddle": 57438.8703125,
+      "bbLower": 55671.70581084746,
+      "drawdown": -2.657160027619807
+    },
+    {
+      "date": "2026-07-09",
+      "open": 56871,
+      "high": 57464.19921875,
+      "low": 56867.30078125,
+      "close": 57252.44921875,
+      "volume": 231600,
+      "sma20": 57546.477734375,
+      "sma50": 55696.820078125,
+      "sma200": 57258.23669921875,
+      "ema20": 57227.56760850169,
+      "ema50": 56427.18452124235,
+      "rsi": 52.70048497940011,
+      "macd": 571.9658604570141,
+      "macdSignal": 723.9942730962375,
+      "macdHist": -152.02841263922346,
+      "bbUpper": 58957.05280195254,
+      "bbMiddle": 57546.477734375,
+      "bbLower": 56135.90266679747,
+      "drawdown": -1.7825082237547498
+    },
+    {
+      "date": "2026-07-10",
+      "open": 57592.5,
+      "high": 58251.94921875,
+      "low": 57576.69921875,
+      "close": 58045.8984375,
+      "volume": 235600,
+      "sma20": 57689.93515625,
+      "sma50": 55749.731015625,
+      "sma200": 57274.02693359375,
+      "ema20": 57305.503877930096,
+      "ema50": 56490.66349835049,
+      "rsi": 58.383154963970966,
+      "macd": 569.2723817866718,
+      "macdSignal": 693.0498948343245,
+      "macdHist": -123.77751304765275,
+      "bbUpper": 58603.261053417074,
+      "bbMiddle": 57689.93515625,
+      "bbLower": 56776.60925908293,
+      "drawdown": -0.42133340624276266
+    },
+    {
+      "date": "2026-07-13",
+      "open": 57616.69921875,
+      "high": 58219.8984375,
+      "low": 57492.05078125,
+      "close": 58131.44921875,
+      "volume": 210300,
+      "sma20": 57755.767578125,
+      "sma50": 55804.28796875,
+      "sma200": 57288.946171875,
+      "ema20": 57384.16533896056,
+      "ema50": 56555.00803640538,
+      "rsi": 58.955737022670554,
+      "macd": 567.4992356713192,
+      "macdSignal": 667.9397630017235,
+      "macdHist": -100.44052733040428,
+      "bbUpper": 58594.005886705585,
+      "bbMiddle": 57755.767578125,
+      "bbLower": 56917.529269544415,
+      "drawdown": -0.2745696735373082
+    },
+    {
+      "date": "2026-07-14",
+      "open": 57832.55078125,
+      "high": 57840.05078125,
+      "low": 57286.8984375,
+      "close": 57462.30078125,
+      "volume": 206800,
+      "sma20": 57768.942578125,
+      "sma50": 55856.266953125,
+      "sma200": 57298.791171875,
+      "ema20": 57391.6068096548,
+      "ema50": 56590.58814404635,
+      "rsi": 52.83285572638521,
+      "macd": 506.26342833683157,
+      "macdSignal": 635.6044960687451,
+      "macdHist": -129.34106773191354,
+      "bbUpper": 58579.57892636102,
+      "bbMiddle": 57768.942578125,
+      "bbLower": 56958.306229888985,
+      "drawdown": -1.4225045139514338
+    },
+    {
+      "date": "2026-07-15",
+      "open": 57643.75,
+      "high": 58148.80078125,
+      "low": 57545.19921875,
+      "close": 57757.8515625,
+      "volume": 231000,
+      "sma20": 57791.977734375,
+      "sma50": 55913.853984375,
+      "sma200": 57308.94318359375,
+      "ema20": 57426.48726230672,
+      "ema50": 56636.36318006414,
+      "rsi": 55.05321243494209,
+      "macd": 476.0939729085294,
+      "macdSignal": 603.702391436702,
+      "macdHist": -127.60841852817259,
+      "bbUpper": 58573.3326315168,
+      "bbMiddle": 57791.977734375,
+      "bbLower": 57010.622837233204,
+      "drawdown": -0.9154824245387407
+    },
+    {
+      "date": "2026-07-16",
+      "open": 57831.1015625,
+      "high": 57931.30078125,
+      "low": 57420.1484375,
+      "close": 57582.25,
+      "volume": 171400,
+      "sma20": 57791.8376953125,
+      "sma50": 55974.55796875,
+      "sma200": 57319.56017578125,
+      "ema20": 57441.3218087537,
+      "ema50": 56673.45678084594,
+      "rsi": 53.44346146654496,
+      "macd": 433.0232609871164,
+      "macdSignal": 569.566565346785,
+      "macdHist": -136.54330435966858,
+      "bbUpper": 58573.341878648076,
+      "bbMiddle": 57791.8376953125,
+      "bbLower": 57010.33351197692,
+      "drawdown": -1.2167297118790905
+    },
+    {
+      "date": "2026-07-17",
+      "open": 57662,
+      "high": 58596.8515625,
+      "low": 57542.1484375,
+      "close": 58521.3984375,
+      "volume": 0,
+      "sma20": 57819.717578125,
+      "sma50": 56025.364921875,
+      "sma200": 57335.74341796875,
+      "ema20": 57544.18624958669,
+      "ema50": 56745.925081106885,
+      "rsi": 60.15391976896272,
+      "macd": 469.2614872767517,
+      "macdSignal": 549.5055497327784,
+      "macdHist": -80.24406245602665,
+      "bbUpper": 58661.250198901915,
+      "bbMiddle": 57819.717578125,
+      "bbLower": 56978.18495734808,
+      "drawdown": 0
+    }
+  ],
+  "weekendAnalysis": {
+    "pairs": [
+      {
+        "fridayDate": "2025-08-22",
+        "fridayClose": 55149.4,
+        "tuesdayDate": "2025-08-26",
+        "tuesdayClose": 54450.45,
+        "pointsMoved": -698.95,
+        "pctMoved": -1.267,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-08-29",
+        "fridayClose": 53655.65,
+        "tuesdayDate": "2025-09-02",
+        "tuesdayClose": 53661,
+        "pointsMoved": 5.35,
+        "pctMoved": 0.01,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-09-05",
+        "fridayClose": 54114.55,
+        "tuesdayDate": "2025-09-09",
+        "tuesdayClose": 54216.1,
+        "pointsMoved": 101.55,
+        "pctMoved": 0.188,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-09-12",
+        "fridayClose": 54809.3,
+        "tuesdayDate": "2025-09-16",
+        "tuesdayClose": 55147.6,
+        "pointsMoved": 338.3,
+        "pctMoved": 0.617,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-09-19",
+        "fridayClose": 55458.85,
+        "tuesdayDate": "2025-09-23",
+        "tuesdayClose": 55509.75,
+        "pointsMoved": 50.9,
+        "pctMoved": 0.092,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-09-26",
+        "fridayClose": 54389.35,
+        "tuesdayDate": "2025-09-30",
+        "tuesdayClose": 54635.85,
+        "pointsMoved": 246.5,
+        "pctMoved": 0.453,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-10-03",
+        "fridayClose": 55589.25,
+        "tuesdayDate": "2025-10-07",
+        "tuesdayClose": 56239.35,
+        "pointsMoved": 650.1,
+        "pctMoved": 1.169,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-10-10",
+        "fridayClose": 56609.75,
+        "tuesdayDate": "2025-10-14",
+        "tuesdayClose": 56496.45,
+        "pointsMoved": -113.3,
+        "pctMoved": -0.2,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-10-17",
+        "fridayClose": 57713.35,
+        "tuesdayDate": "2025-10-21",
+        "tuesdayClose": 58007.2,
+        "pointsMoved": 293.85,
+        "pctMoved": 0.509,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-10-24",
+        "fridayClose": 57699.6,
+        "tuesdayDate": "2025-10-28",
+        "tuesdayClose": 58214.1,
+        "pointsMoved": 514.5,
+        "pctMoved": 0.892,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-10-31",
+        "fridayClose": 57776.35,
+        "tuesdayDate": "2025-11-04",
+        "tuesdayClose": 57827.05,
+        "pointsMoved": 50.7,
+        "pctMoved": 0.088,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-11-07",
+        "fridayClose": 57876.8,
+        "tuesdayDate": "2025-11-11",
+        "tuesdayClose": 58138.15,
+        "pointsMoved": 261.35,
+        "pctMoved": 0.452,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-11-14",
+        "fridayClose": 58517.55,
+        "tuesdayDate": "2025-11-18",
+        "tuesdayClose": 58899.25,
+        "pointsMoved": 381.7,
+        "pctMoved": 0.652,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-11-21",
+        "fridayClose": 58867.7,
+        "tuesdayDate": "2025-11-25",
+        "tuesdayClose": 58820.3,
+        "pointsMoved": -47.4,
+        "pctMoved": -0.081,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-11-28",
+        "fridayClose": 59752.7,
+        "tuesdayDate": "2025-12-02",
+        "tuesdayClose": 59273.8,
+        "pointsMoved": -478.9,
+        "pctMoved": -0.801,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-12-05",
+        "fridayClose": 59777.2,
+        "tuesdayDate": "2025-12-09",
+        "tuesdayClose": 59222.35,
+        "pointsMoved": -554.85,
+        "pctMoved": -0.928,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-12-12",
+        "fridayClose": 59389.95,
+        "tuesdayDate": "2025-12-16",
+        "tuesdayClose": 59034.6,
+        "pointsMoved": -355.35,
+        "pctMoved": -0.598,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-12-19",
+        "fridayClose": 59069.2,
+        "tuesdayDate": "2025-12-23",
+        "tuesdayClose": 59299.55,
+        "pointsMoved": 230.35,
+        "pctMoved": 0.39,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2025-12-26",
+        "fridayClose": 59011.35,
+        "tuesdayDate": "2025-12-30",
+        "tuesdayClose": 59171.25,
+        "pointsMoved": 159.9,
+        "pctMoved": 0.271,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-01-02",
+        "fridayClose": 60150.95,
+        "tuesdayDate": "2026-01-06",
+        "tuesdayClose": 60118.4,
+        "pointsMoved": -32.55,
+        "pctMoved": -0.054,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-01-09",
+        "fridayClose": 59251.55,
+        "tuesdayDate": "2026-01-13",
+        "tuesdayClose": 59578.8,
+        "pointsMoved": 327.25,
+        "pctMoved": 0.552,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-01-16",
+        "fridayClose": 60095.15,
+        "tuesdayDate": "2026-01-20",
+        "tuesdayClose": 59404.2,
+        "pointsMoved": -690.95,
+        "pctMoved": -1.15,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-01-23",
+        "fridayClose": 58473.1,
+        "tuesdayDate": "2026-01-27",
+        "tuesdayClose": 59205.45,
+        "pointsMoved": 732.35,
+        "pctMoved": 1.252,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-01-30",
+        "fridayClose": 59610.45,
+        "tuesdayDate": "2026-02-03",
+        "tuesdayClose": 60041.3,
+        "pointsMoved": 430.85,
+        "pctMoved": 0.723,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-02-06",
+        "fridayClose": 60120.55,
+        "tuesdayDate": "2026-02-10",
+        "tuesdayClose": 60626.4,
+        "pointsMoved": 505.85,
+        "pctMoved": 0.841,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-02-13",
+        "fridayClose": 60186.65,
+        "tuesdayDate": "2026-02-17",
+        "tuesdayClose": 61174,
+        "pointsMoved": 987.35,
+        "pctMoved": 1.64,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-02-20",
+        "fridayClose": 61172,
+        "tuesdayDate": "2026-02-24",
+        "tuesdayClose": 61047.3,
+        "pointsMoved": -124.7,
+        "pctMoved": -0.204,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-02-27",
+        "fridayClose": 60529,
+        "tuesdayDate": "2026-03-02",
+        "tuesdayClose": 59839.65,
+        "pointsMoved": -689.35,
+        "pctMoved": -1.139,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Monday"
+      },
+      {
+        "fridayDate": "2026-03-06",
+        "fridayClose": 57783.25,
+        "tuesdayDate": "2026-03-10",
+        "tuesdayClose": 56950.8,
+        "pointsMoved": -832.45,
+        "pctMoved": -1.441,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-03-13",
+        "fridayClose": 53757.85,
+        "tuesdayDate": "2026-03-17",
+        "tuesdayClose": 54876,
+        "pointsMoved": 1118.15,
+        "pctMoved": 2.08,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-03-20",
+        "fridayClose": 53427.05,
+        "tuesdayDate": "2026-03-24",
+        "tuesdayClose": 52605.65,
+        "pointsMoved": -821.4,
+        "pctMoved": -1.537,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-03-27",
+        "fridayClose": 52274.6,
+        "tuesdayDate": "2026-03-30",
+        "tuesdayClose": 50275.35,
+        "pointsMoved": -1999.25,
+        "pctMoved": -3.825,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Monday"
+      },
+      {
+        "fridayDate": "2026-04-02",
+        "fridayClose": 51548.75,
+        "tuesdayDate": "2026-04-07",
+        "tuesdayClose": 52716.25,
+        "pointsMoved": 1167.5,
+        "pctMoved": 2.265,
+        "direction": "UP",
+        "fridayDay": "Thursday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-04-10",
+        "fridayClose": 55912.75,
+        "tuesdayDate": "2026-04-13",
+        "tuesdayClose": 55605.05,
+        "pointsMoved": -307.7,
+        "pctMoved": -0.55,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Monday"
+      },
+      {
+        "fridayDate": "2026-04-17",
+        "fridayClose": 56565.7,
+        "tuesdayDate": "2026-04-21",
+        "tuesdayClose": 57371.45,
+        "pointsMoved": 805.75,
+        "pctMoved": 1.424,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-04-24",
+        "fridayClose": 56089.75,
+        "tuesdayDate": "2026-04-28",
+        "tuesdayClose": 55400.35,
+        "pointsMoved": -689.4,
+        "pctMoved": -1.229,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-04-30",
+        "fridayClose": 54863.35,
+        "tuesdayDate": "2026-05-05",
+        "tuesdayClose": 54547.05,
+        "pointsMoved": -316.3,
+        "pctMoved": -0.577,
+        "direction": "DOWN",
+        "fridayDay": "Thursday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-05-08",
+        "fridayClose": 55310.55,
+        "tuesdayDate": "2026-05-12",
+        "tuesdayClose": 53555.2,
+        "pointsMoved": -1755.35,
+        "pctMoved": -3.174,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-05-15",
+        "fridayClose": 53710.35,
+        "tuesdayDate": "2026-05-19",
+        "tuesdayClose": 53409.15,
+        "pointsMoved": -301.2,
+        "pctMoved": -0.561,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-05-22",
+        "fridayClose": 54055.35,
+        "tuesdayDate": "2026-05-26",
+        "tuesdayClose": 55092.9,
+        "pointsMoved": 1037.55,
+        "pctMoved": 1.919,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-05-29",
+        "fridayClose": 54239.2,
+        "tuesdayDate": "2026-06-02",
+        "tuesdayClose": 53714.65,
+        "pointsMoved": -524.55,
+        "pctMoved": -0.967,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-06-05",
+        "fridayClose": 54496.25,
+        "tuesdayDate": "2026-06-09",
+        "tuesdayClose": 55194.5,
+        "pointsMoved": 698.25,
+        "pctMoved": 1.281,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-06-12",
+        "fridayClose": 56814.8,
+        "tuesdayDate": "2026-06-16",
+        "tuesdayClose": 57297.15,
+        "pointsMoved": 482.35,
+        "pctMoved": 0.849,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-06-19",
+        "fridayClose": 57685.75,
+        "tuesdayDate": "2026-06-23",
+        "tuesdayClose": 57183.75,
+        "pointsMoved": -502,
+        "pctMoved": -0.87,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-06-25",
+        "fridayClose": 58177.05,
+        "tuesdayDate": "2026-06-30",
+        "tuesdayClose": 57542.9,
+        "pointsMoved": -634.15,
+        "pctMoved": -1.09,
+        "direction": "DOWN",
+        "fridayDay": "Thursday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-07-03",
+        "fridayClose": 57938.5,
+        "tuesdayDate": "2026-07-07",
+        "tuesdayClose": 58200.7,
+        "pointsMoved": 262.2,
+        "pctMoved": 0.453,
+        "direction": "UP",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      },
+      {
+        "fridayDate": "2026-07-10",
+        "fridayClose": 58045.9,
+        "tuesdayDate": "2026-07-14",
+        "tuesdayClose": 57462.3,
+        "pointsMoved": -583.6,
+        "pctMoved": -1.005,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Tuesday"
+      }
+    ],
+    "summary": {
+      "totalWeeks": 47,
+      "upWeeks": 25,
+      "downWeeks": 22,
+      "winRate": 53.19,
+      "avgPoints": -25.81,
+      "avgAbsPoints": 529.66,
+      "avgPct": -0.047,
+      "maxGain": {
+        "fridayDate": "2026-04-02",
+        "fridayClose": 51548.75,
+        "tuesdayDate": "2026-04-07",
+        "tuesdayClose": 52716.25,
+        "pointsMoved": 1167.5,
+        "pctMoved": 2.265,
+        "direction": "UP",
+        "fridayDay": "Thursday",
+        "tuesdayDay": "Tuesday"
+      },
+      "maxLoss": {
+        "fridayDate": "2026-03-27",
+        "fridayClose": 52274.6,
+        "tuesdayDate": "2026-03-30",
+        "tuesdayClose": 50275.35,
+        "pointsMoved": -1999.25,
+        "pctMoved": -3.825,
+        "direction": "DOWN",
+        "fridayDay": "Friday",
+        "tuesdayDay": "Monday"
+      },
+      "currentStreak": 1,
+      "streakDirection": "DOWN",
+      "monthlyBreakdown": [
+        {
+          "month": "2025-08",
+          "winRate": 50,
+          "count": 2,
+          "up": 1,
+          "down": 1
+        },
+        {
+          "month": "2025-09",
+          "winRate": 100,
+          "count": 4,
+          "up": 4,
+          "down": 0
+        },
+        {
+          "month": "2025-10",
+          "winRate": 80,
+          "count": 5,
+          "up": 4,
+          "down": 1
+        },
+        {
+          "month": "2025-11",
+          "winRate": 50,
+          "count": 4,
+          "up": 2,
+          "down": 2
+        },
+        {
+          "month": "2025-12",
+          "winRate": 50,
+          "count": 4,
+          "up": 2,
+          "down": 2
+        },
+        {
+          "month": "2026-01",
+          "winRate": 60,
+          "count": 5,
+          "up": 3,
+          "down": 2
+        },
+        {
+          "month": "2026-02",
+          "winRate": 50,
+          "count": 4,
+          "up": 2,
+          "down": 2
+        },
+        {
+          "month": "2026-03",
+          "winRate": 25,
+          "count": 4,
+          "up": 1,
+          "down": 3
+        },
+        {
+          "month": "2026-04",
+          "winRate": 40,
+          "count": 5,
+          "up": 2,
+          "down": 3
+        },
+        {
+          "month": "2026-05",
+          "winRate": 25,
+          "count": 4,
+          "up": 1,
+          "down": 3
+        },
+        {
+          "month": "2026-06",
+          "winRate": 50,
+          "count": 4,
+          "up": 2,
+          "down": 2
+        },
+        {
+          "month": "2026-07",
+          "winRate": 50,
+          "count": 2,
+          "up": 1,
+          "down": 1
+        }
+      ]
+    },
+    "distribution": {
+      "absolute": [
+        {
+          "label": "0.00% - 0.20%",
+          "count": 6,
+          "percentage": 12.77
+        },
+        {
+          "label": "0.20% - 0.30%",
+          "count": 3,
+          "percentage": 6.38
+        },
+        {
+          "label": "0.30% - 0.40%",
+          "count": 1,
+          "percentage": 2.13
+        },
+        {
+          "label": "0.40% - 0.50%",
+          "count": 3,
+          "percentage": 6.38
+        },
+        {
+          "label": "0.50% - 1.00%",
+          "count": 16,
+          "percentage": 34.04
+        },
+        {
+          "label": "1.00% - 2.00%",
+          "count": 14,
+          "percentage": 29.79
+        },
+        {
+          "label": "Above 2.00%",
+          "count": 4,
+          "percentage": 8.51
+        }
+      ],
+      "signed": [
+        {
+          "label": "Extreme Bullish (> +2.00%)",
+          "count": 2,
+          "percentage": 4.26
+        },
+        {
+          "label": "Strong Bullish (+1.00% to +2.00%)",
+          "count": 6,
+          "percentage": 12.77
+        },
+        {
+          "label": "Moderate Bullish (+0.50% to +1.00%)",
+          "count": 8,
+          "percentage": 17.02
+        },
+        {
+          "label": "Mild Bullish (+0.20% to +0.50%)",
+          "count": 5,
+          "percentage": 10.64
+        },
+        {
+          "label": "Flat Bullish (0.00% to +0.20%)",
+          "count": 4,
+          "percentage": 8.51
+        },
+        {
+          "label": "Flat Bearish (-0.20% to 0.00%)",
+          "count": 3,
+          "percentage": 6.38
+        },
+        {
+          "label": "Mild Bearish (-0.50% to -0.20%)",
+          "count": 1,
+          "percentage": 2.13
+        },
+        {
+          "label": "Moderate Bearish (-1.00% to -0.50%)",
+          "count": 8,
+          "percentage": 17.02
+        },
+        {
+          "label": "Strong Bearish (-2.00% to -1.00%)",
+          "count": 8,
+          "percentage": 17.02
+        },
+        {
+          "label": "Extreme Bearish (< -2.00%)",
+          "count": 2,
+          "percentage": 4.26
+        }
+      ]
+    },
+    "yearlySeasonality": [
+      {
+        "year": "2026",
+        "totalWeeks": 28,
+        "upWeeks": 12,
+        "downWeeks": 16,
+        "winRate": 42.86,
+        "avgPct": -0.146,
+        "avgAbsPct": 1.238
+      },
+      {
+        "year": "2025",
+        "totalWeeks": 19,
+        "upWeeks": 13,
+        "downWeeks": 6,
+        "winRate": 68.42,
+        "avgPct": 0.1,
+        "avgAbsPct": 0.508
+      }
+    ],
+    "monthlySeasonality": [
+      {
+        "month": "January",
+        "monthIndex": 0,
+        "totalWeeks": 5,
+        "upWeeks": 3,
+        "downWeeks": 2,
+        "winRate": 60,
+        "avgPct": 0.265,
+        "avgAbsPct": 0.746
+      },
+      {
+        "month": "February",
+        "monthIndex": 1,
+        "totalWeeks": 4,
+        "upWeeks": 2,
+        "downWeeks": 2,
+        "winRate": 50,
+        "avgPct": 0.284,
+        "avgAbsPct": 0.956
+      },
+      {
+        "month": "March",
+        "monthIndex": 2,
+        "totalWeeks": 4,
+        "upWeeks": 1,
+        "downWeeks": 3,
+        "winRate": 25,
+        "avgPct": -1.181,
+        "avgAbsPct": 2.221
+      },
+      {
+        "month": "April",
+        "monthIndex": 3,
+        "totalWeeks": 5,
+        "upWeeks": 2,
+        "downWeeks": 3,
+        "winRate": 40,
+        "avgPct": 0.267,
+        "avgAbsPct": 1.209
+      },
+      {
+        "month": "May",
+        "monthIndex": 4,
+        "totalWeeks": 4,
+        "upWeeks": 1,
+        "downWeeks": 3,
+        "winRate": 25,
+        "avgPct": -0.696,
+        "avgAbsPct": 1.655
+      },
+      {
+        "month": "June",
+        "monthIndex": 5,
+        "totalWeeks": 4,
+        "upWeeks": 2,
+        "downWeeks": 2,
+        "winRate": 50,
+        "avgPct": 0.042,
+        "avgAbsPct": 1.022
+      },
+      {
+        "month": "July",
+        "monthIndex": 6,
+        "totalWeeks": 2,
+        "upWeeks": 1,
+        "downWeeks": 1,
+        "winRate": 50,
+        "avgPct": -0.276,
+        "avgAbsPct": 0.729
+      },
+      {
+        "month": "August",
+        "monthIndex": 7,
+        "totalWeeks": 2,
+        "upWeeks": 1,
+        "downWeeks": 1,
+        "winRate": 50,
+        "avgPct": -0.628,
+        "avgAbsPct": 0.638
+      },
+      {
+        "month": "September",
+        "monthIndex": 8,
+        "totalWeeks": 4,
+        "upWeeks": 4,
+        "downWeeks": 0,
+        "winRate": 100,
+        "avgPct": 0.337,
+        "avgAbsPct": 0.337
+      },
+      {
+        "month": "October",
+        "monthIndex": 9,
+        "totalWeeks": 5,
+        "upWeeks": 4,
+        "downWeeks": 1,
+        "winRate": 80,
+        "avgPct": 0.492,
+        "avgAbsPct": 0.572
+      },
+      {
+        "month": "November",
+        "monthIndex": 10,
+        "totalWeeks": 4,
+        "upWeeks": 2,
+        "downWeeks": 2,
+        "winRate": 50,
+        "avgPct": 0.056,
+        "avgAbsPct": 0.497
+      },
+      {
+        "month": "December",
+        "monthIndex": 11,
+        "totalWeeks": 4,
+        "upWeeks": 2,
+        "downWeeks": 2,
+        "winRate": 50,
+        "avgPct": -0.216,
+        "avgAbsPct": 0.547
+      }
+    ],
+    "streaks": [
+      {
+        "label": "6 Weeks UP",
+        "count": 1,
+        "percentage": 4.35
+      },
+      {
+        "label": "5 Weeks UP",
+        "count": 1,
+        "percentage": 4.35
+      },
+      {
+        "label": "4 Weeks DOWN",
+        "count": 2,
+        "percentage": 8.7
+      },
+      {
+        "label": "4 Weeks UP",
+        "count": 1,
+        "percentage": 4.35
+      },
+      {
+        "label": "3 Weeks DOWN",
+        "count": 1,
+        "percentage": 4.35
+      },
+      {
+        "label": "2 Weeks DOWN",
+        "count": 2,
+        "percentage": 8.7
+      },
+      {
+        "label": "2 Weeks UP",
+        "count": 2,
+        "percentage": 8.7
+      },
+      {
+        "label": "1 Weeks DOWN",
+        "count": 7,
+        "percentage": 30.43
+      },
+      {
+        "label": "1 Weeks UP",
+        "count": 6,
+        "percentage": 26.09
+      }
+    ]
+  },
+  "tuesdayThursdayAnalysis": {
+    "pairs": [
+      {
+        "tuesdayDate": "2025-08-26",
+        "tuesdayClose": 54450.45,
+        "thursdayDate": "2025-08-28",
+        "thursdayClose": 53820.35,
+        "pointsMoved": -630.1,
+        "pctMoved": -1.157,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-09-02",
+        "tuesdayClose": 53661,
+        "thursdayDate": "2025-09-04",
+        "thursdayClose": 54075.45,
+        "pointsMoved": 414.45,
+        "pctMoved": 0.772,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-09-09",
+        "tuesdayClose": 54216.1,
+        "thursdayDate": "2025-09-11",
+        "thursdayClose": 54669.6,
+        "pointsMoved": 453.5,
+        "pctMoved": 0.836,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-09-16",
+        "tuesdayClose": 55147.6,
+        "thursdayDate": "2025-09-18",
+        "thursdayClose": 55727.45,
+        "pointsMoved": 579.85,
+        "pctMoved": 1.051,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-09-23",
+        "tuesdayClose": 55509.75,
+        "thursdayDate": "2025-09-25",
+        "thursdayClose": 54976.2,
+        "pointsMoved": -533.55,
+        "pctMoved": -0.961,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-09-30",
+        "tuesdayClose": 54635.85,
+        "thursdayDate": "2025-10-03",
+        "thursdayClose": 55589.25,
+        "pointsMoved": 953.4,
+        "pctMoved": 1.745,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Friday"
+      },
+      {
+        "tuesdayDate": "2025-10-07",
+        "tuesdayClose": 56239.35,
+        "thursdayDate": "2025-10-09",
+        "thursdayClose": 56192.05,
+        "pointsMoved": -47.3,
+        "pctMoved": -0.084,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-10-14",
+        "tuesdayClose": 56496.45,
+        "thursdayDate": "2025-10-16",
+        "thursdayClose": 57422.55,
+        "pointsMoved": 926.1,
+        "pctMoved": 1.639,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-10-21",
+        "tuesdayClose": 58007.2,
+        "thursdayDate": "2025-10-23",
+        "thursdayClose": 58078.05,
+        "pointsMoved": 70.85,
+        "pctMoved": 0.122,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-10-28",
+        "tuesdayClose": 58214.1,
+        "thursdayDate": "2025-10-30",
+        "thursdayClose": 58031.1,
+        "pointsMoved": -183,
+        "pctMoved": -0.314,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-11-04",
+        "tuesdayClose": 57827.05,
+        "thursdayDate": "2025-11-06",
+        "thursdayClose": 57554.25,
+        "pointsMoved": -272.8,
+        "pctMoved": -0.472,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-11-11",
+        "tuesdayClose": 58138.15,
+        "thursdayDate": "2025-11-13",
+        "thursdayClose": 58381.95,
+        "pointsMoved": 243.8,
+        "pctMoved": 0.419,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-11-18",
+        "tuesdayClose": 58899.25,
+        "thursdayDate": "2025-11-20",
+        "thursdayClose": 59347.7,
+        "pointsMoved": 448.45,
+        "pctMoved": 0.761,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-11-25",
+        "tuesdayClose": 58820.3,
+        "thursdayDate": "2025-11-27",
+        "thursdayClose": 59737.3,
+        "pointsMoved": 917,
+        "pctMoved": 1.559,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-12-02",
+        "tuesdayClose": 59273.8,
+        "thursdayDate": "2025-12-04",
+        "thursdayClose": 59288.7,
+        "pointsMoved": 14.9,
+        "pctMoved": 0.025,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-12-09",
+        "tuesdayClose": 59222.35,
+        "thursdayDate": "2025-12-11",
+        "thursdayClose": 59209.85,
+        "pointsMoved": -12.5,
+        "pctMoved": -0.021,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-12-16",
+        "tuesdayClose": 59034.6,
+        "thursdayDate": "2025-12-18",
+        "thursdayClose": 58912.85,
+        "pointsMoved": -121.75,
+        "pctMoved": -0.206,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2025-12-23",
+        "tuesdayClose": 59299.55,
+        "thursdayDate": "2025-12-26",
+        "thursdayClose": 59011.35,
+        "pointsMoved": -288.2,
+        "pctMoved": -0.486,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Friday"
+      },
+      {
+        "tuesdayDate": "2025-12-30",
+        "tuesdayClose": 59171.25,
+        "thursdayDate": "2026-01-01",
+        "thursdayClose": 59711.55,
+        "pointsMoved": 540.3,
+        "pctMoved": 0.913,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-01-06",
+        "tuesdayClose": 60118.4,
+        "thursdayDate": "2026-01-08",
+        "thursdayClose": 59686.5,
+        "pointsMoved": -431.9,
+        "pctMoved": -0.718,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-01-13",
+        "tuesdayClose": 59578.8,
+        "thursdayDate": "2026-01-16",
+        "thursdayClose": 60095.15,
+        "pointsMoved": 516.35,
+        "pctMoved": 0.867,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Friday"
+      },
+      {
+        "tuesdayDate": "2026-01-20",
+        "tuesdayClose": 59404.2,
+        "thursdayDate": "2026-01-22",
+        "thursdayClose": 59200.1,
+        "pointsMoved": -204.1,
+        "pctMoved": -0.344,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-01-27",
+        "tuesdayClose": 59205.45,
+        "thursdayDate": "2026-01-29",
+        "thursdayClose": 59957.85,
+        "pointsMoved": 752.4,
+        "pctMoved": 1.271,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-02-03",
+        "tuesdayClose": 60041.3,
+        "thursdayDate": "2026-02-05",
+        "thursdayClose": 60063.65,
+        "pointsMoved": 22.35,
+        "pctMoved": 0.037,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-02-10",
+        "tuesdayClose": 60626.4,
+        "thursdayDate": "2026-02-12",
+        "thursdayClose": 60739.75,
+        "pointsMoved": 113.35,
+        "pctMoved": 0.187,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-02-17",
+        "tuesdayClose": 61174,
+        "thursdayDate": "2026-02-19",
+        "thursdayClose": 60739.55,
+        "pointsMoved": -434.45,
+        "pctMoved": -0.71,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-02-24",
+        "tuesdayClose": 61047.3,
+        "thursdayDate": "2026-02-26",
+        "thursdayClose": 61187.7,
+        "pointsMoved": 140.4,
+        "pctMoved": 0.23,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-03-04",
+        "tuesdayClose": 58755.25,
+        "thursdayDate": "2026-03-05",
+        "thursdayClose": 59055.85,
+        "pointsMoved": 300.6,
+        "pctMoved": 0.512,
+        "direction": "UP",
+        "tuesdayDay": "Wednesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-03-10",
+        "tuesdayClose": 56950.8,
+        "thursdayDate": "2026-03-12",
+        "thursdayClose": 55100.95,
+        "pointsMoved": -1849.85,
+        "pctMoved": -3.248,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-03-17",
+        "tuesdayClose": 54876,
+        "thursdayDate": "2026-03-19",
+        "thursdayClose": 53451,
+        "pointsMoved": -1425,
+        "pctMoved": -2.597,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-03-24",
+        "tuesdayClose": 52605.65,
+        "thursdayDate": "2026-03-27",
+        "thursdayClose": 52274.6,
+        "pointsMoved": -331.05,
+        "pctMoved": -0.629,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Friday"
+      },
+      {
+        "tuesdayDate": "2026-04-01",
+        "tuesdayClose": 51448.65,
+        "thursdayDate": "2026-04-02",
+        "thursdayClose": 51548.75,
+        "pointsMoved": 100.1,
+        "pctMoved": 0.195,
+        "direction": "UP",
+        "tuesdayDay": "Wednesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-04-07",
+        "tuesdayClose": 52716.25,
+        "thursdayDate": "2026-04-09",
+        "thursdayClose": 54821.7,
+        "pointsMoved": 2105.45,
+        "pctMoved": 3.994,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-04-15",
+        "tuesdayClose": 56301.95,
+        "thursdayDate": "2026-04-16",
+        "thursdayClose": 56086.4,
+        "pointsMoved": -215.55,
+        "pctMoved": -0.383,
+        "direction": "DOWN",
+        "tuesdayDay": "Wednesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-04-21",
+        "tuesdayClose": 57371.45,
+        "thursdayDate": "2026-04-23",
+        "thursdayClose": 56305,
+        "pointsMoved": -1066.45,
+        "pctMoved": -1.859,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-04-28",
+        "tuesdayClose": 55400.35,
+        "thursdayDate": "2026-04-30",
+        "thursdayClose": 54863.35,
+        "pointsMoved": -537,
+        "pctMoved": -0.969,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-05-05",
+        "tuesdayClose": 54547.05,
+        "thursdayDate": "2026-05-07",
+        "thursdayClose": 56047.4,
+        "pointsMoved": 1500.35,
+        "pctMoved": 2.751,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-05-12",
+        "tuesdayClose": 53555.2,
+        "thursdayDate": "2026-05-14",
+        "thursdayClose": 54128.95,
+        "pointsMoved": 573.75,
+        "pctMoved": 1.071,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-05-19",
+        "tuesdayClose": 53409.15,
+        "thursdayDate": "2026-05-21",
+        "thursdayClose": 53439.4,
+        "pointsMoved": 30.25,
+        "pctMoved": 0.057,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-05-26",
+        "tuesdayClose": 55092.9,
+        "thursdayDate": "2026-05-29",
+        "thursdayClose": 54239.2,
+        "pointsMoved": -853.7,
+        "pctMoved": -1.55,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Friday"
+      },
+      {
+        "tuesdayDate": "2026-06-02",
+        "tuesdayClose": 53714.65,
+        "thursdayDate": "2026-06-04",
+        "thursdayClose": 54307.85,
+        "pointsMoved": 593.2,
+        "pctMoved": 1.104,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-06-09",
+        "tuesdayClose": 55194.5,
+        "thursdayDate": "2026-06-11",
+        "thursdayClose": 55176.75,
+        "pointsMoved": -17.75,
+        "pctMoved": -0.032,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-06-16",
+        "tuesdayClose": 57297.15,
+        "thursdayDate": "2026-06-18",
+        "thursdayClose": 57963.8,
+        "pointsMoved": 666.65,
+        "pctMoved": 1.164,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-06-23",
+        "tuesdayClose": 57183.75,
+        "thursdayDate": "2026-06-25",
+        "thursdayClose": 58177.05,
+        "pointsMoved": 993.3,
+        "pctMoved": 1.737,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-06-30",
+        "tuesdayClose": 57542.9,
+        "thursdayDate": "2026-07-02",
+        "thursdayClose": 58031.65,
+        "pointsMoved": 488.75,
+        "pctMoved": 0.849,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-07-07",
+        "tuesdayClose": 58200.7,
+        "thursdayDate": "2026-07-09",
+        "thursdayClose": 57252.45,
+        "pointsMoved": -948.25,
+        "pctMoved": -1.629,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      {
+        "tuesdayDate": "2026-07-14",
+        "tuesdayClose": 57462.3,
+        "thursdayDate": "2026-07-16",
+        "thursdayClose": 57582.25,
+        "pointsMoved": 119.95,
+        "pctMoved": 0.209,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      }
+    ],
+    "summary": {
+      "totalWeeks": 47,
+      "upWeeks": 27,
+      "downWeeks": 20,
+      "winRate": 57.45,
+      "avgPoints": 88.84,
+      "avgAbsPoints": 531.58,
+      "avgPct": 0.164,
+      "maxGain": {
+        "tuesdayDate": "2026-04-07",
+        "tuesdayClose": 52716.25,
+        "thursdayDate": "2026-04-09",
+        "thursdayClose": 54821.7,
+        "pointsMoved": 2105.45,
+        "pctMoved": 3.994,
+        "direction": "UP",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      "maxLoss": {
+        "tuesdayDate": "2026-03-10",
+        "tuesdayClose": 56950.8,
+        "thursdayDate": "2026-03-12",
+        "thursdayClose": 55100.95,
+        "pointsMoved": -1849.85,
+        "pctMoved": -3.248,
+        "direction": "DOWN",
+        "tuesdayDay": "Tuesday",
+        "thursdayDay": "Thursday"
+      },
+      "currentStreak": 1,
+      "streakDirection": "UP",
+      "monthlyBreakdown": [
+        {
+          "month": "2025-08",
+          "winRate": 0,
+          "count": 1,
+          "up": 0,
+          "down": 1
+        },
+        {
+          "month": "2025-09",
+          "winRate": 80,
+          "count": 5,
+          "up": 4,
+          "down": 1
+        },
+        {
+          "month": "2025-10",
+          "winRate": 50,
+          "count": 4,
+          "up": 2,
+          "down": 2
+        },
+        {
+          "month": "2025-11",
+          "winRate": 75,
+          "count": 4,
+          "up": 3,
+          "down": 1
+        },
+        {
+          "month": "2025-12",
+          "winRate": 40,
+          "count": 5,
+          "up": 2,
+          "down": 3
+        },
+        {
+          "month": "2026-01",
+          "winRate": 50,
+          "count": 4,
+          "up": 2,
+          "down": 2
+        },
+        {
+          "month": "2026-02",
+          "winRate": 75,
+          "count": 4,
+          "up": 3,
+          "down": 1
+        },
+        {
+          "month": "2026-03",
+          "winRate": 25,
+          "count": 4,
+          "up": 1,
+          "down": 3
+        },
+        {
+          "month": "2026-04",
+          "winRate": 40,
+          "count": 5,
+          "up": 2,
+          "down": 3
+        },
+        {
+          "month": "2026-05",
+          "winRate": 75,
+          "count": 4,
+          "up": 3,
+          "down": 1
+        },
+        {
+          "month": "2026-06",
+          "winRate": 80,
+          "count": 5,
+          "up": 4,
+          "down": 1
+        },
+        {
+          "month": "2026-07",
+          "winRate": 50,
+          "count": 2,
+          "up": 1,
+          "down": 1
+        }
+      ]
+    },
+    "distribution": {
+      "absolute": [
+        {
+          "label": "0.00% - 0.20%",
+          "count": 9,
+          "percentage": 19.15
+        },
+        {
+          "label": "0.20% - 0.30%",
+          "count": 3,
+          "percentage": 6.38
+        },
+        {
+          "label": "0.30% - 0.40%",
+          "count": 3,
+          "percentage": 6.38
+        },
+        {
+          "label": "0.40% - 0.50%",
+          "count": 3,
+          "percentage": 6.38
+        },
+        {
+          "label": "0.50% - 1.00%",
+          "count": 12,
+          "percentage": 25.53
+        },
+        {
+          "label": "1.00% - 2.00%",
+          "count": 13,
+          "percentage": 27.66
+        },
+        {
+          "label": "Above 2.00%",
+          "count": 4,
+          "percentage": 8.51
+        }
+      ],
+      "signed": [
+        {
+          "label": "Extreme Bullish (> +2.00%)",
+          "count": 2,
+          "percentage": 4.26
+        },
+        {
+          "label": "Strong Bullish (+1.00% to +2.00%)",
+          "count": 9,
+          "percentage": 19.15
+        },
+        {
+          "label": "Moderate Bullish (+0.50% to +1.00%)",
+          "count": 7,
+          "percentage": 14.89
+        },
+        {
+          "label": "Mild Bullish (+0.20% to +0.50%)",
+          "count": 3,
+          "percentage": 6.38
+        },
+        {
+          "label": "Flat Bullish (0.00% to +0.20%)",
+          "count": 6,
+          "percentage": 12.77
+        },
+        {
+          "label": "Flat Bearish (-0.20% to 0.00%)",
+          "count": 3,
+          "percentage": 6.38
+        },
+        {
+          "label": "Mild Bearish (-0.50% to -0.20%)",
+          "count": 6,
+          "percentage": 12.77
+        },
+        {
+          "label": "Moderate Bearish (-1.00% to -0.50%)",
+          "count": 5,
+          "percentage": 10.64
+        },
+        {
+          "label": "Strong Bearish (-2.00% to -1.00%)",
+          "count": 4,
+          "percentage": 8.51
+        },
+        {
+          "label": "Extreme Bearish (< -2.00%)",
+          "count": 2,
+          "percentage": 4.26
+        }
+      ]
+    },
+    "yearlySeasonality": [
+      {
+        "year": "2026",
+        "totalWeeks": 28,
+        "upWeeks": 16,
+        "downWeeks": 12,
+        "winRate": 57.14,
+        "avgPct": 0.056,
+        "avgAbsPct": 1.104
+      },
+      {
+        "year": "2025",
+        "totalWeeks": 19,
+        "upWeeks": 11,
+        "downWeeks": 8,
+        "winRate": 57.89,
+        "avgPct": 0.323,
+        "avgAbsPct": 0.713
+      }
+    ],
+    "monthlySeasonality": [
+      {
+        "month": "January",
+        "monthIndex": 0,
+        "totalWeeks": 4,
+        "upWeeks": 2,
+        "downWeeks": 2,
+        "winRate": 50,
+        "avgPct": 0.269,
+        "avgAbsPct": 0.8
+      },
+      {
+        "month": "February",
+        "monthIndex": 1,
+        "totalWeeks": 4,
+        "upWeeks": 3,
+        "downWeeks": 1,
+        "winRate": 75,
+        "avgPct": -0.064,
+        "avgAbsPct": 0.291
+      },
+      {
+        "month": "March",
+        "monthIndex": 2,
+        "totalWeeks": 4,
+        "upWeeks": 1,
+        "downWeeks": 3,
+        "winRate": 25,
+        "avgPct": -1.49,
+        "avgAbsPct": 1.747
+      },
+      {
+        "month": "April",
+        "monthIndex": 3,
+        "totalWeeks": 5,
+        "upWeeks": 2,
+        "downWeeks": 3,
+        "winRate": 40,
+        "avgPct": 0.196,
+        "avgAbsPct": 1.48
+      },
+      {
+        "month": "May",
+        "monthIndex": 4,
+        "totalWeeks": 4,
+        "upWeeks": 3,
+        "downWeeks": 1,
+        "winRate": 75,
+        "avgPct": 0.582,
+        "avgAbsPct": 1.357
+      },
+      {
+        "month": "June",
+        "monthIndex": 5,
+        "totalWeeks": 5,
+        "upWeeks": 4,
+        "downWeeks": 1,
+        "winRate": 80,
+        "avgPct": 0.964,
+        "avgAbsPct": 0.977
+      },
+      {
+        "month": "July",
+        "monthIndex": 6,
+        "totalWeeks": 2,
+        "upWeeks": 1,
+        "downWeeks": 1,
+        "winRate": 50,
+        "avgPct": -0.71,
+        "avgAbsPct": 0.919
+      },
+      {
+        "month": "August",
+        "monthIndex": 7,
+        "totalWeeks": 1,
+        "upWeeks": 0,
+        "downWeeks": 1,
+        "winRate": 0,
+        "avgPct": -1.157,
+        "avgAbsPct": 1.157
+      },
+      {
+        "month": "September",
+        "monthIndex": 8,
+        "totalWeeks": 5,
+        "upWeeks": 4,
+        "downWeeks": 1,
+        "winRate": 80,
+        "avgPct": 0.689,
+        "avgAbsPct": 1.073
+      },
+      {
+        "month": "October",
+        "monthIndex": 9,
+        "totalWeeks": 4,
+        "upWeeks": 2,
+        "downWeeks": 2,
+        "winRate": 50,
+        "avgPct": 0.341,
+        "avgAbsPct": 0.54
+      },
+      {
+        "month": "November",
+        "monthIndex": 10,
+        "totalWeeks": 4,
+        "upWeeks": 3,
+        "downWeeks": 1,
+        "winRate": 75,
+        "avgPct": 0.567,
+        "avgAbsPct": 0.803
+      },
+      {
+        "month": "December",
+        "monthIndex": 11,
+        "totalWeeks": 5,
+        "upWeeks": 2,
+        "downWeeks": 3,
+        "winRate": 40,
+        "avgPct": 0.045,
+        "avgAbsPct": 0.33
+      }
+    ],
+    "streaks": [
+      {
+        "label": "4 Weeks UP",
+        "count": 1,
+        "percentage": 3.85
+      },
+      {
+        "label": "3 Weeks DOWN",
+        "count": 3,
+        "percentage": 11.54
+      },
+      {
+        "label": "3 Weeks UP",
+        "count": 4,
+        "percentage": 15.38
+      },
+      {
+        "label": "2 Weeks DOWN",
+        "count": 1,
+        "percentage": 3.85
+      },
+      {
+        "label": "2 Weeks UP",
+        "count": 3,
+        "percentage": 11.54
+      },
+      {
+        "label": "1 Weeks DOWN",
+        "count": 9,
+        "percentage": 34.62
+      },
+      {
+        "label": "1 Weeks UP",
+        "count": 5,
+        "percentage": 19.23
+      }
+    ]
+  }
+}

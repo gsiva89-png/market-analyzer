@@ -1,0 +1,57 @@
+{
+  "indices": [
+    {
+      "index": "nifty50",
+      "name": "Nifty 50",
+      "price": 24334.3,
+      "changePercent": 1.0862882,
+      "rsi": 58.48,
+      "trend": "Mild Bearish / Reversal",
+      "momentum": "Bullish Momentum",
+      "patterns": [
+        {
+          "date": "2026-07-15T03:45:00.000Z",
+          "pattern": "Doji",
+          "type": "Neutral / Indecision",
+          "description": "Open and close are almost equal, signifying buyer/seller equilibrium."
+        }
+      ]
+    },
+    {
+      "index": "banknifty",
+      "name": "Bank Nifty",
+      "price": 58521.4,
+      "changePercent": 1.6310582,
+      "rsi": 60.15,
+      "trend": "Neutral",
+      "momentum": "Bullish Momentum",
+      "patterns": [
+        {
+          "date": "2026-07-16T03:45:00.000Z",
+          "pattern": "Bearish Engulfing",
+          "type": "Strong Bearish Reversal",
+          "description": "Large red candle completely engulfs the body of the previous green candle, indicating intense selling pressure."
+        }
+      ]
+    },
+    {
+      "index": "sensex",
+      "name": "Sensex",
+      "price": 78151.45,
+      "changePercent": 1.2496352,
+      "rsi": 59.84,
+      "trend": "Mild Bearish / Reversal",
+      "momentum": "Bullish Momentum",
+      "patterns": [
+        {
+          "date": "2026-07-15T03:45:00.000Z",
+          "pattern": "Doji",
+          "type": "Neutral / Indecision",
+          "description": "Open and close are almost equal, signifying buyer/seller equilibrium."
+        }
+      ]
+    }
+  ],
+  "timestamp": "2026-07-19T19:09:15.235Z",
+  "commentary": "Bearish momentum dominates the landscape, with indices trading below major moving average support clusters. Caution is advised. Volatility profiles are typical for current segments. Monitor pivot resistances for breakouts."
+}

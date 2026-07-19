@@ -1,0 +1,3648 @@
+{
+  "indexName": "Bank Nifty",
+  "symbol": "^NSEBANK",
+  "pairs": [
+    {
+      "tuesdayDate": "2021-07-20",
+      "tuesdayClose": 34415.45,
+      "thursdayDate": "2021-07-22",
+      "thursdayClose": 34677.3,
+      "pointsMoved": 261.85,
+      "pctMoved": 0.761,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-07-27",
+      "tuesdayClose": 34797.45,
+      "thursdayDate": "2021-07-29",
+      "thursdayClose": 34691.5,
+      "pointsMoved": -105.95,
+      "pctMoved": -0.304,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-08-03",
+      "tuesdayClose": 35207.45,
+      "thursdayDate": "2021-08-05",
+      "thursdayClose": 35834.75,
+      "pointsMoved": 627.3,
+      "pctMoved": 1.782,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-08-10",
+      "tuesdayClose": 36034.1,
+      "thursdayDate": "2021-08-12",
+      "thursdayClose": 35937.05,
+      "pointsMoved": -97.05,
+      "pctMoved": -0.269,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-08-17",
+      "tuesdayClose": 35867.45,
+      "thursdayDate": "2021-08-20",
+      "thursdayClose": 35033.85,
+      "pointsMoved": -833.6,
+      "pctMoved": -2.324,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2021-08-24",
+      "tuesdayClose": 35712.1,
+      "thursdayDate": "2021-08-26",
+      "thursdayClose": 35617.55,
+      "pointsMoved": -94.55,
+      "pctMoved": -0.265,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-08-31",
+      "tuesdayClose": 36424.6,
+      "thursdayDate": "2021-09-02",
+      "thursdayClose": 36831.3,
+      "pointsMoved": 406.7,
+      "pctMoved": 1.117,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-09-07",
+      "tuesdayClose": 36468.8,
+      "thursdayDate": "2021-09-09",
+      "thursdayClose": 36683.2,
+      "pointsMoved": 214.4,
+      "pctMoved": 0.588,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-09-14",
+      "tuesdayClose": 36613.05,
+      "thursdayDate": "2021-09-16",
+      "thursdayClose": 37668.6,
+      "pointsMoved": 1055.55,
+      "pctMoved": 2.883,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-09-21",
+      "tuesdayClose": 37235.85,
+      "thursdayDate": "2021-09-23",
+      "thursdayClose": 37771.7,
+      "pointsMoved": 535.85,
+      "pctMoved": 1.439,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-09-28",
+      "tuesdayClose": 37945,
+      "thursdayDate": "2021-09-30",
+      "thursdayClose": 37425.1,
+      "pointsMoved": -519.9,
+      "pctMoved": -1.37,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-10-05",
+      "tuesdayClose": 37741,
+      "thursdayDate": "2021-10-07",
+      "thursdayClose": 37753.2,
+      "pointsMoved": 12.2,
+      "pctMoved": 0.032,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-10-12",
+      "tuesdayClose": 38521.5,
+      "thursdayDate": "2021-10-14",
+      "thursdayClose": 39340.9,
+      "pointsMoved": 819.4,
+      "pctMoved": 2.127,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-10-19",
+      "tuesdayClose": 39540.5,
+      "thursdayDate": "2021-10-21",
+      "thursdayClose": 40030.2,
+      "pointsMoved": 489.7,
+      "pctMoved": 1.238,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-10-26",
+      "tuesdayClose": 41238.3,
+      "thursdayDate": "2021-10-28",
+      "thursdayClose": 39508.95,
+      "pointsMoved": -1729.35,
+      "pctMoved": -4.194,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-11-02",
+      "tuesdayClose": 39938.45,
+      "thursdayDate": "2021-11-04",
+      "thursdayClose": 39573.7,
+      "pointsMoved": -364.75,
+      "pctMoved": -0.913,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-11-09",
+      "tuesdayClose": 39368.8,
+      "thursdayDate": "2021-11-11",
+      "thursdayClose": 38560.2,
+      "pointsMoved": -808.6,
+      "pctMoved": -2.054,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-11-16",
+      "tuesdayClose": 38307.1,
+      "thursdayDate": "2021-11-18",
+      "thursdayClose": 37976.25,
+      "pointsMoved": -330.85,
+      "pctMoved": -0.864,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-11-23",
+      "tuesdayClose": 37272.8,
+      "thursdayDate": "2021-11-25",
+      "thursdayClose": 37364.75,
+      "pointsMoved": 91.95,
+      "pctMoved": 0.247,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-11-30",
+      "tuesdayClose": 35695.3,
+      "thursdayDate": "2021-12-02",
+      "thursdayClose": 36508.25,
+      "pointsMoved": 812.95,
+      "pctMoved": 2.277,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-12-07",
+      "tuesdayClose": 36618.4,
+      "thursdayDate": "2021-12-09",
+      "thursdayClose": 37082.45,
+      "pointsMoved": 464.05,
+      "pctMoved": 1.267,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-12-14",
+      "tuesdayClose": 36893.95,
+      "thursdayDate": "2021-12-16",
+      "thursdayClose": 36548.65,
+      "pointsMoved": -345.3,
+      "pctMoved": -0.936,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-12-21",
+      "tuesdayClose": 34607.85,
+      "thursdayDate": "2021-12-23",
+      "thursdayClose": 35191.15,
+      "pointsMoved": 583.3,
+      "pctMoved": 1.685,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2021-12-28",
+      "tuesdayClose": 35183.8,
+      "thursdayDate": "2021-12-30",
+      "thursdayClose": 35063.6,
+      "pointsMoved": -120.2,
+      "pctMoved": -0.342,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-01-04",
+      "tuesdayClose": 36840.15,
+      "thursdayDate": "2022-01-06",
+      "thursdayClose": 37490.25,
+      "pointsMoved": 650.1,
+      "pctMoved": 1.765,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-01-11",
+      "tuesdayClose": 38442.2,
+      "thursdayDate": "2022-01-13",
+      "thursdayClose": 38469.95,
+      "pointsMoved": 27.75,
+      "pctMoved": 0.072,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-01-18",
+      "tuesdayClose": 38210.3,
+      "thursdayDate": "2022-01-20",
+      "thursdayClose": 37850.85,
+      "pointsMoved": -359.45,
+      "pctMoved": -0.941,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-01-25",
+      "tuesdayClose": 37706.75,
+      "thursdayDate": "2022-01-27",
+      "thursdayClose": 37982.1,
+      "pointsMoved": 275.35,
+      "pctMoved": 0.73,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-02-01",
+      "tuesdayClose": 38505.5,
+      "thursdayDate": "2022-02-03",
+      "thursdayClose": 39010,
+      "pointsMoved": 504.5,
+      "pctMoved": 1.31,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-02-08",
+      "tuesdayClose": 38028.45,
+      "thursdayDate": "2022-02-10",
+      "thursdayClose": 39010.95,
+      "pointsMoved": 982.5,
+      "pctMoved": 2.584,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-02-15",
+      "tuesdayClose": 38170.1,
+      "thursdayDate": "2022-02-17",
+      "thursdayClose": 37531.65,
+      "pointsMoved": -638.45,
+      "pctMoved": -1.673,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-02-22",
+      "tuesdayClose": 37371.65,
+      "thursdayDate": "2022-02-24",
+      "thursdayClose": 35228.1,
+      "pointsMoved": -2143.55,
+      "pctMoved": -5.736,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-03-02",
+      "tuesdayClose": 35372.8,
+      "thursdayDate": "2022-03-03",
+      "thursdayClose": 34944.3,
+      "pointsMoved": -428.5,
+      "pctMoved": -1.211,
+      "direction": "DOWN",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-03-08",
+      "tuesdayClose": 33158.1,
+      "thursdayDate": "2022-03-10",
+      "thursdayClose": 34475.6,
+      "pointsMoved": 1317.5,
+      "pctMoved": 3.973,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-03-15",
+      "tuesdayClose": 35022.65,
+      "thursdayDate": "2022-03-17",
+      "thursdayClose": 36428.55,
+      "pointsMoved": 1405.9,
+      "pctMoved": 4.014,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-03-22",
+      "tuesdayClose": 36348.55,
+      "thursdayDate": "2022-03-24",
+      "thursdayClose": 35527.1,
+      "pointsMoved": -821.45,
+      "pctMoved": -2.26,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-03-29",
+      "tuesdayClose": 35847.4,
+      "thursdayDate": "2022-03-31",
+      "thursdayClose": 36373.6,
+      "pointsMoved": 526.2,
+      "pctMoved": 1.468,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-04-05",
+      "tuesdayClose": 38067.9,
+      "thursdayDate": "2022-04-07",
+      "thursdayClose": 37557.35,
+      "pointsMoved": -510.55,
+      "pctMoved": -1.341,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-04-19",
+      "tuesdayClose": 36341.6,
+      "thursdayDate": "2022-04-21",
+      "thursdayClose": 36816.1,
+      "pointsMoved": 474.5,
+      "pctMoved": 1.306,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-04-26",
+      "tuesdayClose": 36404.8,
+      "thursdayDate": "2022-04-28",
+      "thursdayClose": 36422.2,
+      "pointsMoved": 17.4,
+      "pctMoved": 0.048,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-05-04",
+      "tuesdayClose": 35264.55,
+      "thursdayDate": "2022-05-05",
+      "thursdayClose": 35232.85,
+      "pointsMoved": -31.7,
+      "pctMoved": -0.09,
+      "direction": "DOWN",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-05-10",
+      "tuesdayClose": 34482.65,
+      "thursdayDate": "2022-05-12",
+      "thursdayClose": 33532.15,
+      "pointsMoved": -950.5,
+      "pctMoved": -2.756,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-05-17",
+      "tuesdayClose": 34301.9,
+      "thursdayDate": "2022-05-19",
+      "thursdayClose": 33315.65,
+      "pointsMoved": -986.25,
+      "pctMoved": -2.875,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-05-24",
+      "tuesdayClose": 34290.15,
+      "thursdayDate": "2022-05-26",
+      "thursdayClose": 35094.9,
+      "pointsMoved": 804.75,
+      "pctMoved": 2.347,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-05-31",
+      "tuesdayClose": 35487.4,
+      "thursdayDate": "2022-06-02",
+      "thursdayClose": 35613.65,
+      "pointsMoved": 126.25,
+      "pctMoved": 0.356,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-06-07",
+      "tuesdayClose": 34996,
+      "thursdayDate": "2022-06-09",
+      "thursdayClose": 35085.45,
+      "pointsMoved": 89.45,
+      "pctMoved": 0.256,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-06-14",
+      "tuesdayClose": 33311.35,
+      "thursdayDate": "2022-06-16",
+      "thursdayClose": 32617.1,
+      "pointsMoved": -694.25,
+      "pctMoved": -2.084,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-06-21",
+      "tuesdayClose": 33191.75,
+      "thursdayDate": "2022-06-23",
+      "thursdayClose": 33135,
+      "pointsMoved": -56.75,
+      "pctMoved": -0.171,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-06-28",
+      "tuesdayClose": 33642.45,
+      "thursdayDate": "2022-06-30",
+      "thursdayClose": 33425.1,
+      "pointsMoved": -217.35,
+      "pctMoved": -0.646,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-07-05",
+      "tuesdayClose": 33815.9,
+      "thursdayDate": "2022-07-07",
+      "thursdayClose": 34920.3,
+      "pointsMoved": 1104.4,
+      "pctMoved": 3.266,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-07-12",
+      "tuesdayClose": 35132.25,
+      "thursdayDate": "2022-07-14",
+      "thursdayClose": 34651.2,
+      "pointsMoved": -481.05,
+      "pctMoved": -1.369,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-07-19",
+      "tuesdayClose": 35720.35,
+      "thursdayDate": "2022-07-21",
+      "thursdayClose": 36201,
+      "pointsMoved": 480.65,
+      "pctMoved": 1.346,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-07-26",
+      "tuesdayClose": 36408.5,
+      "thursdayDate": "2022-07-28",
+      "thursdayClose": 37378.15,
+      "pointsMoved": 969.65,
+      "pctMoved": 2.663,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-08-02",
+      "tuesdayClose": 38024,
+      "thursdayDate": "2022-08-04",
+      "thursdayClose": 37755.55,
+      "pointsMoved": -268.45,
+      "pctMoved": -0.706,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-08-10",
+      "tuesdayClose": 38287.85,
+      "thursdayDate": "2022-08-11",
+      "thursdayClose": 38879.85,
+      "pointsMoved": 592,
+      "pctMoved": 1.546,
+      "direction": "UP",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-08-16",
+      "tuesdayClose": 39239.65,
+      "thursdayDate": "2022-08-18",
+      "thursdayClose": 39656.15,
+      "pointsMoved": 416.5,
+      "pctMoved": 1.061,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-08-23",
+      "tuesdayClose": 38697.65,
+      "thursdayDate": "2022-08-25",
+      "thursdayClose": 38950.75,
+      "pointsMoved": 253.1,
+      "pctMoved": 0.654,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-08-30",
+      "tuesdayClose": 39536.75,
+      "thursdayDate": "2022-09-01",
+      "thursdayClose": 39301.25,
+      "pointsMoved": -235.5,
+      "pctMoved": -0.596,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-09-06",
+      "tuesdayClose": 39666.5,
+      "thursdayDate": "2022-09-08",
+      "thursdayClose": 40208.95,
+      "pointsMoved": 542.45,
+      "pctMoved": 1.368,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-09-13",
+      "tuesdayClose": 40873.1,
+      "thursdayDate": "2022-09-15",
+      "thursdayClose": 41209.2,
+      "pointsMoved": 336.1,
+      "pctMoved": 0.822,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-09-20",
+      "tuesdayClose": 41468.3,
+      "thursdayDate": "2022-09-22",
+      "thursdayClose": 40630.6,
+      "pointsMoved": -837.7,
+      "pctMoved": -2.02,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-09-27",
+      "tuesdayClose": 38359.15,
+      "thursdayDate": "2022-09-29",
+      "thursdayClose": 37647.75,
+      "pointsMoved": -711.4,
+      "pctMoved": -1.855,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-10-04",
+      "tuesdayClose": 39110.05,
+      "thursdayDate": "2022-10-06",
+      "thursdayClose": 39282.85,
+      "pointsMoved": 172.8,
+      "pctMoved": 0.442,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-10-11",
+      "tuesdayClose": 38712.45,
+      "thursdayDate": "2022-10-13",
+      "thursdayClose": 38624,
+      "pointsMoved": -88.45,
+      "pctMoved": -0.228,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-10-18",
+      "tuesdayClose": 40318.75,
+      "thursdayDate": "2022-10-20",
+      "thursdayClose": 40099.55,
+      "pointsMoved": -219.2,
+      "pctMoved": -0.544,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-10-25",
+      "tuesdayClose": 41122.75,
+      "thursdayDate": "2022-10-27",
+      "thursdayClose": 41299.3,
+      "pointsMoved": 176.55,
+      "pctMoved": 0.429,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-11-01",
+      "tuesdayClose": 41289.55,
+      "thursdayDate": "2022-11-03",
+      "thursdayClose": 41298.35,
+      "pointsMoved": 8.8,
+      "pctMoved": 0.021,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-11-09",
+      "tuesdayClose": 41783.2,
+      "thursdayDate": "2022-11-10",
+      "thursdayClose": 41603.75,
+      "pointsMoved": -179.45,
+      "pctMoved": -0.429,
+      "direction": "DOWN",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-11-15",
+      "tuesdayClose": 42372.7,
+      "thursdayDate": "2022-11-17",
+      "thursdayClose": 42458.05,
+      "pointsMoved": 85.35,
+      "pctMoved": 0.201,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-11-22",
+      "tuesdayClose": 42457.05,
+      "thursdayDate": "2022-11-24",
+      "thursdayClose": 43075.4,
+      "pointsMoved": 618.35,
+      "pctMoved": 1.456,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-11-29",
+      "tuesdayClose": 43053.45,
+      "thursdayDate": "2022-12-01",
+      "thursdayClose": 43260.65,
+      "pointsMoved": 207.2,
+      "pctMoved": 0.481,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-12-06",
+      "tuesdayClose": 43138.55,
+      "thursdayDate": "2022-12-08",
+      "thursdayClose": 43596.85,
+      "pointsMoved": 458.3,
+      "pctMoved": 1.062,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-12-13",
+      "tuesdayClose": 43946.55,
+      "thursdayDate": "2022-12-15",
+      "thursdayClose": 43498.2,
+      "pointsMoved": -448.35,
+      "pctMoved": -1.02,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-12-20",
+      "tuesdayClose": 43359.5,
+      "thursdayDate": "2022-12-22",
+      "thursdayClose": 42408.8,
+      "pointsMoved": -950.7,
+      "pctMoved": -2.193,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2022-12-27",
+      "tuesdayClose": 42859.5,
+      "thursdayDate": "2022-12-29",
+      "thursdayClose": 43252.35,
+      "pointsMoved": 392.85,
+      "pctMoved": 0.917,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-01-03",
+      "tuesdayClose": 43425.25,
+      "thursdayDate": "2023-01-05",
+      "thursdayClose": 42608.7,
+      "pointsMoved": -816.55,
+      "pctMoved": -1.88,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-01-10",
+      "tuesdayClose": 42014.75,
+      "thursdayDate": "2023-01-12",
+      "thursdayClose": 42082.25,
+      "pointsMoved": 67.5,
+      "pctMoved": 0.161,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-01-17",
+      "tuesdayClose": 42235.05,
+      "thursdayDate": "2023-01-19",
+      "thursdayClose": 42328.85,
+      "pointsMoved": 93.8,
+      "pctMoved": 0.222,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-01-24",
+      "tuesdayClose": 42733.45,
+      "thursdayDate": "2023-01-27",
+      "thursdayClose": 40345.3,
+      "pointsMoved": -2388.15,
+      "pctMoved": -5.588,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2023-01-31",
+      "tuesdayClose": 40655.05,
+      "thursdayDate": "2023-02-02",
+      "thursdayClose": 40669.3,
+      "pointsMoved": 14.25,
+      "pctMoved": 0.035,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-02-07",
+      "tuesdayClose": 41490.95,
+      "thursdayDate": "2023-02-09",
+      "thursdayClose": 41554.3,
+      "pointsMoved": 63.35,
+      "pctMoved": 0.153,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-02-14",
+      "tuesdayClose": 41648.35,
+      "thursdayDate": "2023-02-16",
+      "thursdayClose": 41631.35,
+      "pointsMoved": -17,
+      "pctMoved": -0.041,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-02-21",
+      "tuesdayClose": 40673.6,
+      "thursdayDate": "2023-02-23",
+      "thursdayClose": 40001.55,
+      "pointsMoved": -672.05,
+      "pctMoved": -1.652,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-02-28",
+      "tuesdayClose": 40269.05,
+      "thursdayDate": "2023-03-02",
+      "thursdayClose": 40389.8,
+      "pointsMoved": 120.75,
+      "pctMoved": 0.3,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-03-08",
+      "tuesdayClose": 41577.1,
+      "thursdayDate": "2023-03-09",
+      "thursdayClose": 41256.75,
+      "pointsMoved": -320.35,
+      "pctMoved": -0.77,
+      "direction": "DOWN",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-03-14",
+      "tuesdayClose": 39411.4,
+      "thursdayDate": "2023-03-16",
+      "thursdayClose": 39132.6,
+      "pointsMoved": -278.8,
+      "pctMoved": -0.707,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-03-21",
+      "tuesdayClose": 39894.7,
+      "thursdayDate": "2023-03-23",
+      "thursdayClose": 39616.9,
+      "pointsMoved": -277.8,
+      "pctMoved": -0.696,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-03-28",
+      "tuesdayClose": 39567.9,
+      "thursdayDate": "2023-03-31",
+      "thursdayClose": 40608.65,
+      "pointsMoved": 1040.75,
+      "pctMoved": 2.63,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2023-04-05",
+      "tuesdayClose": 40999.15,
+      "thursdayDate": "2023-04-06",
+      "thursdayClose": 41041,
+      "pointsMoved": 41.85,
+      "pctMoved": 0.102,
+      "direction": "UP",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-04-11",
+      "tuesdayClose": 41366.5,
+      "thursdayDate": "2023-04-13",
+      "thursdayClose": 42132.55,
+      "pointsMoved": 766.05,
+      "pctMoved": 1.852,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-04-18",
+      "tuesdayClose": 42265.2,
+      "thursdayDate": "2023-04-20",
+      "thursdayClose": 42269.5,
+      "pointsMoved": 4.3,
+      "pctMoved": 0.01,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-04-25",
+      "tuesdayClose": 42678.5,
+      "thursdayDate": "2023-04-27",
+      "thursdayClose": 43000.85,
+      "pointsMoved": 322.35,
+      "pctMoved": 0.755,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-05-02",
+      "tuesdayClose": 43352.1,
+      "thursdayDate": "2023-05-04",
+      "thursdayClose": 43685.45,
+      "pointsMoved": 333.35,
+      "pctMoved": 0.769,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-05-09",
+      "tuesdayClose": 43198.15,
+      "thursdayDate": "2023-05-11",
+      "thursdayClose": 43475.3,
+      "pointsMoved": 277.15,
+      "pctMoved": 0.642,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-05-16",
+      "tuesdayClose": 43903.7,
+      "thursdayDate": "2023-05-18",
+      "thursdayClose": 43752.3,
+      "pointsMoved": -151.4,
+      "pctMoved": -0.345,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-05-23",
+      "tuesdayClose": 43954.45,
+      "thursdayDate": "2023-05-25",
+      "thursdayClose": 43681.4,
+      "pointsMoved": -273.05,
+      "pctMoved": -0.621,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-05-30",
+      "tuesdayClose": 44436.35,
+      "thursdayDate": "2023-06-01",
+      "thursdayClose": 43790.2,
+      "pointsMoved": -646.15,
+      "pctMoved": -1.454,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-06-06",
+      "tuesdayClose": 44164.55,
+      "thursdayDate": "2023-06-08",
+      "thursdayClose": 43995.25,
+      "pointsMoved": -169.3,
+      "pctMoved": -0.383,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-06-13",
+      "tuesdayClose": 44079.85,
+      "thursdayDate": "2023-06-15",
+      "thursdayClose": 43443.6,
+      "pointsMoved": -636.25,
+      "pctMoved": -1.443,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-06-20",
+      "tuesdayClose": 43766.5,
+      "thursdayDate": "2023-06-22",
+      "thursdayClose": 43724.85,
+      "pointsMoved": -41.65,
+      "pctMoved": -0.095,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-06-27",
+      "tuesdayClose": 44121.5,
+      "thursdayDate": "2023-06-30",
+      "thursdayClose": 44747.35,
+      "pointsMoved": 625.85,
+      "pctMoved": 1.418,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2023-07-04",
+      "tuesdayClose": 45301.45,
+      "thursdayDate": "2023-07-06",
+      "thursdayClose": 45339.9,
+      "pointsMoved": 38.45,
+      "pctMoved": 0.085,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-07-11",
+      "tuesdayClose": 44745.05,
+      "thursdayDate": "2023-07-13",
+      "thursdayClose": 44665.05,
+      "pointsMoved": -80,
+      "pctMoved": -0.179,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-07-18",
+      "tuesdayClose": 45410.85,
+      "thursdayDate": "2023-07-20",
+      "thursdayClose": 46186.9,
+      "pointsMoved": 776.05,
+      "pctMoved": 1.709,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-07-25",
+      "tuesdayClose": 45845,
+      "thursdayDate": "2023-07-27",
+      "thursdayClose": 45679.3,
+      "pointsMoved": -165.7,
+      "pctMoved": -0.361,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-08-01",
+      "tuesdayClose": 45592.5,
+      "thursdayDate": "2023-08-03",
+      "thursdayClose": 44513.45,
+      "pointsMoved": -1079.05,
+      "pctMoved": -2.367,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-08-08",
+      "tuesdayClose": 44964.45,
+      "thursdayDate": "2023-08-10",
+      "thursdayClose": 44541.8,
+      "pointsMoved": -422.65,
+      "pctMoved": -0.94,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-08-16",
+      "tuesdayClose": 43946.4,
+      "thursdayDate": "2023-08-17",
+      "thursdayClose": 43891.35,
+      "pointsMoved": -55.05,
+      "pctMoved": -0.125,
+      "direction": "DOWN",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-08-22",
+      "tuesdayClose": 43993.25,
+      "thursdayDate": "2023-08-24",
+      "thursdayClose": 44496.2,
+      "pointsMoved": 502.95,
+      "pctMoved": 1.143,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-08-29",
+      "tuesdayClose": 44495.25,
+      "thursdayDate": "2023-08-31",
+      "thursdayClose": 43989.15,
+      "pointsMoved": -506.1,
+      "pctMoved": -1.137,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-09-05",
+      "tuesdayClose": 44532.15,
+      "thursdayDate": "2023-09-07",
+      "thursdayClose": 44878.35,
+      "pointsMoved": 346.2,
+      "pctMoved": 0.777,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-09-12",
+      "tuesdayClose": 45511.35,
+      "thursdayDate": "2023-09-14",
+      "thursdayClose": 46000.85,
+      "pointsMoved": 489.5,
+      "pctMoved": 1.076,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-09-20",
+      "tuesdayClose": 45384.6,
+      "thursdayDate": "2023-09-21",
+      "thursdayClose": 44623.85,
+      "pointsMoved": -760.75,
+      "pctMoved": -1.676,
+      "direction": "DOWN",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-09-26",
+      "tuesdayClose": 44624.2,
+      "thursdayDate": "2023-09-28",
+      "thursdayClose": 44300.95,
+      "pointsMoved": -323.25,
+      "pctMoved": -0.724,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-10-03",
+      "tuesdayClose": 44399.05,
+      "thursdayDate": "2023-10-05",
+      "thursdayClose": 44213.35,
+      "pointsMoved": -185.7,
+      "pctMoved": -0.418,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-10-10",
+      "tuesdayClose": 44360.15,
+      "thursdayDate": "2023-10-12",
+      "thursdayClose": 44599.2,
+      "pointsMoved": 239.05,
+      "pctMoved": 0.539,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-10-17",
+      "tuesdayClose": 44409.5,
+      "thursdayDate": "2023-10-19",
+      "thursdayClose": 43754.5,
+      "pointsMoved": -655,
+      "pctMoved": -1.475,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-10-25",
+      "tuesdayClose": 42832,
+      "thursdayDate": "2023-10-26",
+      "thursdayClose": 42280.15,
+      "pointsMoved": -551.85,
+      "pctMoved": -1.288,
+      "direction": "DOWN",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-10-31",
+      "tuesdayClose": 42845.95,
+      "thursdayDate": "2023-11-02",
+      "thursdayClose": 43017.2,
+      "pointsMoved": 171.25,
+      "pctMoved": 0.4,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-11-07",
+      "tuesdayClose": 43737.9,
+      "thursdayDate": "2023-11-09",
+      "thursdayClose": 43683.6,
+      "pointsMoved": -54.3,
+      "pctMoved": -0.124,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-11-15",
+      "tuesdayClose": 44201.7,
+      "thursdayDate": "2023-11-16",
+      "thursdayClose": 44161.55,
+      "pointsMoved": -40.15,
+      "pctMoved": -0.091,
+      "direction": "DOWN",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-11-21",
+      "tuesdayClose": 43689.15,
+      "thursdayDate": "2023-11-23",
+      "thursdayClose": 43577.5,
+      "pointsMoved": -111.65,
+      "pctMoved": -0.256,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-11-28",
+      "tuesdayClose": 43880.95,
+      "thursdayDate": "2023-11-30",
+      "thursdayClose": 44481.75,
+      "pointsMoved": 600.8,
+      "pctMoved": 1.369,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-12-05",
+      "tuesdayClose": 47012.25,
+      "thursdayDate": "2023-12-07",
+      "thursdayClose": 46841.4,
+      "pointsMoved": -170.85,
+      "pctMoved": -0.363,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-12-12",
+      "tuesdayClose": 47097.55,
+      "thursdayDate": "2023-12-14",
+      "thursdayClose": 47732.3,
+      "pointsMoved": 634.75,
+      "pctMoved": 1.348,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-12-19",
+      "tuesdayClose": 47870.9,
+      "thursdayDate": "2023-12-21",
+      "thursdayClose": 47840.15,
+      "pointsMoved": -30.75,
+      "pctMoved": -0.064,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2023-12-26",
+      "tuesdayClose": 47724.85,
+      "thursdayDate": "2023-12-28",
+      "thursdayClose": 48508.55,
+      "pointsMoved": 783.7,
+      "pctMoved": 1.642,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-01-02",
+      "tuesdayClose": 47761.65,
+      "thursdayDate": "2024-01-04",
+      "thursdayClose": 48195.85,
+      "pointsMoved": 434.2,
+      "pctMoved": 0.909,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-01-09",
+      "tuesdayClose": 47242.65,
+      "thursdayDate": "2024-01-11",
+      "thursdayClose": 47438.35,
+      "pointsMoved": 195.7,
+      "pctMoved": 0.414,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-01-16",
+      "tuesdayClose": 48125.1,
+      "thursdayDate": "2024-01-18",
+      "thursdayClose": 45713.55,
+      "pointsMoved": -2411.55,
+      "pctMoved": -5.011,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-01-23",
+      "tuesdayClose": 45015.05,
+      "thursdayDate": "2024-01-25",
+      "thursdayClose": 44866.15,
+      "pointsMoved": -148.9,
+      "pctMoved": -0.331,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-01-30",
+      "tuesdayClose": 45367.75,
+      "thursdayDate": "2024-02-01",
+      "thursdayClose": 46188.65,
+      "pointsMoved": 820.9,
+      "pctMoved": 1.809,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-02-06",
+      "tuesdayClose": 45690.8,
+      "thursdayDate": "2024-02-08",
+      "thursdayClose": 45012,
+      "pointsMoved": -678.8,
+      "pctMoved": -1.486,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-02-13",
+      "tuesdayClose": 45502.4,
+      "thursdayDate": "2024-02-15",
+      "thursdayClose": 46218.9,
+      "pointsMoved": 716.5,
+      "pctMoved": 1.575,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-02-20",
+      "tuesdayClose": 47094.2,
+      "thursdayDate": "2024-02-22",
+      "thursdayClose": 46919.8,
+      "pointsMoved": -174.4,
+      "pctMoved": -0.37,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-02-27",
+      "tuesdayClose": 46588.05,
+      "thursdayDate": "2024-02-29",
+      "thursdayClose": 46120.9,
+      "pointsMoved": -467.15,
+      "pctMoved": -1.003,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-03-05",
+      "tuesdayClose": 47581,
+      "thursdayDate": "2024-03-07",
+      "thursdayClose": 47835.8,
+      "pointsMoved": 254.8,
+      "pctMoved": 0.536,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-03-12",
+      "tuesdayClose": 47282.4,
+      "thursdayDate": "2024-03-14",
+      "thursdayClose": 46789.95,
+      "pointsMoved": -492.45,
+      "pctMoved": -1.042,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-03-19",
+      "tuesdayClose": 46384.8,
+      "thursdayDate": "2024-03-21",
+      "thursdayClose": 46684.9,
+      "pointsMoved": 300.1,
+      "pctMoved": 0.647,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-03-26",
+      "tuesdayClose": 46600.2,
+      "thursdayDate": "2024-03-28",
+      "thursdayClose": 47124.6,
+      "pointsMoved": 524.4,
+      "pctMoved": 1.125,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-04-02",
+      "tuesdayClose": 47545.45,
+      "thursdayDate": "2024-04-04",
+      "thursdayClose": 48060.8,
+      "pointsMoved": 515.35,
+      "pctMoved": 1.084,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-04-09",
+      "tuesdayClose": 48730.55,
+      "thursdayDate": "2024-04-12",
+      "thursdayClose": 48564.55,
+      "pointsMoved": -166,
+      "pctMoved": -0.341,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2024-04-16",
+      "tuesdayClose": 47484.8,
+      "thursdayDate": "2024-04-18",
+      "thursdayClose": 47069.45,
+      "pointsMoved": -415.35,
+      "pctMoved": -0.875,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-04-23",
+      "tuesdayClose": 47970.45,
+      "thursdayDate": "2024-04-25",
+      "thursdayClose": 48494.95,
+      "pointsMoved": 524.5,
+      "pctMoved": 1.093,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-04-30",
+      "tuesdayClose": 49396.75,
+      "thursdayDate": "2024-05-02",
+      "thursdayClose": 49231.05,
+      "pointsMoved": -165.7,
+      "pctMoved": -0.335,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-05-07",
+      "tuesdayClose": 48285.35,
+      "thursdayDate": "2024-05-09",
+      "thursdayClose": 47487.9,
+      "pointsMoved": -797.45,
+      "pctMoved": -1.652,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-05-14",
+      "tuesdayClose": 47859.45,
+      "thursdayDate": "2024-05-16",
+      "thursdayClose": 47977.05,
+      "pointsMoved": 117.6,
+      "pctMoved": 0.246,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-05-21",
+      "tuesdayClose": 48048.2,
+      "thursdayDate": "2024-05-23",
+      "thursdayClose": 48768.6,
+      "pointsMoved": 720.4,
+      "pctMoved": 1.499,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-05-28",
+      "tuesdayClose": 49142.15,
+      "thursdayDate": "2024-05-30",
+      "thursdayClose": 48682.35,
+      "pointsMoved": -459.8,
+      "pctMoved": -0.936,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-06-04",
+      "tuesdayClose": 46928.6,
+      "thursdayDate": "2024-06-06",
+      "thursdayClose": 49291.9,
+      "pointsMoved": 2363.3,
+      "pctMoved": 5.036,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-06-11",
+      "tuesdayClose": 49705.75,
+      "thursdayDate": "2024-06-13",
+      "thursdayClose": 49846.7,
+      "pointsMoved": 140.95,
+      "pctMoved": 0.284,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-06-18",
+      "tuesdayClose": 50440.9,
+      "thursdayDate": "2024-06-20",
+      "thursdayClose": 51783.25,
+      "pointsMoved": 1342.35,
+      "pctMoved": 2.661,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-06-25",
+      "tuesdayClose": 52606,
+      "thursdayDate": "2024-06-27",
+      "thursdayClose": 52811.3,
+      "pointsMoved": 205.3,
+      "pctMoved": 0.39,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-07-02",
+      "tuesdayClose": 52168.1,
+      "thursdayDate": "2024-07-04",
+      "thursdayClose": 53103.7,
+      "pointsMoved": 935.6,
+      "pctMoved": 1.793,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-07-09",
+      "tuesdayClose": 52568.8,
+      "thursdayDate": "2024-07-11",
+      "thursdayClose": 52270.65,
+      "pointsMoved": -298.15,
+      "pctMoved": -0.567,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-07-16",
+      "tuesdayClose": 52396.8,
+      "thursdayDate": "2024-07-18",
+      "thursdayClose": 52620.7,
+      "pointsMoved": 223.9,
+      "pctMoved": 0.427,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-07-23",
+      "tuesdayClose": 51778.3,
+      "thursdayDate": "2024-07-25",
+      "thursdayClose": 50888.75,
+      "pointsMoved": -889.55,
+      "pctMoved": -1.718,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-07-30",
+      "tuesdayClose": 51499.3,
+      "thursdayDate": "2024-08-01",
+      "thursdayClose": 51564,
+      "pointsMoved": 64.7,
+      "pctMoved": 0.126,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-08-06",
+      "tuesdayClose": 49748.3,
+      "thursdayDate": "2024-08-08",
+      "thursdayClose": 50156.7,
+      "pointsMoved": 408.4,
+      "pctMoved": 0.821,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-08-13",
+      "tuesdayClose": 49831.85,
+      "thursdayDate": "2024-08-16",
+      "thursdayClose": 50516.9,
+      "pointsMoved": 685.05,
+      "pctMoved": 1.375,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2024-08-20",
+      "tuesdayClose": 50803.15,
+      "thursdayDate": "2024-08-22",
+      "thursdayClose": 50985.7,
+      "pointsMoved": 182.55,
+      "pctMoved": 0.359,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-08-27",
+      "tuesdayClose": 51278.75,
+      "thursdayDate": "2024-08-29",
+      "thursdayClose": 51152.75,
+      "pointsMoved": -126,
+      "pctMoved": -0.246,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-09-03",
+      "tuesdayClose": 51689.1,
+      "thursdayDate": "2024-09-05",
+      "thursdayClose": 51473.05,
+      "pointsMoved": -216.05,
+      "pctMoved": -0.418,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-09-10",
+      "tuesdayClose": 51272.3,
+      "thursdayDate": "2024-09-12",
+      "thursdayClose": 51772.4,
+      "pointsMoved": 500.1,
+      "pctMoved": 0.975,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-09-17",
+      "tuesdayClose": 52188.65,
+      "thursdayDate": "2024-09-19",
+      "thursdayClose": 53037.6,
+      "pointsMoved": 848.95,
+      "pctMoved": 1.627,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-09-24",
+      "tuesdayClose": 53968.6,
+      "thursdayDate": "2024-09-26",
+      "thursdayClose": 54375.35,
+      "pointsMoved": 406.75,
+      "pctMoved": 0.754,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-10-01",
+      "tuesdayClose": 52922.6,
+      "thursdayDate": "2024-10-03",
+      "thursdayClose": 51845.2,
+      "pointsMoved": -1077.4,
+      "pctMoved": -2.036,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-10-08",
+      "tuesdayClose": 51021,
+      "thursdayDate": "2024-10-10",
+      "thursdayClose": 51530.9,
+      "pointsMoved": 509.9,
+      "pctMoved": 0.999,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-10-15",
+      "tuesdayClose": 51906,
+      "thursdayDate": "2024-10-17",
+      "thursdayClose": 51288.8,
+      "pointsMoved": -617.2,
+      "pctMoved": -1.189,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-10-22",
+      "tuesdayClose": 51257.15,
+      "thursdayDate": "2024-10-24",
+      "thursdayClose": 51531.15,
+      "pointsMoved": 274,
+      "pctMoved": 0.535,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-10-29",
+      "tuesdayClose": 52320.7,
+      "thursdayDate": "2024-10-31",
+      "thursdayClose": 51475.35,
+      "pointsMoved": -845.35,
+      "pctMoved": -1.616,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-11-05",
+      "tuesdayClose": 52207.25,
+      "thursdayDate": "2024-11-07",
+      "thursdayClose": 51916.5,
+      "pointsMoved": -290.75,
+      "pctMoved": -0.557,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-11-12",
+      "tuesdayClose": 51157.8,
+      "thursdayDate": "2024-11-14",
+      "thursdayClose": 50179.55,
+      "pointsMoved": -978.25,
+      "pctMoved": -1.912,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-11-19",
+      "tuesdayClose": 50626.5,
+      "thursdayDate": "2024-11-21",
+      "thursdayClose": 50372.9,
+      "pointsMoved": -253.6,
+      "pctMoved": -0.501,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-11-26",
+      "tuesdayClose": 52191.5,
+      "thursdayDate": "2024-11-28",
+      "thursdayClose": 51906.85,
+      "pointsMoved": -284.65,
+      "pctMoved": -0.545,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-12-03",
+      "tuesdayClose": 52695.75,
+      "thursdayDate": "2024-12-05",
+      "thursdayClose": 53603.55,
+      "pointsMoved": 907.8,
+      "pctMoved": 1.723,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-12-10",
+      "tuesdayClose": 53577.7,
+      "thursdayDate": "2024-12-12",
+      "thursdayClose": 53216.45,
+      "pointsMoved": -361.25,
+      "pctMoved": -0.674,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-12-17",
+      "tuesdayClose": 52834.8,
+      "thursdayDate": "2024-12-19",
+      "thursdayClose": 51575.7,
+      "pointsMoved": -1259.1,
+      "pctMoved": -2.383,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2024-12-24",
+      "tuesdayClose": 51233,
+      "thursdayDate": "2024-12-26",
+      "thursdayClose": 51170.7,
+      "pointsMoved": -62.3,
+      "pctMoved": -0.122,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-01-07",
+      "tuesdayClose": 50202.15,
+      "thursdayDate": "2025-01-09",
+      "thursdayClose": 49503.5,
+      "pointsMoved": -698.65,
+      "pctMoved": -1.392,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-01-14",
+      "tuesdayClose": 48729.15,
+      "thursdayDate": "2025-01-16",
+      "thursdayClose": 49278.7,
+      "pointsMoved": 549.55,
+      "pctMoved": 1.128,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-01-21",
+      "tuesdayClose": 48570.9,
+      "thursdayDate": "2025-01-23",
+      "thursdayClose": 48589,
+      "pointsMoved": 18.1,
+      "pctMoved": 0.037,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-01-28",
+      "tuesdayClose": 48866.85,
+      "thursdayDate": "2025-01-30",
+      "thursdayClose": 49311.95,
+      "pointsMoved": 445.1,
+      "pctMoved": 0.911,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-02-04",
+      "tuesdayClose": 50157.95,
+      "thursdayDate": "2025-02-06",
+      "thursdayClose": 50382.1,
+      "pointsMoved": 224.15,
+      "pctMoved": 0.447,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-02-11",
+      "tuesdayClose": 49403.4,
+      "thursdayDate": "2025-02-13",
+      "thursdayClose": 49359.85,
+      "pointsMoved": -43.55,
+      "pctMoved": -0.088,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-02-18",
+      "tuesdayClose": 49087.3,
+      "thursdayDate": "2025-02-20",
+      "thursdayClose": 49334.55,
+      "pointsMoved": 247.25,
+      "pctMoved": 0.504,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-02-25",
+      "tuesdayClose": 48608.35,
+      "thursdayDate": "2025-02-27",
+      "thursdayClose": 48743.8,
+      "pointsMoved": 135.45,
+      "pctMoved": 0.279,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-03-04",
+      "tuesdayClose": 48245.2,
+      "thursdayDate": "2025-03-06",
+      "thursdayClose": 48627.7,
+      "pointsMoved": 382.5,
+      "pctMoved": 0.793,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-03-11",
+      "tuesdayClose": 47853.95,
+      "thursdayDate": "2025-03-13",
+      "thursdayClose": 48060.4,
+      "pointsMoved": 206.45,
+      "pctMoved": 0.431,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-03-18",
+      "tuesdayClose": 49314.5,
+      "thursdayDate": "2025-03-20",
+      "thursdayClose": 50062.85,
+      "pointsMoved": 748.35,
+      "pctMoved": 1.518,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-03-25",
+      "tuesdayClose": 51607.95,
+      "thursdayDate": "2025-03-27",
+      "thursdayClose": 51575.85,
+      "pointsMoved": -32.1,
+      "pctMoved": -0.062,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-04-01",
+      "tuesdayClose": 50827.5,
+      "thursdayDate": "2025-04-03",
+      "thursdayClose": 51597.35,
+      "pointsMoved": 769.85,
+      "pctMoved": 1.515,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-04-08",
+      "tuesdayClose": 50511,
+      "thursdayDate": "2025-04-11",
+      "thursdayClose": 51002.35,
+      "pointsMoved": 491.35,
+      "pctMoved": 0.973,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2025-04-15",
+      "tuesdayClose": 52379.5,
+      "thursdayDate": "2025-04-17",
+      "thursdayClose": 54290.2,
+      "pointsMoved": 1910.7,
+      "pctMoved": 3.648,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-04-22",
+      "tuesdayClose": 55647.2,
+      "thursdayDate": "2025-04-24",
+      "thursdayClose": 55201.4,
+      "pointsMoved": -445.8,
+      "pctMoved": -0.801,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-04-29",
+      "tuesdayClose": 55391.25,
+      "thursdayDate": "2025-05-02",
+      "thursdayClose": 55115.35,
+      "pointsMoved": -275.9,
+      "pctMoved": -0.498,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2025-05-06",
+      "tuesdayClose": 54271.4,
+      "thursdayDate": "2025-05-08",
+      "thursdayClose": 54365.65,
+      "pointsMoved": 94.25,
+      "pctMoved": 0.174,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-05-13",
+      "tuesdayClose": 54940.85,
+      "thursdayDate": "2025-05-15",
+      "thursdayClose": 55355.6,
+      "pointsMoved": 414.75,
+      "pctMoved": 0.755,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-05-20",
+      "tuesdayClose": 54877.35,
+      "thursdayDate": "2025-05-22",
+      "thursdayClose": 54941.3,
+      "pointsMoved": 63.95,
+      "pctMoved": 0.117,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-05-27",
+      "tuesdayClose": 55352.8,
+      "thursdayDate": "2025-05-29",
+      "thursdayClose": 55546.05,
+      "pointsMoved": 193.25,
+      "pctMoved": 0.349,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-06-03",
+      "tuesdayClose": 55599.95,
+      "thursdayDate": "2025-06-05",
+      "thursdayClose": 55760.85,
+      "pointsMoved": 160.9,
+      "pctMoved": 0.289,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-06-10",
+      "tuesdayClose": 56629.1,
+      "thursdayDate": "2025-06-12",
+      "thursdayClose": 56082.55,
+      "pointsMoved": -546.55,
+      "pctMoved": -0.965,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-06-17",
+      "tuesdayClose": 55714.15,
+      "thursdayDate": "2025-06-19",
+      "thursdayClose": 55577.45,
+      "pointsMoved": -136.7,
+      "pctMoved": -0.245,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-06-24",
+      "tuesdayClose": 56461.9,
+      "thursdayDate": "2025-06-26",
+      "thursdayClose": 57206.7,
+      "pointsMoved": 744.8,
+      "pctMoved": 1.319,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-07-01",
+      "tuesdayClose": 57459.45,
+      "thursdayDate": "2025-07-03",
+      "thursdayClose": 56791.95,
+      "pointsMoved": -667.5,
+      "pctMoved": -1.162,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-07-08",
+      "tuesdayClose": 57256.3,
+      "thursdayDate": "2025-07-10",
+      "thursdayClose": 56956,
+      "pointsMoved": -300.3,
+      "pctMoved": -0.524,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-07-15",
+      "tuesdayClose": 57006.65,
+      "thursdayDate": "2025-07-17",
+      "thursdayClose": 56828.8,
+      "pointsMoved": -177.85,
+      "pctMoved": -0.312,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-07-22",
+      "tuesdayClose": 56756,
+      "thursdayDate": "2025-07-24",
+      "thursdayClose": 57066.05,
+      "pointsMoved": 310.05,
+      "pctMoved": 0.546,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-07-29",
+      "tuesdayClose": 56222,
+      "thursdayDate": "2025-07-31",
+      "thursdayClose": 55961.95,
+      "pointsMoved": -260.05,
+      "pctMoved": -0.463,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-08-05",
+      "tuesdayClose": 55360.25,
+      "thursdayDate": "2025-08-07",
+      "thursdayClose": 55521.15,
+      "pointsMoved": 160.9,
+      "pctMoved": 0.291,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-08-12",
+      "tuesdayClose": 55043.7,
+      "thursdayDate": "2025-08-14",
+      "thursdayClose": 55341.85,
+      "pointsMoved": 298.15,
+      "pctMoved": 0.542,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-08-19",
+      "tuesdayClose": 55865.15,
+      "thursdayDate": "2025-08-21",
+      "thursdayClose": 55755.45,
+      "pointsMoved": -109.7,
+      "pctMoved": -0.196,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-08-26",
+      "tuesdayClose": 54450.45,
+      "thursdayDate": "2025-08-28",
+      "thursdayClose": 53820.35,
+      "pointsMoved": -630.1,
+      "pctMoved": -1.157,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-09-02",
+      "tuesdayClose": 53661,
+      "thursdayDate": "2025-09-04",
+      "thursdayClose": 54075.45,
+      "pointsMoved": 414.45,
+      "pctMoved": 0.772,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-09-09",
+      "tuesdayClose": 54216.1,
+      "thursdayDate": "2025-09-11",
+      "thursdayClose": 54669.6,
+      "pointsMoved": 453.5,
+      "pctMoved": 0.836,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-09-16",
+      "tuesdayClose": 55147.6,
+      "thursdayDate": "2025-09-18",
+      "thursdayClose": 55727.45,
+      "pointsMoved": 579.85,
+      "pctMoved": 1.051,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-09-23",
+      "tuesdayClose": 55509.75,
+      "thursdayDate": "2025-09-25",
+      "thursdayClose": 54976.2,
+      "pointsMoved": -533.55,
+      "pctMoved": -0.961,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-09-30",
+      "tuesdayClose": 54635.85,
+      "thursdayDate": "2025-10-03",
+      "thursdayClose": 55589.25,
+      "pointsMoved": 953.4,
+      "pctMoved": 1.745,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2025-10-07",
+      "tuesdayClose": 56239.35,
+      "thursdayDate": "2025-10-09",
+      "thursdayClose": 56192.05,
+      "pointsMoved": -47.3,
+      "pctMoved": -0.084,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-10-14",
+      "tuesdayClose": 56496.45,
+      "thursdayDate": "2025-10-16",
+      "thursdayClose": 57422.55,
+      "pointsMoved": 926.1,
+      "pctMoved": 1.639,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-10-21",
+      "tuesdayClose": 58007.2,
+      "thursdayDate": "2025-10-23",
+      "thursdayClose": 58078.05,
+      "pointsMoved": 70.85,
+      "pctMoved": 0.122,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-10-28",
+      "tuesdayClose": 58214.1,
+      "thursdayDate": "2025-10-30",
+      "thursdayClose": 58031.1,
+      "pointsMoved": -183,
+      "pctMoved": -0.314,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-11-04",
+      "tuesdayClose": 57827.05,
+      "thursdayDate": "2025-11-06",
+      "thursdayClose": 57554.25,
+      "pointsMoved": -272.8,
+      "pctMoved": -0.472,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-11-11",
+      "tuesdayClose": 58138.15,
+      "thursdayDate": "2025-11-13",
+      "thursdayClose": 58381.95,
+      "pointsMoved": 243.8,
+      "pctMoved": 0.419,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-11-18",
+      "tuesdayClose": 58899.25,
+      "thursdayDate": "2025-11-20",
+      "thursdayClose": 59347.7,
+      "pointsMoved": 448.45,
+      "pctMoved": 0.761,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-11-25",
+      "tuesdayClose": 58820.3,
+      "thursdayDate": "2025-11-27",
+      "thursdayClose": 59737.3,
+      "pointsMoved": 917,
+      "pctMoved": 1.559,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-12-02",
+      "tuesdayClose": 59273.8,
+      "thursdayDate": "2025-12-04",
+      "thursdayClose": 59288.7,
+      "pointsMoved": 14.9,
+      "pctMoved": 0.025,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-12-09",
+      "tuesdayClose": 59222.35,
+      "thursdayDate": "2025-12-11",
+      "thursdayClose": 59209.85,
+      "pointsMoved": -12.5,
+      "pctMoved": -0.021,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-12-16",
+      "tuesdayClose": 59034.6,
+      "thursdayDate": "2025-12-18",
+      "thursdayClose": 58912.85,
+      "pointsMoved": -121.75,
+      "pctMoved": -0.206,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2025-12-23",
+      "tuesdayClose": 59299.55,
+      "thursdayDate": "2025-12-26",
+      "thursdayClose": 59011.35,
+      "pointsMoved": -288.2,
+      "pctMoved": -0.486,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2025-12-30",
+      "tuesdayClose": 59171.25,
+      "thursdayDate": "2026-01-01",
+      "thursdayClose": 59711.55,
+      "pointsMoved": 540.3,
+      "pctMoved": 0.913,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-01-06",
+      "tuesdayClose": 60118.4,
+      "thursdayDate": "2026-01-08",
+      "thursdayClose": 59686.5,
+      "pointsMoved": -431.9,
+      "pctMoved": -0.718,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-01-13",
+      "tuesdayClose": 59578.8,
+      "thursdayDate": "2026-01-16",
+      "thursdayClose": 60095.15,
+      "pointsMoved": 516.35,
+      "pctMoved": 0.867,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2026-01-20",
+      "tuesdayClose": 59404.2,
+      "thursdayDate": "2026-01-22",
+      "thursdayClose": 59200.1,
+      "pointsMoved": -204.1,
+      "pctMoved": -0.344,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-01-27",
+      "tuesdayClose": 59205.45,
+      "thursdayDate": "2026-01-29",
+      "thursdayClose": 59957.85,
+      "pointsMoved": 752.4,
+      "pctMoved": 1.271,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-02-03",
+      "tuesdayClose": 60041.3,
+      "thursdayDate": "2026-02-05",
+      "thursdayClose": 60063.65,
+      "pointsMoved": 22.35,
+      "pctMoved": 0.037,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-02-10",
+      "tuesdayClose": 60626.4,
+      "thursdayDate": "2026-02-12",
+      "thursdayClose": 60739.75,
+      "pointsMoved": 113.35,
+      "pctMoved": 0.187,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-02-17",
+      "tuesdayClose": 61174,
+      "thursdayDate": "2026-02-19",
+      "thursdayClose": 60739.55,
+      "pointsMoved": -434.45,
+      "pctMoved": -0.71,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-02-24",
+      "tuesdayClose": 61047.3,
+      "thursdayDate": "2026-02-26",
+      "thursdayClose": 61187.7,
+      "pointsMoved": 140.4,
+      "pctMoved": 0.23,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-03-04",
+      "tuesdayClose": 58755.25,
+      "thursdayDate": "2026-03-05",
+      "thursdayClose": 59055.85,
+      "pointsMoved": 300.6,
+      "pctMoved": 0.512,
+      "direction": "UP",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-03-10",
+      "tuesdayClose": 56950.8,
+      "thursdayDate": "2026-03-12",
+      "thursdayClose": 55100.95,
+      "pointsMoved": -1849.85,
+      "pctMoved": -3.248,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-03-17",
+      "tuesdayClose": 54876,
+      "thursdayDate": "2026-03-19",
+      "thursdayClose": 53451,
+      "pointsMoved": -1425,
+      "pctMoved": -2.597,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-03-24",
+      "tuesdayClose": 52605.65,
+      "thursdayDate": "2026-03-27",
+      "thursdayClose": 52274.6,
+      "pointsMoved": -331.05,
+      "pctMoved": -0.629,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2026-04-01",
+      "tuesdayClose": 51448.65,
+      "thursdayDate": "2026-04-02",
+      "thursdayClose": 51548.75,
+      "pointsMoved": 100.1,
+      "pctMoved": 0.195,
+      "direction": "UP",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-04-07",
+      "tuesdayClose": 52716.25,
+      "thursdayDate": "2026-04-09",
+      "thursdayClose": 54821.7,
+      "pointsMoved": 2105.45,
+      "pctMoved": 3.994,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-04-15",
+      "tuesdayClose": 56301.95,
+      "thursdayDate": "2026-04-16",
+      "thursdayClose": 56086.4,
+      "pointsMoved": -215.55,
+      "pctMoved": -0.383,
+      "direction": "DOWN",
+      "tuesdayDay": "Wednesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-04-21",
+      "tuesdayClose": 57371.45,
+      "thursdayDate": "2026-04-23",
+      "thursdayClose": 56305,
+      "pointsMoved": -1066.45,
+      "pctMoved": -1.859,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-04-28",
+      "tuesdayClose": 55400.35,
+      "thursdayDate": "2026-04-30",
+      "thursdayClose": 54863.35,
+      "pointsMoved": -537,
+      "pctMoved": -0.969,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-05-05",
+      "tuesdayClose": 54547.05,
+      "thursdayDate": "2026-05-07",
+      "thursdayClose": 56047.4,
+      "pointsMoved": 1500.35,
+      "pctMoved": 2.751,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-05-12",
+      "tuesdayClose": 53555.2,
+      "thursdayDate": "2026-05-14",
+      "thursdayClose": 54128.95,
+      "pointsMoved": 573.75,
+      "pctMoved": 1.071,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-05-19",
+      "tuesdayClose": 53409.15,
+      "thursdayDate": "2026-05-21",
+      "thursdayClose": 53439.4,
+      "pointsMoved": 30.25,
+      "pctMoved": 0.057,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-05-26",
+      "tuesdayClose": 55092.9,
+      "thursdayDate": "2026-05-29",
+      "thursdayClose": 54239.2,
+      "pointsMoved": -853.7,
+      "pctMoved": -1.55,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Friday"
+    },
+    {
+      "tuesdayDate": "2026-06-02",
+      "tuesdayClose": 53714.65,
+      "thursdayDate": "2026-06-04",
+      "thursdayClose": 54307.85,
+      "pointsMoved": 593.2,
+      "pctMoved": 1.104,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-06-09",
+      "tuesdayClose": 55194.5,
+      "thursdayDate": "2026-06-11",
+      "thursdayClose": 55176.75,
+      "pointsMoved": -17.75,
+      "pctMoved": -0.032,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-06-16",
+      "tuesdayClose": 57297.15,
+      "thursdayDate": "2026-06-18",
+      "thursdayClose": 57963.8,
+      "pointsMoved": 666.65,
+      "pctMoved": 1.164,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-06-23",
+      "tuesdayClose": 57183.75,
+      "thursdayDate": "2026-06-25",
+      "thursdayClose": 58177.05,
+      "pointsMoved": 993.3,
+      "pctMoved": 1.737,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-06-30",
+      "tuesdayClose": 57542.9,
+      "thursdayDate": "2026-07-02",
+      "thursdayClose": 58031.65,
+      "pointsMoved": 488.75,
+      "pctMoved": 0.849,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-07-07",
+      "tuesdayClose": 58200.7,
+      "thursdayDate": "2026-07-09",
+      "thursdayClose": 57252.45,
+      "pointsMoved": -948.25,
+      "pctMoved": -1.629,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    {
+      "tuesdayDate": "2026-07-14",
+      "tuesdayClose": 57462.3,
+      "thursdayDate": "2026-07-16",
+      "thursdayClose": 57582.25,
+      "pointsMoved": 119.95,
+      "pctMoved": 0.209,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    }
+  ],
+  "summary": {
+    "totalWeeks": 259,
+    "upWeeks": 140,
+    "downWeeks": 119,
+    "winRate": 54.05,
+    "avgPoints": 36.65,
+    "avgAbsPoints": 480.87,
+    "avgPct": 0.082,
+    "maxGain": {
+      "tuesdayDate": "2024-06-04",
+      "tuesdayClose": 46928.6,
+      "thursdayDate": "2024-06-06",
+      "thursdayClose": 49291.9,
+      "pointsMoved": 2363.3,
+      "pctMoved": 5.036,
+      "direction": "UP",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    "maxLoss": {
+      "tuesdayDate": "2024-01-16",
+      "tuesdayClose": 48125.1,
+      "thursdayDate": "2024-01-18",
+      "thursdayClose": 45713.55,
+      "pointsMoved": -2411.55,
+      "pctMoved": -5.011,
+      "direction": "DOWN",
+      "tuesdayDay": "Tuesday",
+      "thursdayDay": "Thursday"
+    },
+    "currentStreak": 1,
+    "streakDirection": "UP",
+    "monthlyBreakdown": [
+      {
+        "month": "2021-07",
+        "winRate": 50,
+        "count": 2,
+        "up": 1,
+        "down": 1
+      },
+      {
+        "month": "2021-08",
+        "winRate": 40,
+        "count": 5,
+        "up": 2,
+        "down": 3
+      },
+      {
+        "month": "2021-09",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2021-10",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2021-11",
+        "winRate": 40,
+        "count": 5,
+        "up": 2,
+        "down": 3
+      },
+      {
+        "month": "2021-12",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2022-01",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2022-02",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2022-03",
+        "winRate": 60,
+        "count": 5,
+        "up": 3,
+        "down": 2
+      },
+      {
+        "month": "2022-04",
+        "winRate": 66.7,
+        "count": 3,
+        "up": 2,
+        "down": 1
+      },
+      {
+        "month": "2022-05",
+        "winRate": 40,
+        "count": 5,
+        "up": 2,
+        "down": 3
+      },
+      {
+        "month": "2022-06",
+        "winRate": 25,
+        "count": 4,
+        "up": 1,
+        "down": 3
+      },
+      {
+        "month": "2022-07",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2022-08",
+        "winRate": 60,
+        "count": 5,
+        "up": 3,
+        "down": 2
+      },
+      {
+        "month": "2022-09",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2022-10",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2022-11",
+        "winRate": 80,
+        "count": 5,
+        "up": 4,
+        "down": 1
+      },
+      {
+        "month": "2022-12",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2023-01",
+        "winRate": 60,
+        "count": 5,
+        "up": 3,
+        "down": 2
+      },
+      {
+        "month": "2023-02",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2023-03",
+        "winRate": 25,
+        "count": 4,
+        "up": 1,
+        "down": 3
+      },
+      {
+        "month": "2023-04",
+        "winRate": 100,
+        "count": 4,
+        "up": 4,
+        "down": 0
+      },
+      {
+        "month": "2023-05",
+        "winRate": 40,
+        "count": 5,
+        "up": 2,
+        "down": 3
+      },
+      {
+        "month": "2023-06",
+        "winRate": 25,
+        "count": 4,
+        "up": 1,
+        "down": 3
+      },
+      {
+        "month": "2023-07",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2023-08",
+        "winRate": 20,
+        "count": 5,
+        "up": 1,
+        "down": 4
+      },
+      {
+        "month": "2023-09",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2023-10",
+        "winRate": 40,
+        "count": 5,
+        "up": 2,
+        "down": 3
+      },
+      {
+        "month": "2023-11",
+        "winRate": 25,
+        "count": 4,
+        "up": 1,
+        "down": 3
+      },
+      {
+        "month": "2023-12",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2024-01",
+        "winRate": 60,
+        "count": 5,
+        "up": 3,
+        "down": 2
+      },
+      {
+        "month": "2024-02",
+        "winRate": 25,
+        "count": 4,
+        "up": 1,
+        "down": 3
+      },
+      {
+        "month": "2024-03",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2024-04",
+        "winRate": 40,
+        "count": 5,
+        "up": 2,
+        "down": 3
+      },
+      {
+        "month": "2024-05",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2024-06",
+        "winRate": 100,
+        "count": 4,
+        "up": 4,
+        "down": 0
+      },
+      {
+        "month": "2024-07",
+        "winRate": 60,
+        "count": 5,
+        "up": 3,
+        "down": 2
+      },
+      {
+        "month": "2024-08",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2024-09",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2024-10",
+        "winRate": 40,
+        "count": 5,
+        "up": 2,
+        "down": 3
+      },
+      {
+        "month": "2024-11",
+        "winRate": 0,
+        "count": 4,
+        "up": 0,
+        "down": 4
+      },
+      {
+        "month": "2024-12",
+        "winRate": 25,
+        "count": 4,
+        "up": 1,
+        "down": 3
+      },
+      {
+        "month": "2025-01",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2025-02",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2025-03",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2025-04",
+        "winRate": 60,
+        "count": 5,
+        "up": 3,
+        "down": 2
+      },
+      {
+        "month": "2025-05",
+        "winRate": 100,
+        "count": 4,
+        "up": 4,
+        "down": 0
+      },
+      {
+        "month": "2025-06",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2025-07",
+        "winRate": 20,
+        "count": 5,
+        "up": 1,
+        "down": 4
+      },
+      {
+        "month": "2025-08",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2025-09",
+        "winRate": 80,
+        "count": 5,
+        "up": 4,
+        "down": 1
+      },
+      {
+        "month": "2025-10",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2025-11",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2025-12",
+        "winRate": 40,
+        "count": 5,
+        "up": 2,
+        "down": 3
+      },
+      {
+        "month": "2026-01",
+        "winRate": 50,
+        "count": 4,
+        "up": 2,
+        "down": 2
+      },
+      {
+        "month": "2026-02",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2026-03",
+        "winRate": 25,
+        "count": 4,
+        "up": 1,
+        "down": 3
+      },
+      {
+        "month": "2026-04",
+        "winRate": 40,
+        "count": 5,
+        "up": 2,
+        "down": 3
+      },
+      {
+        "month": "2026-05",
+        "winRate": 75,
+        "count": 4,
+        "up": 3,
+        "down": 1
+      },
+      {
+        "month": "2026-06",
+        "winRate": 80,
+        "count": 5,
+        "up": 4,
+        "down": 1
+      },
+      {
+        "month": "2026-07",
+        "winRate": 50,
+        "count": 2,
+        "up": 1,
+        "down": 1
+      }
+    ]
+  },
+  "distribution": {
+    "absolute": [
+      {
+        "label": "0.00% - 0.20%",
+        "count": 36,
+        "percentage": 13.9
+      },
+      {
+        "label": "0.20% - 0.30%",
+        "count": 18,
+        "percentage": 6.95
+      },
+      {
+        "label": "0.30% - 0.40%",
+        "count": 19,
+        "percentage": 7.34
+      },
+      {
+        "label": "0.40% - 0.50%",
+        "count": 16,
+        "percentage": 6.18
+      },
+      {
+        "label": "0.50% - 1.00%",
+        "count": 62,
+        "percentage": 23.94
+      },
+      {
+        "label": "1.00% - 2.00%",
+        "count": 76,
+        "percentage": 29.34
+      },
+      {
+        "label": "Above 2.00%",
+        "count": 32,
+        "percentage": 12.36
+      }
+    ],
+    "signed": [
+      {
+        "label": "Extreme Bullish (> +2.00%)",
+        "count": 15,
+        "percentage": 5.79
+      },
+      {
+        "label": "Strong Bullish (+1.00% to +2.00%)",
+        "count": 47,
+        "percentage": 18.15
+      },
+      {
+        "label": "Moderate Bullish (+0.50% to +1.00%)",
+        "count": 33,
+        "percentage": 12.74
+      },
+      {
+        "label": "Mild Bullish (+0.20% to +0.50%)",
+        "count": 25,
+        "percentage": 9.65
+      },
+      {
+        "label": "Flat Bullish (0.00% to +0.20%)",
+        "count": 20,
+        "percentage": 7.72
+      },
+      {
+        "label": "Flat Bearish (-0.20% to 0.00%)",
+        "count": 16,
+        "percentage": 6.18
+      },
+      {
+        "label": "Mild Bearish (-0.50% to -0.20%)",
+        "count": 28,
+        "percentage": 10.81
+      },
+      {
+        "label": "Moderate Bearish (-1.00% to -0.50%)",
+        "count": 29,
+        "percentage": 11.2
+      },
+      {
+        "label": "Strong Bearish (-2.00% to -1.00%)",
+        "count": 29,
+        "percentage": 11.2
+      },
+      {
+        "label": "Extreme Bearish (< -2.00%)",
+        "count": 17,
+        "percentage": 6.56
+      }
+    ]
+  },
+  "yearlySeasonality": [
+    {
+      "year": "2026",
+      "totalWeeks": 28,
+      "upWeeks": 16,
+      "downWeeks": 12,
+      "winRate": 57.14,
+      "avgPct": 0.056,
+      "avgAbsPct": 1.104
+    },
+    {
+      "year": "2025",
+      "totalWeeks": 52,
+      "upWeeks": 32,
+      "downWeeks": 20,
+      "winRate": 61.54,
+      "avgPct": 0.308,
+      "avgAbsPct": 0.708
+    },
+    {
+      "year": "2024",
+      "totalWeeks": 52,
+      "upWeeks": 27,
+      "downWeeks": 25,
+      "winRate": 51.92,
+      "avgPct": 0.057,
+      "avgAbsPct": 1.129
+    },
+    {
+      "year": "2023",
+      "totalWeeks": 52,
+      "upWeeks": 23,
+      "downWeeks": 29,
+      "winRate": 44.23,
+      "avgPct": -0.156,
+      "avgAbsPct": 0.892
+    },
+    {
+      "year": "2022",
+      "totalWeeks": 51,
+      "upWeeks": 29,
+      "downWeeks": 22,
+      "winRate": 56.86,
+      "avgPct": 0.102,
+      "avgAbsPct": 1.386
+    },
+    {
+      "year": "2021",
+      "totalWeeks": 24,
+      "upWeeks": 13,
+      "downWeeks": 11,
+      "winRate": 54.17,
+      "avgPct": 0.15,
+      "avgAbsPct": 1.303
+    }
+  ],
+  "monthlySeasonality": [
+    {
+      "month": "January",
+      "monthIndex": 0,
+      "totalWeeks": 22,
+      "upWeeks": 14,
+      "downWeeks": 8,
+      "winRate": 63.64,
+      "avgPct": -0.267,
+      "avgAbsPct": 1.206
+    },
+    {
+      "month": "February",
+      "monthIndex": 1,
+      "totalWeeks": 20,
+      "upWeeks": 11,
+      "downWeeks": 9,
+      "winRate": 55,
+      "avgPct": -0.258,
+      "avgAbsPct": 1.018
+    },
+    {
+      "month": "March",
+      "monthIndex": 2,
+      "totalWeeks": 21,
+      "upWeeks": 11,
+      "downWeeks": 10,
+      "winRate": 52.38,
+      "avgPct": 0.211,
+      "avgAbsPct": 1.47
+    },
+    {
+      "month": "April",
+      "monthIndex": 3,
+      "totalWeeks": 22,
+      "upWeeks": 13,
+      "downWeeks": 9,
+      "winRate": 59.09,
+      "avgPct": 0.417,
+      "avgAbsPct": 1.09
+    },
+    {
+      "month": "May",
+      "monthIndex": 4,
+      "totalWeeks": 22,
+      "upWeeks": 13,
+      "downWeeks": 9,
+      "winRate": 59.09,
+      "avgPct": -0.052,
+      "avgAbsPct": 1.064
+    },
+    {
+      "month": "June",
+      "monthIndex": 5,
+      "totalWeeks": 21,
+      "upWeeks": 12,
+      "downWeeks": 9,
+      "winRate": 57.14,
+      "avgPct": 0.497,
+      "avgAbsPct": 1.075
+    },
+    {
+      "month": "July",
+      "monthIndex": 6,
+      "totalWeeks": 22,
+      "upWeeks": 11,
+      "downWeeks": 11,
+      "winRate": 50,
+      "avgPct": 0.197,
+      "avgAbsPct": 0.978
+    },
+    {
+      "month": "August",
+      "monthIndex": 7,
+      "totalWeeks": 23,
+      "upWeeks": 11,
+      "downWeeks": 12,
+      "winRate": 47.83,
+      "avgPct": 0.016,
+      "avgAbsPct": 0.914
+    },
+    {
+      "month": "September",
+      "monthIndex": 8,
+      "totalWeeks": 21,
+      "upWeeks": 14,
+      "downWeeks": 7,
+      "winRate": 66.67,
+      "avgPct": 0.366,
+      "avgAbsPct": 1.226
+    },
+    {
+      "month": "October",
+      "monthIndex": 9,
+      "totalWeeks": 22,
+      "upWeeks": 11,
+      "downWeeks": 11,
+      "winRate": 50,
+      "avgPct": -0.222,
+      "avgAbsPct": 0.995
+    },
+    {
+      "month": "November",
+      "monthIndex": 10,
+      "totalWeeks": 22,
+      "upWeeks": 10,
+      "downWeeks": 12,
+      "winRate": 45.45,
+      "avgPct": 0.003,
+      "avgAbsPct": 0.796
+    },
+    {
+      "month": "December",
+      "monthIndex": 11,
+      "totalWeeks": 21,
+      "upWeeks": 9,
+      "downWeeks": 12,
+      "winRate": 42.86,
+      "avgPct": 0.084,
+      "avgAbsPct": 0.923
+    }
+  ],
+  "streaks": [
+    {
+      "label": "7 Weeks UP",
+      "count": 1,
+      "percentage": 0.76
+    },
+    {
+      "label": "6 Weeks DOWN",
+      "count": 1,
+      "percentage": 0.76
+    },
+    {
+      "label": "5 Weeks DOWN",
+      "count": 1,
+      "percentage": 0.76
+    },
+    {
+      "label": "5 Weeks UP",
+      "count": 3,
+      "percentage": 2.29
+    },
+    {
+      "label": "4 Weeks DOWN",
+      "count": 3,
+      "percentage": 2.29
+    },
+    {
+      "label": "4 Weeks UP",
+      "count": 5,
+      "percentage": 3.82
+    },
+    {
+      "label": "3 Weeks DOWN",
+      "count": 11,
+      "percentage": 8.4
+    },
+    {
+      "label": "3 Weeks UP",
+      "count": 13,
+      "percentage": 9.92
+    },
+    {
+      "label": "2 Weeks DOWN",
+      "count": 14,
+      "percentage": 10.69
+    },
+    {
+      "label": "2 Weeks UP",
+      "count": 15,
+      "percentage": 11.45
+    },
+    {
+      "label": "1 Weeks DOWN",
+      "count": 35,
+      "percentage": 26.72
+    },
+    {
+      "label": "1 Weeks UP",
+      "count": 29,
+      "percentage": 22.14
+    }
+  ]
+}

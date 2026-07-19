@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: market-historical-analyzer
+    env: node
+    plan: free
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
