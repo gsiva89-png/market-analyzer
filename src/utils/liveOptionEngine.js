@@ -112,7 +112,14 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
   if (totalOI !== null && netOIChange !== null) {
     const formattedTotalOi = totalOI.toLocaleString('en-IN');
     const formattedOiChange = `${netOIChange >= 0 ? '+' : ''}${netOIChange.toLocaleString('en-IN')}`;
-    const formattedPct = oiChangePct !== null ? ` (${oiChangePct >= 0 ? '+' : ''}${oiChangePct}%)` : '';
+    let formattedPct = '';
+    if (oiChangePct !== null) {
+      if (netOIChange < 0 && oiChangePct >= 0) {
+        formattedPct = ' (-0.01%)';
+      } else {
+        formattedPct = ` (${oiChangePct > 0 ? '+' : ''}${oiChangePct}%)`;
+      }
+    }
 
     if (oiSignal === 'LONG_BUILDUP') {
       const boost = (oiChangePct && oiChangePct > 2.0) ? 30 : 25;
