@@ -80,8 +80,8 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
     }
   }
 
-  // B. Fallback / Augment with historical daily OI database (strictly for Nifty 50)
-  if (indexShortName === 'NIFTY' && (!totalOI || totalOI === 0) && Array.isArray(historicalOI) && historicalOI.length > 0) {
+  // B. Fallback / Augment with historical daily OI database
+  if ((!totalOI || totalOI === 0) && Array.isArray(historicalOI) && historicalOI.length > 0) {
     const latestOiRecord = historicalOI[historicalOI.length - 1];
     if (latestOiRecord) {
       totalOI = latestOiRecord.oi;
