@@ -1006,102 +1006,86 @@ function initHistoricalOIDatabase() {
     return new Date(year, month, date - diff);
   }
 
-  if (dailyCandles.length > 0) {
-    let prevOI = 12000000;
-    let prevPrice = dailyCandles[0].close + 15;
+  const indexConfigs = [
+    { key: 'nifty50', baseOI: 12000000, cycleOI: 5000000, defaultSpot: 24000 },
+    { key: 'banknifty', baseOI: 3200000, cycleOI: 1200000, defaultSpot: 52000 },
+    { key: 'sensex', baseOI: 2100000, cycleOI: 800000, defaultSpot: 80000 }
+  ];
 
-    dailyCandles.forEach((candle) => {
-      const d = new Date(candle.date);
-      
-      // Calculate near-month contract expiry
-      let contractExpiry = getLastThursdayOfMonth(d.getFullYear(), d.getMonth());
-      if (d.getTime() > contractExpiry.getTime()) {
-        contractExpiry = getLastThursdayOfMonth(d.getFullYear(), d.getMonth() + 1);
+  indexConfigs.forEach(cfg => {
+    const history = [];
+    const indexPath = path.join(DB_DIR, `index-data-${cfg.key}-1Y.json`);
+    let dailyCandles = [];
+
+    if (fs.existsSync(indexPath)) {
+      try {
+        const parsed = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+        if (parsed && parsed.history) {
+          dailyCandles = parsed.history;
+        }
+      } catch (e) {
+        console.error(`Failed to read index-data-${cfg.key}-1Y.json for historical OI:`, e);
       }
-      
-      const daysRemaining = Math.max(0, Math.round((contractExpiry.getTime() - d.getTime()) / (1000 * 3600 * 24)));
-      
-      // Basis Premium decays to 0 at expiry
-      const basis = 25 * (daysRemaining / 30);
-      const futuresPrice = Number((candle.close + basis).toFixed(2));
-      const dailyPriceChange = Number((futuresPrice - prevPrice).toFixed(2));
-      prevPrice = futuresPrice;
+    }
 
-      // Sinusoidal Near-Month Contract cycle Open Interest model (peaking in middle, dropping on rollover week)
-      const x = Math.max(0, Math.min(1, (30 - daysRemaining) / 30));
-      const baseOI = 12000000;
-      const cycleOI = 5000000 * Math.sin(Math.PI * x);
-      const variance = (Math.random() - 0.5) * 500000; // organic daily noise
-      const currentOI = Math.round(baseOI + cycleOI + variance);
-      const oiChangeDelta = currentOI - prevOI;
-      prevOI = currentOI;
+    if (dailyCandles.length > 0) {
+      let prevOI = cfg.baseOI;
+      let prevPrice = dailyCandles[0].close + 15;
 
-      let futuresVolume = Math.round(candle.volume * 0.45);
-      if (!futuresVolume || futuresVolume === 0) {
-        const dailyRange = Math.abs(candle.high - candle.low) / (candle.close || 24000);
-        const baseVol = 180000 + Math.round(Math.random() * 140000);
-        futuresVolume = Math.round(baseVol * (1 + dailyRange * 12));
-      }
+      dailyCandles.forEach((candle) => {
+        const d = new Date(candle.date);
+        let contractExpiry = getLastThursdayOfMonth(d.getFullYear(), d.getMonth());
+        if (d.getTime() > contractExpiry.getTime()) {
+          contractExpiry = getLastThursdayOfMonth(d.getFullYear(), d.getMonth() + 1);
+        }
+        
+        const daysRemaining = Math.max(0, Math.round((contractExpiry.getTime() - d.getTime()) / (1000 * 3600 * 24)));
+        const basis = 25 * (daysRemaining / 30);
+        const futuresPrice = Number((candle.close + basis).toFixed(2));
+        const dailyPriceChange = Number((futuresPrice - prevPrice).toFixed(2));
+        prevPrice = futuresPrice;
 
-      const buildup = classifyBuildup(dailyPriceChange, futuresPrice, oiChangeDelta, false);
+        const x = Math.max(0, Math.min(1, (30 - daysRemaining) / 30));
+        const cycleVol = cfg.cycleOI * Math.sin(Math.PI * x);
+        const variance = (Math.random() - 0.5) * (cfg.baseOI * 0.05);
+        const currentOI = Math.round(cfg.baseOI + cycleVol + variance);
+        const oiChangeDelta = currentOI - prevOI;
+        prevOI = currentOI;
 
-      history.push({
-        timestamp: `${candle.date}T15:30:00`,
-        price: futuresPrice,
-        priceChange: dailyPriceChange,
-        oi: currentOI,
-        oiChange: oiChangeDelta,
-        oiChangeDelta: oiChangeDelta,
-        volume: futuresVolume,
-        volumeDelta: futuresVolume,
-        buildup
-      });
-    });
-    console.log(`Generated ${history.length} daily historical OI records based on actual Nifty 50 close prices.`);
-  } else {
-    console.log('No Nifty 50 history file found. Falling back to simulated daily logs.');
-    let prevClose = 24000;
-    let prevOI = 12000000;
+        let futuresVolume = Math.round((candle.volume || 100000) * 0.45);
+        if (!futuresVolume || futuresVolume === 0) {
+          const dailyRange = Math.abs(candle.high - candle.low) / (candle.close || cfg.defaultSpot);
+          const baseVol = 80000 + Math.round(Math.random() * 60000);
+          futuresVolume = Math.round(baseVol * (1 + dailyRange * 12));
+        }
 
-    for (let i = 60; i >= 0; i--) {
-      const d = new Date();
-      d.setDate(d.getDate() - i);
-      const dow = d.getDay();
-      if (dow === 0 || dow === 6) continue;
+        const buildup = classifyBuildup(dailyPriceChange, futuresPrice, oiChangeDelta, false);
 
-      const dayStr = d.toISOString().split('T')[0];
-      const priceDelta = (Math.random() - 0.48) * 150;
-      const futuresPrice = Number((prevClose + priceDelta).toFixed(2));
-      const dailyPriceChange = Number((futuresPrice - prevClose).toFixed(2));
-      prevClose = futuresPrice;
-
-      const oiChangeDelta = Math.round((Math.random() - 0.48) * 300000);
-      const currentOI = prevOI + oiChangeDelta;
-      prevOI = currentOI;
-
-      const futuresVolume = Math.round(500000 + Math.random() * 800000);
-
-      const buildup = classifyBuildup(dailyPriceChange, futuresPrice, oiChangeDelta, false);
-
-      history.push({
-        timestamp: `${dayStr}T15:30:00`,
-        price: futuresPrice,
-        priceChange: dailyPriceChange,
-        oi: currentOI,
-        oiChange: oiChangeDelta,
-        oiChangeDelta: oiChangeDelta,
-        volume: futuresVolume,
-        volumeDelta: futuresVolume,
-        buildup
+        history.push({
+          timestamp: `${candle.date}T15:30:00`,
+          price: futuresPrice,
+          priceChange: dailyPriceChange,
+          oi: currentOI,
+          oiChange: oiChangeDelta,
+          oiChangeDelta: oiChangeDelta,
+          volume: futuresVolume,
+          volumeDelta: futuresVolume,
+          buildup
+        });
       });
     }
-  }
 
-  try {
-    fs.writeFileSync(HISTORICAL_OI_PATH, JSON.stringify(history, null, 2), 'utf8');
-  } catch (error) {
-    console.error('Failed to write Nifty Futures historical database:', error);
-  }
+    try {
+      const targetPath = path.join(DB_DIR, `futures_oi_history_${cfg.key}.json`);
+      fs.writeFileSync(targetPath, JSON.stringify(history, null, 2), 'utf8');
+      if (cfg.key === 'nifty50') {
+        fs.writeFileSync(HISTORICAL_OI_PATH, JSON.stringify(history, null, 2), 'utf8');
+      }
+    } catch (error) {
+      console.error(`Failed to write Futures historical OI database for ${cfg.key}:`, error);
+    }
+  });
+  console.log('Generated multi-index Futures historical OI databases (Nifty, Bank Nifty, Sensex).');
 }
 initHistoricalOIDatabase();
 
@@ -1114,12 +1098,19 @@ app.get('/api/futures-oi/live', (req, res) => {
 });
 
 app.get('/api/futures-oi/historical', (req, res) => {
+  const index = (req.query.index || 'nifty50').toLowerCase();
+  const filePath = path.join(DB_DIR, `futures_oi_history_${index}.json`);
+  const legacyPath = HISTORICAL_OI_PATH;
+
   try {
-    if (!fs.existsSync(HISTORICAL_OI_PATH)) {
-      return res.status(404).json({ error: 'Historical database not found' });
+    if (fs.existsSync(filePath)) {
+      const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      return res.json(data);
+    } else if (fs.existsSync(legacyPath)) {
+      const data = JSON.parse(fs.readFileSync(legacyPath, 'utf8'));
+      return res.json(data);
     }
-    const data = JSON.parse(fs.readFileSync(HISTORICAL_OI_PATH, 'utf8'));
-    res.json(data);
+    res.status(404).json({ error: 'Historical database not found' });
   } catch (error) {
     res.status(500).json({ error: error.message || 'Failed to read historical database' });
   }

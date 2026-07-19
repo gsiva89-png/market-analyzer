@@ -776,7 +776,7 @@ export default function App() {
 
       const fetchHistoricalOI = async () => {
         try {
-          const res = await fetch('/api/futures-oi/historical');
+          const res = await fetch(`/api/futures-oi/historical?index=${activeIndex}`);
           if (res.ok) {
             const data = await res.json();
             setHistoricalOI(data);
@@ -801,7 +801,7 @@ export default function App() {
     return () => {
       if (intervalId) clearInterval(intervalId);
     };
-  }, [activeTab]);
+  }, [activeTab, activeIndex]);
 
   useEffect(() => {
     fetchInsightsData();
@@ -818,7 +818,7 @@ export default function App() {
       .then(data => data && setThresholdReport(data))
       .catch(e => console.error(e));
     if (activeTab === 'futuresOI' || activeTab === 'liveOptionSignals') {
-      fetch('/api/futures-oi/historical')
+      fetch(`/api/futures-oi/historical?index=${activeIndex}`)
         .then(res => res.ok ? res.json() : [])
         .then(data => setHistoricalOI(data))
         .catch(e => console.error(e));
