@@ -1,7 +1,7 @@
 /**
- * Live Nifty Option Buy/Sell Recommendation Engine
+ * Live Market Option Buy/Sell Recommendation Engine
  * Analyzes live spot price, technical indicators, Futures Open Interest (OI) Change & Build-up,
- * pivot levels, and candlestick patterns.
+ * pivot levels, and candlestick patterns for Nifty 50, Bank Nifty, and Sensex.
  * Generates actionable option calls (BUY CE / BUY PE / SPREAD) and explicit trade rationale reasons.
  */
 
@@ -11,6 +11,22 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
       status: 'LOADING',
       message: 'Fetching live market data and indicator feed...'
     };
+  }
+
+  const indexName = indexData.indexName || 'Nifty 50';
+  let indexShortName = 'NIFTY';
+  let strikeStep = 50;
+
+  const lowerName = indexName.toLowerCase();
+  if (lowerName.includes('bank')) {
+    indexShortName = 'BANKNIFTY';
+    strikeStep = 100;
+  } else if (lowerName.includes('sensex')) {
+    indexShortName = 'SENSEX';
+    strikeStep = 100;
+  } else {
+    indexShortName = 'NIFTY';
+    strikeStep = 50;
   }
 
   const quote = indexData.quote || {};
@@ -34,7 +50,6 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
 
   // 1. Comprehensive Open Interest (OI) & OI Change Analysis
   let oiSignal = 'NEUTRAL';
-  let oiReasonText = 'Futures OI is stable (Neutral market sentiment)';
   let totalOI = null;
   let netOIChange = null;
   let oiChangePct = null;
@@ -95,16 +110,16 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
   if (sma50 && sma200) {
     if (spotPrice > sma50 && sma50 > sma200) {
       consensusScore += 30;
-      reasonsList.push(`Strong Bullish Trend Structure: Spot (₹${spotPrice.toFixed(2)}) > SMA 50 (₹${sma50.toFixed(2)}) > SMA 200 (₹${sma200.toFixed(2)})`);
+      reasonsList.push(`Strong Bullish Trend Structure: ${indexName} Spot (₹${spotPrice.toFixed(2)}) > SMA 50 (₹${sma50.toFixed(2)}) > SMA 200 (₹${sma200.toFixed(2)})`);
     } else if (spotPrice > sma200) {
       consensusScore += 15;
-      reasonsList.push(`Bullish Bias: Spot price (₹${spotPrice.toFixed(2)}) is trading above long-term SMA 200 (₹${sma200.toFixed(2)})`);
+      reasonsList.push(`Bullish Bias: ${indexName} Spot price (₹${spotPrice.toFixed(2)}) is trading above long-term SMA 200 (₹${sma200.toFixed(2)})`);
     } else if (spotPrice < sma50 && sma50 < sma200) {
       consensusScore -= 30;
-      reasonsList.push(`Strong Bearish Trend Structure: Spot (₹${spotPrice.toFixed(2)}) < SMA 50 (₹${sma50.toFixed(2)}) < SMA 200 (₹${sma200.toFixed(2)})`);
+      reasonsList.push(`Strong Bearish Trend Structure: ${indexName} Spot (₹${spotPrice.toFixed(2)}) < SMA 50 (₹${sma50.toFixed(2)}) < SMA 200 (₹${sma200.toFixed(2)})`);
     } else if (spotPrice < sma200) {
       consensusScore -= 15;
-      reasonsList.push(`Bearish Bias: Spot price (₹${spotPrice.toFixed(2)}) is trading below long-term SMA 200 (₹${sma200.toFixed(2)})`);
+      reasonsList.push(`Bearish Bias: ${indexName} Spot price (₹${spotPrice.toFixed(2)}) is trading below long-term SMA 200 (₹${sma200.toFixed(2)})`);
     }
   }
 
@@ -124,20 +139,20 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
     if (oiSignal === 'LONG_BUILDUP') {
       const boost = (oiChangePct && oiChangePct > 2.0) ? 30 : 25;
       consensusScore += boost;
-      reasonsList.push(`Futures Open Interest (OI) Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms LONG BUILD-UP (Bullish Buy Trigger)`);
+      reasonsList.push(`${indexShortName} Futures OI Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms LONG BUILD-UP (Bullish Buy Trigger)`);
     } else if (oiSignal === 'SHORT_BUILDUP') {
       const penalty = (oiChangePct && oiChangePct > 2.0) ? 30 : 25;
       consensusScore -= penalty;
-      reasonsList.push(`Futures Open Interest (OI) Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms SHORT BUILD-UP (Bearish Sell Trigger)`);
+      reasonsList.push(`${indexShortName} Futures OI Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms SHORT BUILD-UP (Bearish Sell Trigger)`);
     } else if (oiSignal === 'SHORT_COVERING') {
       consensusScore += 15;
-      reasonsList.push(`Futures Open Interest (OI) Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms SHORT COVERING RALLY`);
+      reasonsList.push(`${indexShortName} Futures OI Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms SHORT COVERING RALLY`);
     } else if (oiSignal === 'LONG_UNWINDING') {
       consensusScore -= 15;
-      reasonsList.push(`Futures Open Interest (OI) Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms LONG UNWINDING PRESSURE`);
+      reasonsList.push(`${indexShortName} Futures OI Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms LONG UNWINDING PRESSURE`);
     }
   } else {
-    reasonsList.push(`Futures Open Interest: Standard neutral distribution`);
+    reasonsList.push(`${indexShortName} Open Interest: Standard neutral distribution`);
   }
 
   // C. Momentum (RSI) Score
@@ -188,36 +203,37 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
   let signalType = 'NEUTRAL_SPREAD';
   let signalTitle = 'NEUTRAL / SPREAD SETUP';
   let badgeClass = 'badge-neutral';
-  let suggestedAction = 'Consider a Neutral Iron Condor or Wait for Directional Breakout';
+  let suggestedAction = `Consider a Neutral ${indexShortName} Iron Condor or Wait for Directional Breakout`;
 
   if (consensusScore >= 40) {
     signalType = 'STRONG_BUY_CE';
     signalTitle = 'STRONG BUY CALL (CE)';
     badgeClass = 'badge-strong-buy';
-    suggestedAction = 'BUY NIFTY ATM / SLIGHTLY ITM CALL OPTION';
+    suggestedAction = `BUY ${indexShortName} ATM / SLIGHTLY ITM CALL OPTION`;
   } else if (consensusScore >= 15) {
     signalType = 'BUY_CE';
     signalTitle = 'BUY CALL (CE)';
     badgeClass = 'badge-buy';
-    suggestedAction = 'BUY NIFTY ATM CALL OPTION (or Bull Call Spread)';
+    suggestedAction = `BUY ${indexShortName} ATM CALL OPTION (or Bull Call Spread)`;
   } else if (consensusScore <= -40) {
     signalType = 'STRONG_BUY_PE';
     signalTitle = 'STRONG BUY PUT (PE)';
     badgeClass = 'badge-strong-sell';
-    suggestedAction = 'BUY NIFTY ATM / SLIGHTLY ITM PUT OPTION';
+    suggestedAction = `BUY ${indexShortName} ATM / SLIGHTLY ITM PUT OPTION`;
   } else if (consensusScore <= -15) {
     signalType = 'BUY_PE';
     signalTitle = 'BUY PUT (PE)';
     badgeClass = 'badge-sell';
-    suggestedAction = 'BUY NIFTY ATM PUT OPTION (or Bear Put Spread)';
+    suggestedAction = `BUY ${indexShortName} ATM PUT OPTION (or Bear Put Spread)`;
   }
 
   // Normalize confidence percentage (0 to 100%)
   const confidencePct = Math.min(100, Math.max(30, Math.abs(consensusScore) + 35));
 
-  // 4. Strike Selection & Price Targets
-  const roundSpot = spotPrice > 0 ? spotPrice : 24000;
-  const atmStrike = Math.round(roundSpot / 50) * 50;
+  // 4. Strike Selection & Price Targets based on specific Index step
+  const defaultSpot = indexShortName === 'SENSEX' ? 80000 : indexShortName === 'BANKNIFTY' ? 52000 : 24000;
+  const roundSpot = spotPrice > 0 ? spotPrice : defaultSpot;
+  const atmStrike = Math.round(roundSpot / strikeStep) * strikeStep;
   let suggestedStrike = `${atmStrike} CE`;
   let optionType = 'CALL';
 
@@ -231,8 +247,9 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
     suggestedStrike = `${atmStrike} CE / ${atmStrike} PE (Spread)`;
   }
 
-  // Estimate Option Premium
-  const approxAtmPremium = Math.round(roundSpot * 0.009);
+  // Estimate Option Premium (~0.9% of Spot for Nifty, ~0.8% for BankNifty/Sensex)
+  const premiumPct = indexShortName === 'NIFTY' ? 0.009 : 0.008;
+  const approxAtmPremium = Math.round(roundSpot * premiumPct);
 
   // Calculate Target & Stop Loss Levels
   let target1Spot = 0;
@@ -240,13 +257,13 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
   let stopLossSpot = 0;
 
   if (optionType === 'CALL') {
-    target1Spot = camarillaPivots.r1 || (roundSpot + 75);
-    target2Spot = camarillaPivots.r3 || (roundSpot + 150);
-    stopLossSpot = camarillaPivots.s1 || (roundSpot - 50);
+    target1Spot = camarillaPivots.r1 || (roundSpot + strikeStep * 1.5);
+    target2Spot = camarillaPivots.r3 || (roundSpot + strikeStep * 3.0);
+    stopLossSpot = camarillaPivots.s1 || (roundSpot - strikeStep * 1.0);
   } else {
-    target1Spot = camarillaPivots.s1 || (roundSpot - 75);
-    target2Spot = camarillaPivots.s3 || (roundSpot - 150);
-    stopLossSpot = camarillaPivots.r1 || (roundSpot + 50);
+    target1Spot = camarillaPivots.s1 || (roundSpot - strikeStep * 1.5);
+    target2Spot = camarillaPivots.s3 || (roundSpot - strikeStep * 3.0);
+    stopLossSpot = camarillaPivots.r1 || (roundSpot + strikeStep * 1.0);
   }
 
   const rewardPoints = Math.abs(target1Spot - roundSpot);
@@ -255,7 +272,8 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
 
   return {
     status: 'ACTIVE',
-    indexName: indexData.indexName || 'Nifty 50',
+    indexName,
+    indexShortName,
     spotPrice: Number(roundSpot.toFixed(2)),
     changePercent: Number(changePercent.toFixed(2)),
     consensusScore,

@@ -60,7 +60,7 @@ export default function LiveOptionSignalsModule({ indexData, liveTicks, historic
             <span className="status-dot"></span>
             <h2 style={{ fontSize: '20px', fontWeight: '800', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Zap size={22} color={themeColor || 'var(--nifty-color)'} />
-              LIVE NIFTY OPTION SIGNAL ADVISORY
+              LIVE {(recommendation?.indexName || indexData?.indexName || 'Nifty 50').toUpperCase()} OPTION SIGNAL ADVISORY
             </h2>
           </div>
           <p className="text-muted" style={{ fontSize: '12px', margin: '4px 0 0 0' }}>
@@ -70,7 +70,7 @@ export default function LiveOptionSignalsModule({ indexData, liveTicks, historic
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <div style={{ textAlign: 'right' }}>
-            <div style={{ fontSize: '11px', color: 'var(--text-dim)' }}>NIFTY 50 SPOT</div>
+            <div style={{ fontSize: '11px', color: 'var(--text-dim)' }}>{(recommendation?.indexName || indexData?.indexName || 'Nifty 50').toUpperCase()} SPOT</div>
             <div style={{ fontSize: '20px', fontWeight: '800', fontFamily: 'JetBrains Mono' }} className={changePercent >= 0 ? 'text-up' : 'text-down'}>
               ₹{formatNumber(spotPrice)} ({changePercent >= 0 ? '+' : ''}{changePercent}%)
             </div>
@@ -101,7 +101,7 @@ export default function LiveOptionSignalsModule({ indexData, liveTicks, historic
 
             <h1 style={{ fontSize: '28px', fontWeight: '900', margin: '8px 0 12px 0', letterSpacing: '-0.5px' }}>
               RECOMMENDED TRADE: <span style={{ color: isBullishSignal ? 'var(--color-up)' : isBearishSignal ? 'var(--color-down)' : 'var(--color-neutral)' }}>
-                NIFTY {suggestedStrike}
+                {recommendation?.indexShortName || 'NIFTY'} {suggestedStrike}
               </span>
             </h1>
 
@@ -187,7 +187,7 @@ export default function LiveOptionSignalsModule({ indexData, liveTicks, historic
             ₹{formatNumber(levels.entrySpot)}
           </div>
           <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px' }}>
-            Current Nifty 50 Spot Trigger
+            Current {recommendation?.indexName || indexData?.indexName || 'Nifty 50'} Spot Trigger
           </div>
         </div>
 
