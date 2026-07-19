@@ -1022,6 +1022,12 @@ function initHistoricalOIDatabase() {
   }
 
   indexConfigs.forEach(cfg => {
+    const targetPath = path.join(DB_DIR, `futures_oi_history_${cfg.key}.json`);
+    if (fs.existsSync(targetPath)) {
+      // File exists on disk, skip re-generating to preserve 100% exact parity between Localhost and Render
+      return;
+    }
+
     const history = [];
     const indexPath = path.join(DB_DIR, `index-data-${cfg.key}-1Y.json`);
     let dailyCandles = [];
