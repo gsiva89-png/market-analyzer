@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import OutOfBrowserWidget from './components/OutOfBrowserWidget';
 import BacktesterModule from './components/BacktesterModule';
 import LiveOptionSignalsModule from './components/LiveOptionSignalsModule';
+import LiveChartModule from './components/LiveChartModule';
 import {
   ResponsiveContainer,
   AreaChart,
@@ -756,7 +757,7 @@ export default function App() {
   useEffect(() => {
     let intervalId = null;
 
-    if (activeTab === 'futuresOI' || activeTab === 'liveOptionSignals') {
+    if (activeTab === 'futuresOI' || activeTab === 'liveOptionSignals' || activeTab === 'liveChart') {
       const fetchLiveTicks = async () => {
         try {
           const res = await fetch('/api/futures-oi/live');
@@ -817,7 +818,7 @@ export default function App() {
       .then(res => res.ok ? res.json() : null)
       .then(data => data && setThresholdReport(data))
       .catch(e => console.error(e));
-    if (activeTab === 'futuresOI' || activeTab === 'liveOptionSignals') {
+    if (activeTab === 'futuresOI' || activeTab === 'liveOptionSignals' || activeTab === 'liveChart') {
       fetch(`/api/futures-oi/historical?index=${activeIndex}`)
         .then(res => res.ok ? res.json() : [])
         .then(data => setHistoricalOI(data))
@@ -1084,6 +1085,14 @@ export default function App() {
           >
             <Zap size={16} />
             Live Option Signals
+          </button>
+          <button
+            className={`tab-btn ${activeTab === 'liveChart' ? 'active' : ''}`}
+            onClick={() => setActiveTab('liveChart')}
+            style={{ background: activeTab === 'liveChart' ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)' : 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', color: activeTab === 'liveChart' ? '#fff' : '#10b981', fontWeight: '700' }}
+          >
+            <BarChart2 size={16} />
+            Live Chart
           </button>
         </div>
 
