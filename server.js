@@ -1185,7 +1185,83 @@ app.post('/api/backtest', async (req, res) => {
   }
 });
 
+// ── Intraday Candle Endpoint ─────────────────────────────────────────────────
+// GET /api/intraday?index=nifty50&interval=5m
+// interval: 1m | 5m | 15m | 1h | 1d
+app.get('/api/intraday', async (req, res) => {
+  const index    = (req.query.index    || 'nifty50').toLowerCase();
+  const interval = (req.query.interval || '15m').toLowerCase();
+  const symbol   = INDEX_SYMBOLS[index];
+
+  if (!symbol) {
+    return res.status(400).json({ error: `Invalid index. Choose: ${Object.keys(INDEX_SYMBOLS).join(', ')}` });
+  }
+
+  const VALID_INTERVALS = ['1m', '2m', '5m', '15m', '30m', '60m', '1h', '1d'];
+  const yfInterval = interval === '1h' ? '60m' : interval;
+  if (!VALID_INTERVALS.includes(yfInterval)) {
+    return res.status(400).json({ error: `Invalid interval. Choose: 1m, 5m, 15m, 1h, 1d` });
+  }
+
+  // Cache key
+  const cacheKey = `intraday_${index}_${interval}`;
+  const cached = getCache(cacheKey);
+  if (cached) return res.json(cached);
+
+  try {
+    // Determine lookback window
+    const end   = new Date();
+    const start = new Date();
+    if      (interval === '1m')  start.setHours(start.getHours() - 6);   // last 6h
+    else if (interval === '5m')  start.setDate(start.getDate() - 5);     // last 5 days
+    else if (interval === '15m') start.setDate(start.getDate() - 10);    // last 10 days
+    else if (interval === '1h' || interval === '60m') start.setDate(start.getDate() - 30);  // last 30 days
+    else if (interval === '1d')  start.setDate(start.getDate() - 90);    // last 90 days (daily)
+
+    const result = await yahooFinance.chart(symbol, {
+      period1:  start,
+      period2:  end,
+      interval: yfInterval,
+    });
+
+    const quotes = result?.quotes || [];
+    const candles = quotes
+      .filter(q => q.open != null && q.close != null)
+      .map(q => {
+        // lightweight-charts needs unix timestamp (number) for intraday
+        const ts = Math.floor(new Date(q.date).getTime() / 1000);
+        return {
+          time:   ts,
+          open:   Number(q.open.toFixed(2)),
+          high:   Number(q.high.toFixed(2)),
+          low:    Number(q.low.toFixed(2)),
+          close:  Number(q.close.toFixed(2)),
+          volume: q.volume || 0,
+        };
+      })
+      .filter((c, i, arr) => i === 0 || c.time !== arr[i - 1].time); // dedup
+
+    const payload = {
+      index,
+      interval,
+      symbol,
+      candles,
+      generatedAt: new Date().toISOString(),
+    };
+
+    // Short cache for intraday (60s for 1m, 5min for others)
+    const ttl = interval === '1m' ? 60_000 : 5 * 60_000;
+    cache.set(cacheKey, { timestamp: Date.now() - (CACHE_DURATION - ttl), data: payload });
+
+    return res.json(payload);
+  } catch (err) {
+    console.error(`[intraday] Error fetching ${symbol} ${interval}:`, err.message);
+    return res.status(500).json({ error: err.message });
+  }
+});
+
 // Serve React production build files
+
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);

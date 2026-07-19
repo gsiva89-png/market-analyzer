@@ -1,7 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { createChart, ColorType, LineStyle } from 'lightweight-charts';
-import { Zap, RefreshCw, BarChart2, Trash2, Edit3 } from 'lucide-react';
+import { Zap, RefreshCw, BarChart2, Trash2, Edit3, Loader } from 'lucide-react';
 import { generateLiveOptionRecommendation } from '../utils/liveOptionEngine';
+
+// Intraday TFs need separate API fetch; range TFs slice existing daily history
+const INTRADAY_TFS  = new Set(['1M','5M','15M','1H','1D']);
+const INTRADAY_MAP  = { '1M':'1m', '5M':'5m', '15M':'15m', '1H':'1h', '1D':'1d' };
+const RANGE_TF_BARS = { '5D':5, '1W':5, '1MO':22, '3M':66, '6M':132, '1Y':252, 'MAX':99999 };
 
 export default function LiveChartModule({ indexData, activeIndex, timeframe, liveTicks, historicalOI, onRefresh, formatNumber, themeColor }) {
   const chartContainerRef = useRef(null);
@@ -10,9 +15,12 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
   const rsiChartRef       = useRef(null);
 
   const [activeTimeframe, setActiveTimeframe] = useState('3M');
+  const [intradayCandles, setIntradayCandles] = useState(null);  // null = not fetched yet
+  const [intradayLoading, setIntradayLoading] = useState(false);
+  const [intradayError,   setIntradayError]   = useState(null);
   const [showSMA20,    setShowSMA20]    = useState(true);
   const [showSMA50,    setShowSMA50]    = useState(true);
-  const [showSMA200,   setShowSMA200]   = useState(true);
+  const [showSMA200,   setShowSMA200]   = useState(false);
   const [showBB,       setShowBB]       = useState(false);
   const [showVolume,   setShowVolume]   = useState(true);
   const [showRSI,      setShowRSI]      = useState(true);
@@ -28,10 +36,29 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
     }
   }, [indexData, liveTicks, historicalOI]);
 
-  // ── Timeframe → slice last N candles ──────────────────────────────────────
-  const TF_BARS = { '5D': 5, '1M': 22, '3M': 66, '6M': 132, '1Y': 252, 'MAX': 99999 };
+  // ── Fetch intraday candles from server when an intraday TF is selected ───────
+  useEffect(() => {
+    if (!INTRADAY_TFS.has(activeTimeframe)) return;
+    const yfInterval = INTRADAY_MAP[activeTimeframe];
+    const idx = activeIndex || 'nifty50';
+    const url = `/api/intraday?index=${idx}&interval=${yfInterval}`;
 
-  const getFilteredCandles = (rawHistory) => {
+    setIntradayLoading(true);
+    setIntradayError(null);
+    setIntradayCandles(null);
+
+    fetch(url)
+      .then(r => r.json())
+      .then(data => {
+        if (data.error) throw new Error(data.error);
+        setIntradayCandles(data.candles || []);
+      })
+      .catch(err => setIntradayError(err.message))
+      .finally(() => setIntradayLoading(false));
+  }, [activeTimeframe, activeIndex]);
+
+  // ── Build candle array based on active TF ────────────────────────────────
+  const getFilteredCandles = useCallback((rawHistory) => {
     const seen = new Set();
     const all = rawHistory
       .filter(c => c.date && c.close)
@@ -45,15 +72,25 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
       }))
       .sort((a, b) => (a.time > b.time ? 1 : -1))
       .filter(c => { if (seen.has(c.time)) return false; seen.add(c.time); return true; });
-    const limit = TF_BARS[activeTimeframe] ?? 66;
+    const limit = RANGE_TF_BARS[activeTimeframe] ?? 66;
     return all.slice(-limit);
+  }, [activeTimeframe]);
+
+  const isIntraday  = INTRADAY_TFS.has(activeTimeframe);
+  // getChartCandles() returns the right candles for the active TF
+  const getChartCandles = () => {
+    if (isIntraday) return intradayCandles || [];
+    return getFilteredCandles(indexData?.history || []);
   };
 
   // ── Main Candlestick Chart ──────────────────────────────────────────────────
   useEffect(() => {
     const container = chartContainerRef.current;
     if (!container) return;
-    if (!indexData?.history?.length) return;
+    // For intraday: wait until data fetched (no spinner block here — handled in JSX)
+    if (isIntraday && intradayLoading) return;
+    if (isIntraday && !intradayCandles) return;
+    if (!isIntraday && !indexData?.history?.length) return;
 
     // destroy previous instance
     if (chartInstanceRef.current) {
@@ -88,8 +125,7 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
       wickUpColor: '#10b981', wickDownColor: '#ef4444',
     });
 
-    const candles = getFilteredCandles(indexData.history);
-
+    const candles = getChartCandles();
     if (candles.length) candleSeries.setData(candles.map(c => ({ time: c.time, open: c.open, high: c.high, low: c.low, close: c.close })));
 
     // ── Volume ─────────────────────────────────────────────
@@ -101,16 +137,17 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
       });
       const volData = candles.map(c => ({
         time: c.time,
-        value: c._raw?.volume || 50000,
+        value: c._raw?.volume ?? c.volume ?? 50000,
         color: c.close >= c.open ? 'rgba(16,185,129,0.35)' : 'rgba(239,68,68,0.35)',
       }));
       volSeries.setData(volData);
     }
 
-    // ── SMA helper ─────────────────────────────────────────
+    // ── SMA helper (only for range/daily data — skip for intraday) ────────────
     const addLine = (key, color, title) => {
+      if (isIntraday) return; // no pre-computed SMAs in intraday data
       const times = new Set(candles.map(c => c.time));
-      const data = indexData.history
+      const data = (indexData?.history || [])
         .filter(c => c.date && c[key] != null && times.has(c.date))
         .map(c => ({ time: c.date, value: Number(c[key]) }))
         .sort((a, b) => (a.time > b.time ? 1 : -1));
@@ -122,11 +159,11 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
     if (showSMA50)  addLine('sma50',  '#3b82f6', 'SMA 50');
     if (showSMA200) addLine('sma200', '#a855f7', 'SMA 200');
 
-    // ── Bollinger Bands ────────────────────────────────────────────────────────
-    if (showBB) {
+    // ── Bollinger Bands (daily only) ───────────────────────────────────────────
+    if (showBB && !isIntraday) {
       const times = new Set(candles.map(c => c.time));
-      const bbU = indexData.history.filter(c => c.date && c.bbUpper && times.has(c.date)).map(c => ({ time: c.date, value: Number(c.bbUpper) })).sort((a,b) => a.time > b.time ? 1 : -1);
-      const bbL = indexData.history.filter(c => c.date && c.bbLower && times.has(c.date)).map(c => ({ time: c.date, value: Number(c.bbLower) })).sort((a,b) => a.time > b.time ? 1 : -1);
+      const bbU = (indexData?.history||[]).filter(c => c.date && c.bbUpper && times.has(c.date)).map(c => ({ time: c.date, value: Number(c.bbUpper) })).sort((a,b) => a.time > b.time ? 1 : -1);
+      const bbL = (indexData?.history||[]).filter(c => c.date && c.bbLower && times.has(c.date)).map(c => ({ time: c.date, value: Number(c.bbLower) })).sort((a,b) => a.time > b.time ? 1 : -1);
       if (bbU.length) {
         chart.addLineSeries({ color: 'rgba(56,189,248,0.6)', lineWidth: 1, lineStyle: LineStyle.Dashed }).setData(bbU);
         chart.addLineSeries({ color: 'rgba(56,189,248,0.6)', lineWidth: 1, lineStyle: LineStyle.Dashed }).setData(bbL);
@@ -185,12 +222,13 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
       chartInstanceRef.current = null;
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [indexData, activeTimeframe, showSMA20, showSMA50, showSMA200, showBB, showVolume, showSignals, drawnLines, drawMode]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [indexData, activeTimeframe, intradayCandles, intradayLoading, showSMA20, showSMA50, showSMA200, showBB, showVolume, showSignals, drawnLines, drawMode]);
 
-  // ── RSI Sub-Chart ───────────────────────────────────────────────────────────
+  // ── RSI Sub-Chart (daily data only — intraday RSI not pre-computed) ─────────
   useEffect(() => {
     const container = rsiContainerRef.current;
-    if (!showRSI || !container || !indexData?.history?.length) return;
+    if (!showRSI || !container || isIntraday || !indexData?.history?.length) return;
     const times = new Set(getFilteredCandles(indexData.history).map(c => c.time));
 
     if (rsiChartRef.current) {
@@ -278,27 +316,63 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
       </div>
 
       {/* ── Controls ── */}
-      <div className="glass-panel" style={{ padding: '10px 14px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
-        {/* Timeframe */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <span style={{ fontSize: '10px', color: 'var(--text-dim)' }}>RANGE:</span>
-          {[
-            { label: '5D',  desc: 'Last 5 days' },
-            { label: '1M',  desc: 'Last 1 month' },
-            { label: '3M',  desc: 'Last 3 months' },
-            { label: '6M',  desc: 'Last 6 months' },
-            { label: '1Y',  desc: 'Last 1 year' },
-            { label: 'MAX', desc: 'All data' },
-          ].map(({ label, desc }) => (
-            <button key={label}
-                    className={`timeframe-btn ${activeTimeframe === label ? 'active' : ''}`}
-                    onClick={() => setActiveTimeframe(label)}
-                    title={desc}
-                    style={{ fontSize: '11px', padding: '3px 9px' }}>{label}</button>
-          ))}
+      <div className="glass-panel" style={{ padding: '10px 14px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+
+        {/* Row 1: Timeframes */}
+        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+
+          {/* Intraday buttons */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <span style={{ fontSize: '10px', color: '#f59e0b', fontWeight: '700' }}>INTRADAY:</span>
+            {[
+              { label: '1M',  desc: 'Last 6 hours · 1-min candles' },
+              { label: '5M',  desc: 'Last 5 days · 5-min candles' },
+              { label: '15M', desc: 'Last 10 days · 15-min candles' },
+              { label: '1H',  desc: 'Last 30 days · 1-hour candles' },
+              { label: '1D',  desc: 'Last 90 days · 1-day candles' },
+            ].map(({ label, desc }) => (
+              <button key={label}
+                      className={`timeframe-btn ${activeTimeframe === label ? 'active' : ''}`}
+                      onClick={() => setActiveTimeframe(label)}
+                      title={desc}
+                      style={{ fontSize: '11px', padding: '3px 9px',
+                               background: activeTimeframe === label ? 'rgba(245,158,11,0.3)' : 'transparent',
+                               borderColor: activeTimeframe === label ? '#f59e0b' : 'rgba(255,255,255,0.1)',
+                               color: activeTimeframe === label ? '#fde047' : 'var(--text-dim)' }}>{label}</button>
+            ))}
+            {intradayLoading && <span style={{ fontSize: '11px', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '4px' }}><Loader size={12} style={{ animation: 'spin 1s linear infinite' }} /> Fetching…</span>}
+            {intradayError  && <span style={{ fontSize: '11px', color: '#ef4444' }}>⚠ {intradayError}</span>}
+          </div>
+
+          <div style={{ width: '1px', height: '20px', background: 'var(--glass-border)' }} />
+
+          {/* Historical range buttons */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <span style={{ fontSize: '10px', color: '#3b82f6', fontWeight: '700' }}>RANGE:</span>
+            {[
+              { label: '5D',  desc: 'Last 5 days' },
+              { label: '1MO', desc: 'Last 1 month' },
+              { label: '3M',  desc: 'Last 3 months' },
+              { label: '6M',  desc: 'Last 6 months' },
+              { label: '1Y',  desc: 'Last 1 year' },
+              { label: 'MAX', desc: 'All historical data' },
+            ].map(({ label, desc }) => (
+              <button key={label}
+                      className={`timeframe-btn ${activeTimeframe === label ? 'active' : ''}`}
+                      onClick={() => setActiveTimeframe(label)}
+                      title={desc}
+                      style={{ fontSize: '11px', padding: '3px 9px',
+                               background: activeTimeframe === label ? 'rgba(59,130,246,0.3)' : 'transparent',
+                               borderColor: activeTimeframe === label ? '#3b82f6' : 'rgba(255,255,255,0.1)',
+                               color: activeTimeframe === label ? '#93c5fd' : 'var(--text-dim)' }}>{label}</button>
+            ))}
+          </div>
         </div>
 
-        <div style={{ width: '1px', height: '20px', background: 'var(--glass-border)' }} />
+        <div style={{ width: '100%', height: '1px', background: 'var(--glass-border)' }} />
+
+        {/* Row 2: Indicators + Drawing tools */}
+        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
 
         {/* Indicators */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexWrap: 'wrap' }}>
@@ -341,6 +415,7 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
               <Trash2 size={11} style={{ display: 'inline', marginRight: '3px' }} />Clear ({drawnLines.length})
             </button>
           )}
+          </div>
         </div>
       </div>
 
