@@ -9,7 +9,7 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
   const chartInstanceRef  = useRef(null);
   const rsiChartRef       = useRef(null);
 
-  const [activeTimeframe, setActiveTimeframe] = useState('1D');
+  const [activeTimeframe, setActiveTimeframe] = useState('3M');
   const [showSMA20,    setShowSMA20]    = useState(true);
   const [showSMA50,    setShowSMA50]    = useState(true);
   const [showSMA200,   setShowSMA200]   = useState(true);
@@ -27,6 +27,27 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
       setRecommendation(generateLiveOptionRecommendation(indexData, liveTicks, historicalOI));
     }
   }, [indexData, liveTicks, historicalOI]);
+
+  // ── Timeframe → slice last N candles ──────────────────────────────────────
+  const TF_BARS = { '5D': 5, '1M': 22, '3M': 66, '6M': 132, '1Y': 252, 'MAX': 99999 };
+
+  const getFilteredCandles = (rawHistory) => {
+    const seen = new Set();
+    const all = rawHistory
+      .filter(c => c.date && c.close)
+      .map(c => ({
+        time: c.date,
+        open:  Number(c.open  || c.close),
+        high:  Number(c.high  || c.close),
+        low:   Number(c.low   || c.close),
+        close: Number(c.close),
+        _raw: c,
+      }))
+      .sort((a, b) => (a.time > b.time ? 1 : -1))
+      .filter(c => { if (seen.has(c.time)) return false; seen.add(c.time); return true; });
+    const limit = TF_BARS[activeTimeframe] ?? 66;
+    return all.slice(-limit);
+  };
 
   // ── Main Candlestick Chart ──────────────────────────────────────────────────
   useEffect(() => {
@@ -67,20 +88,9 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
       wickUpColor: '#10b981', wickDownColor: '#ef4444',
     });
 
-    const seen = new Set();
-    const candles = indexData.history
-      .filter(c => c.date && c.close)
-      .map(c => ({
-        time: c.date,
-        open:  Number(c.open  || c.close),
-        high:  Number(c.high  || c.close),
-        low:   Number(c.low   || c.close),
-        close: Number(c.close),
-      }))
-      .sort((a, b) => (a.time > b.time ? 1 : -1))
-      .filter(c => { if (seen.has(c.time)) return false; seen.add(c.time); return true; });
+    const candles = getFilteredCandles(indexData.history);
 
-    if (candles.length) candleSeries.setData(candles);
+    if (candles.length) candleSeries.setData(candles.map(c => ({ time: c.time, open: c.open, high: c.high, low: c.low, close: c.close })));
 
     // ── Volume ─────────────────────────────────────────────
     if (showVolume) {
@@ -89,11 +99,9 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
         priceScaleId: 'vol',
         scaleMargins: { top: 0.78, bottom: 0 },
       });
-      const histMap = {};
-      indexData.history.forEach(c => { if (c.date) histMap[c.date] = c; });
       const volData = candles.map(c => ({
         time: c.time,
-        value: histMap[c.time]?.volume || 50000,
+        value: c._raw?.volume || 50000,
         color: c.close >= c.open ? 'rgba(16,185,129,0.35)' : 'rgba(239,68,68,0.35)',
       }));
       volSeries.setData(volData);
@@ -101,8 +109,9 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
 
     // ── SMA helper ─────────────────────────────────────────
     const addLine = (key, color, title) => {
+      const times = new Set(candles.map(c => c.time));
       const data = indexData.history
-        .filter(c => c.date && c[key] != null)
+        .filter(c => c.date && c[key] != null && times.has(c.date))
         .map(c => ({ time: c.date, value: Number(c[key]) }))
         .sort((a, b) => (a.time > b.time ? 1 : -1));
       if (!data.length) return;
@@ -113,24 +122,24 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
     if (showSMA50)  addLine('sma50',  '#3b82f6', 'SMA 50');
     if (showSMA200) addLine('sma200', '#a855f7', 'SMA 200');
 
-    // ── Bollinger Bands ────────────────────────────────────
+    // ── Bollinger Bands ────────────────────────────────────────────────────────
     if (showBB) {
-      const bbU = indexData.history.filter(c => c.date && c.bbUpper).map(c => ({ time: c.date, value: Number(c.bbUpper) })).sort((a,b) => a.time > b.time ? 1 : -1);
-      const bbL = indexData.history.filter(c => c.date && c.bbLower).map(c => ({ time: c.date, value: Number(c.bbLower) })).sort((a,b) => a.time > b.time ? 1 : -1);
+      const times = new Set(candles.map(c => c.time));
+      const bbU = indexData.history.filter(c => c.date && c.bbUpper && times.has(c.date)).map(c => ({ time: c.date, value: Number(c.bbUpper) })).sort((a,b) => a.time > b.time ? 1 : -1);
+      const bbL = indexData.history.filter(c => c.date && c.bbLower && times.has(c.date)).map(c => ({ time: c.date, value: Number(c.bbLower) })).sort((a,b) => a.time > b.time ? 1 : -1);
       if (bbU.length) {
         chart.addLineSeries({ color: 'rgba(56,189,248,0.6)', lineWidth: 1, lineStyle: LineStyle.Dashed }).setData(bbU);
         chart.addLineSeries({ color: 'rgba(56,189,248,0.6)', lineWidth: 1, lineStyle: LineStyle.Dashed }).setData(bbL);
       }
     }
 
-    // ── Option Signal Markers ──────────────────────────────
+    // ── Option Signal Markers ──────────────────────────────────────────────────
     if (showSignals && candles.length) {
-      const histMap = {};
-      indexData.history.forEach(c => { if (c.date) histMap[c.date] = c; });
+      const spacing = Math.max(1, Math.floor(candles.length / 10)); // ~10 markers max
       const markers = [];
       candles.forEach((c, i) => {
-        if (i % 7 !== 0) return;
-        const h = histMap[c.time];
+        if (i % spacing !== 0) return;
+        const h = c._raw;
         if (!h) return;
         if (h.rsi > 58 && h.sma20 && h.close > h.sma20)
           markers.push({ time: c.time, position: 'belowBar', color: '#10b981', shape: 'arrowUp', text: 'CE' });
@@ -176,12 +185,13 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
       chartInstanceRef.current = null;
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [indexData, showSMA20, showSMA50, showSMA200, showBB, showVolume, showSignals, drawnLines, drawMode]);
+  }, [indexData, activeTimeframe, showSMA20, showSMA50, showSMA200, showBB, showVolume, showSignals, drawnLines, drawMode]);
 
   // ── RSI Sub-Chart ───────────────────────────────────────────────────────────
   useEffect(() => {
     const container = rsiContainerRef.current;
     if (!showRSI || !container || !indexData?.history?.length) return;
+    const times = new Set(getFilteredCandles(indexData.history).map(c => c.time));
 
     if (rsiChartRef.current) {
       try { rsiChartRef.current.remove(); } catch (_) {}
@@ -200,7 +210,7 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
 
     const rsiSeries = rsiChart.addLineSeries({ color: '#38bdf8', lineWidth: 2 });
     const rsiData = indexData.history
-      .filter(c => c.date && c.rsi != null)
+      .filter(c => c.date && c.rsi != null && times.has(c.date))
       .map(c => ({ time: c.date, value: Number(c.rsi) }))
       .sort((a, b) => (a.time > b.time ? 1 : -1));
     if (rsiData.length) rsiSeries.setData(rsiData);
@@ -220,7 +230,7 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
       rsiChartRef.current = null;
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showRSI, indexData]);
+  }, [showRSI, indexData, activeTimeframe]);
 
   // ── Guard: no data yet ─────────────────────────────────────────────────────
   if (!indexData?.quote) {
@@ -271,11 +281,20 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
       <div className="glass-panel" style={{ padding: '10px 14px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
         {/* Timeframe */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <span style={{ fontSize: '10px', color: 'var(--text-dim)' }}>TF:</span>
-          {['1M','5M','15M','1H','1D'].map(tf => (
-            <button key={tf} className={`timeframe-btn ${activeTimeframe === tf ? 'active' : ''}`}
-                    onClick={() => setActiveTimeframe(tf)}
-                    style={{ fontSize: '11px', padding: '3px 9px' }}>{tf}</button>
+          <span style={{ fontSize: '10px', color: 'var(--text-dim)' }}>RANGE:</span>
+          {[
+            { label: '5D',  desc: 'Last 5 days' },
+            { label: '1M',  desc: 'Last 1 month' },
+            { label: '3M',  desc: 'Last 3 months' },
+            { label: '6M',  desc: 'Last 6 months' },
+            { label: '1Y',  desc: 'Last 1 year' },
+            { label: 'MAX', desc: 'All data' },
+          ].map(({ label, desc }) => (
+            <button key={label}
+                    className={`timeframe-btn ${activeTimeframe === label ? 'active' : ''}`}
+                    onClick={() => setActiveTimeframe(label)}
+                    title={desc}
+                    style={{ fontSize: '11px', padding: '3px 9px' }}>{label}</button>
           ))}
         </div>
 
