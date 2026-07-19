@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { createChart, ColorType, LineStyle } from 'lightweight-charts';
 import { 
   Zap, RefreshCw, BarChart2, Trash2, Edit3
 } from 'lucide-react';
@@ -23,7 +24,6 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
   const [drawMode, setDrawMode] = useState(null);
   const [drawnLines, setDrawnLines] = useState([]);
   const [recommendation, setRecommendation] = useState(null);
-  const [lwReady, setLwReady] = useState(false);
 
   useEffect(() => {
     if (indexData) {
@@ -32,17 +32,11 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
     }
   }, [indexData, liveTicks, historicalOI]);
 
-  // Dynamically import lightweight-charts to avoid SSR/loading issues
   useEffect(() => {
-    import('lightweight-charts').then(() => setLwReady(true)).catch(console.error);
-  }, []);
-
-  useEffect(() => {
-    if (!lwReady) return;
     if (!chartContainerRef.current) return;
     if (!indexData || !indexData.history || indexData.history.length === 0) return;
 
-    import('lightweight-charts').then(({ createChart, ColorType, LineStyle }) => {
+    {
       // Cleanup previous chart instance
       if (chartInstanceRef.current) {
         try { chartInstanceRef.current.remove(); } catch (e) {}
@@ -203,48 +197,46 @@ export default function LiveChartModule({ indexData, activeIndex, timeframe, liv
         try { chart.remove(); } catch (e) {}
         chartInstanceRef.current = null;
       };
-    });
-  }, [lwReady, indexData, showSMA20, showSMA50, showSMA200, showBB, showVolume, showSignals, drawnLines, drawMode]);
+    }
+  }, [indexData, showSMA20, showSMA50, showSMA200, showBB, showVolume, showSignals, drawnLines, drawMode]);
 
   // RSI sub-chart
   useEffect(() => {
-    if (!lwReady || !showRSI || !rsiContainerRef.current || !indexData?.history) return;
+    if (!showRSI || !rsiContainerRef.current || !indexData?.history) return;
 
-    import('lightweight-charts').then(({ createChart, ColorType, LineStyle }) => {
-      if (rsiChartRef.current) {
-        try { rsiChartRef.current.remove(); } catch (e) {}
-        rsiChartRef.current = null;
-      }
+    if (rsiChartRef.current) {
+      try { rsiChartRef.current.remove(); } catch (e) {}
+      rsiChartRef.current = null;
+    }
 
-      const rsiChart = createChart(rsiContainerRef.current, {
-        layout: { background: { type: ColorType.Solid, color: '#0d1117' }, textColor: '#8b949e' },
-        grid: { vertLines: { color: 'rgba(255,255,255,0.04)' }, horzLines: { color: 'rgba(255,255,255,0.04)' } },
-        timeScale: { visible: false },
-        rightPriceScale: { borderColor: 'rgba(255,255,255,0.1)' },
-        width: rsiContainerRef.current.clientWidth || 800,
-        height: 120,
-      });
-      rsiChartRef.current = rsiChart;
-
-      const rsiSeries = rsiChart.addLineSeries({ color: '#38bdf8', lineWidth: 2, title: 'RSI 14' });
-      const rsiData = indexData.history
-        .filter(c => c.date && c.rsi != null)
-        .map(c => ({ time: c.date, value: Number(c.rsi) }))
-        .sort((a, b) => a.time > b.time ? 1 : -1);
-      if (rsiData.length > 0) rsiSeries.setData(rsiData);
-      rsiSeries.createPriceLine({ price: 70, color: '#ef4444', lineWidth: 1, lineStyle: LineStyle.Dashed, title: 'OB 70' });
-      rsiSeries.createPriceLine({ price: 30, color: '#10b981', lineWidth: 1, lineStyle: LineStyle.Dashed, title: 'OS 30' });
-
-      const ro = new ResizeObserver(() => {
-        if (rsiContainerRef.current && rsiChart) {
-          rsiChart.applyOptions({ width: rsiContainerRef.current.clientWidth });
-        }
-      });
-      ro.observe(rsiContainerRef.current);
-
-      return () => { ro.disconnect(); try { rsiChart.remove(); } catch (e) {} rsiChartRef.current = null; };
+    const rsiChart = createChart(rsiContainerRef.current, {
+      layout: { background: { type: ColorType.Solid, color: '#0d1117' }, textColor: '#8b949e' },
+      grid: { vertLines: { color: 'rgba(255,255,255,0.04)' }, horzLines: { color: 'rgba(255,255,255,0.04)' } },
+      timeScale: { visible: false },
+      rightPriceScale: { borderColor: 'rgba(255,255,255,0.1)' },
+      width: rsiContainerRef.current.clientWidth || 800,
+      height: 120,
     });
-  }, [lwReady, showRSI, indexData]);
+    rsiChartRef.current = rsiChart;
+
+    const rsiSeries = rsiChart.addLineSeries({ color: '#38bdf8', lineWidth: 2, title: 'RSI 14' });
+    const rsiData = indexData.history
+      .filter(c => c.date && c.rsi != null)
+      .map(c => ({ time: c.date, value: Number(c.rsi) }))
+      .sort((a, b) => a.time > b.time ? 1 : -1);
+    if (rsiData.length > 0) rsiSeries.setData(rsiData);
+    rsiSeries.createPriceLine({ price: 70, color: '#ef4444', lineWidth: 1, lineStyle: LineStyle.Dashed, title: 'OB 70' });
+    rsiSeries.createPriceLine({ price: 30, color: '#10b981', lineWidth: 1, lineStyle: LineStyle.Dashed, title: 'OS 30' });
+
+    const ro = new ResizeObserver(() => {
+      if (rsiContainerRef.current && rsiChart) {
+        rsiChart.applyOptions({ width: rsiContainerRef.current.clientWidth });
+      }
+    });
+    ro.observe(rsiContainerRef.current);
+
+    return () => { ro.disconnect(); try { rsiChart.remove(); } catch (e) {} rsiChartRef.current = null; };
+  }, [showRSI, indexData]);
 
   if (!indexData || !indexData.quote) {
     return (
