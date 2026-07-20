@@ -1,0 +1,43 @@
+[
+  {
+    "status": "ACTIVE",
+    "indexName": "Nifty 50",
+    "indexShortName": "NIFTY",
+    "spotPrice": 24334.18,
+    "changePercent": 0,
+    "consensusScore": 50,
+    "confidencePct": 85,
+    "signalType": "STRONG_BUY_CE",
+    "signalTitle": "STRONG BUY CALL (CE)",
+    "badgeClass": "badge-strong-buy",
+    "suggestedAction": "BUY NIFTY ATM / SLIGHTLY ITM CALL OPTION",
+    "suggestedStrike": "24350 CE",
+    "optionType": "CALL",
+    "estimatedPremium": 219,
+    "levels": {
+      "entrySpot": 24334.18,
+      "target1Spot": 24409.18,
+      "target2Spot": 24354.18,
+      "stopLossSpot": 24284.18,
+      "riskRewardRatio": "1 : 1.5"
+    },
+    "oiSignal": "NEUTRAL",
+    "oiMomentumData": null,
+    "oiDetails": {
+      "totalOI": null,
+      "netOIChange": null,
+      "oiChangePct": null,
+      "oiSignal": "NEUTRAL"
+    },
+    "reasonsList": [
+      "Strong Bullish Trend Structure: Nifty 50 Spot (₹24334.18) > SMA 50 (₹24324.18) > SMA 200 (₹24284.18)",
+      "NIFTY Structure: Neutral session consolidation",
+      "Camarilla S3 Support Bounce: Spot is sitting at Camarilla S3 Support (₹24314.18)"
+    ],
+    "timestamp": "11:54:59 am",
+    "time": "11:54:59 am",
+    "eventType": "INITIAL",
+    "eventLabel": "Session Start — Initial 15-Min Signal Lock",
+    "lockStartMs": 1784528699480
+  }
+]

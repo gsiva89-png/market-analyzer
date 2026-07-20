@@ -31,7 +31,13 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
 
   const quote = indexData.quote || {};
   const lastCandle = indexData.history[indexData.history.length - 1] || {};
-  const spotPrice = quote.price || lastCandle.close || 0;
+
+  // Use live price directly without artificial basis offset so spot price matches actual market quote
+  const latestTickPrice = Array.isArray(liveTicks) && liveTicks.length > 0
+    ? liveTicks[liveTicks.length - 1].price
+    : null;
+  const spotFromQuote = quote.price || lastCandle.close || 0;
+  const spotPrice = latestTickPrice || spotFromQuote;
   const changePercent = quote.changePercent || 0;
 
   const rsi = (lastCandle.rsi !== undefined && lastCandle.rsi !== null) ? lastCandle.rsi : 50;
@@ -53,30 +59,68 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
   let totalOI = null;
   let netOIChange = null;
   let oiChangePct = null;
+  let oiMomentumData = null; // carries rolling-window metadata for the UI
 
-  // A. Try live ticks first
+  // A. Rolling OI Trend Analysis — uses last 20-tick window for sustained momentum
+  //    A single-tick blip no longer drives the signal; sustained rolling pressure does.
   if (Array.isArray(liveTicks) && liveTicks.length > 1) {
     const latestTick = liveTicks[liveTicks.length - 1];
-    const prevTick = liveTicks[liveTicks.length - 2];
-    if (latestTick && prevTick && latestTick.price !== undefined && prevTick.price !== undefined) {
-      const priceChange = latestTick.price - prevTick.price;
-      const rawOiChange = (latestTick.oi || 0) - (prevTick.oi || 0);
-      
-      totalOI = latestTick.oi || null;
-      netOIChange = rawOiChange;
-      if (prevTick.oi > 0) {
-        oiChangePct = Number(((rawOiChange / prevTick.oi) * 100).toFixed(2));
+    const WINDOW = Math.min(20, liveTicks.length - 1);
+    const refTick  = liveTicks[Math.max(0, liveTicks.length - 1 - WINDOW)];
+
+    totalOI = latestTick.oi || null;
+
+    if (refTick && latestTick.price !== undefined && refTick.price !== undefined) {
+      const windowOIChange    = (totalOI || 0) - (refTick.oi || 0);
+      const windowPriceChange = latestTick.price - refTick.price;
+
+      netOIChange = windowOIChange;
+      if (refTick.oi > 0) {
+        oiChangePct = Number(((windowOIChange / refTick.oi) * 100).toFixed(2));
       }
 
-      if (priceChange > 0 && rawOiChange > 0) {
-        oiSignal = 'LONG_BUILDUP';
-      } else if (priceChange < 0 && rawOiChange > 0) {
-        oiSignal = 'SHORT_BUILDUP';
-      } else if (priceChange > 0 && rawOiChange < 0) {
-        oiSignal = 'SHORT_COVERING';
-      } else if (priceChange < 0 && rawOiChange < 0) {
-        oiSignal = 'LONG_UNWINDING';
+      // Also track the raw single-tick change for OI spike detection
+      const prevTick = liveTicks[liveTicks.length - 2];
+      const singleTickOIChange  = prevTick ? Math.abs((latestTick.oi || 0) - (prevTick.oi || 0)) : 0;
+      const singleTickOIPct     = (prevTick && prevTick.oi > 0)
+        ? Number(((singleTickOIChange / prevTick.oi) * 100).toFixed(2))
+        : 0;
+
+      // Count consecutive single-tick confirmations of rolling-window direction (last 5 ticks)
+      let consecutiveConfirm = 0;
+      const checkLen = Math.min(5, liveTicks.length - 1);
+      for (let i = liveTicks.length - 1; i > liveTicks.length - 1 - checkLen; i--) {
+        if (i <= 0 || !liveTicks[i] || !liveTicks[i - 1]) break;
+        const dp  = (liveTicks[i].price || 0) - (liveTicks[i - 1].price || 0);
+        const doi = (liveTicks[i].oi   || 0) - (liveTicks[i - 1].oi   || 0);
+        const confirms =
+          (windowOIChange > 0 && windowPriceChange > 0 && doi >= 0 && dp >= 0) ||
+          (windowOIChange > 0 && windowPriceChange < 0 && doi >= 0 && dp <= 0) ||
+          (windowOIChange < 0 && windowPriceChange > 0 && doi <= 0 && dp >= 0) ||
+          (windowOIChange < 0 && windowPriceChange < 0 && doi <= 0 && dp <= 0);
+        if (confirms) consecutiveConfirm++;
+        else break;
       }
+
+      // Require price movement to exceed noise threshold before tagging directional buildup
+      const MIN_MOVE = indexShortName === 'BANKNIFTY' ? 4.0 : indexShortName === 'SENSEX' ? 5.0 : 1.5;
+      const isMeaningfulUp   = windowPriceChange >= MIN_MOVE;
+      const isMeaningfulDown = windowPriceChange <= -MIN_MOVE;
+
+      if (isMeaningfulUp && windowOIChange > 0) oiSignal = 'LONG_BUILDUP';
+      else if (isMeaningfulDown && windowOIChange > 0) oiSignal = 'SHORT_BUILDUP';
+      else if (isMeaningfulUp && windowOIChange < 0) oiSignal = 'SHORT_COVERING';
+      else if (isMeaningfulDown && windowOIChange < 0) oiSignal = 'LONG_UNWINDING';
+      else oiSignal = 'NEUTRAL';
+
+      oiMomentumData = {
+        windowSize: WINDOW,
+        windowOIChange,
+        windowPriceChange,
+        consecutiveConfirm,
+        singleTickOIChange,
+        singleTickOIPct,
+      };
     }
   }
 
@@ -168,20 +212,26 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
       }
     }
 
+    // Consecutive-confirmation bonus: each aligned tick in the last 5 adds +2 (max +10)
+    const consecBonus = Math.min((oiMomentumData?.consecutiveConfirm || 0) * 2, 10);
+    const consecLabel = oiMomentumData?.consecutiveConfirm > 0
+      ? ` | ${oiMomentumData.consecutiveConfirm} consecutive tick(s) confirming`
+      : '';
+
     if (oiSignal === 'LONG_BUILDUP') {
       const boost = (oiChangePct && oiChangePct > 2.0) ? 30 : 25;
-      consensusScore += boost;
-      reasonsList.push(`${indexShortName} Futures OI Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms LONG BUILD-UP (Bullish Buy Trigger)`);
+      consensusScore += boost + consecBonus;
+      reasonsList.push(`${indexShortName} Futures OI (20-tick window): ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi}${consecLabel} ➔ Sustained LONG BUILD-UP`);
     } else if (oiSignal === 'SHORT_BUILDUP') {
       const penalty = (oiChangePct && oiChangePct > 2.0) ? 30 : 25;
-      consensusScore -= penalty;
-      reasonsList.push(`${indexShortName} Futures OI Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms SHORT BUILD-UP (Bearish Sell Trigger)`);
+      consensusScore -= (penalty + consecBonus);
+      reasonsList.push(`${indexShortName} Futures OI (20-tick window): ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi}${consecLabel} ➔ Sustained SHORT BUILD-UP`);
     } else if (oiSignal === 'SHORT_COVERING') {
-      consensusScore += 15;
-      reasonsList.push(`${indexShortName} Futures OI Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms SHORT COVERING RALLY`);
+      consensusScore += 15 + consecBonus;
+      reasonsList.push(`${indexShortName} Futures OI (20-tick window): ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi}${consecLabel} ➔ SHORT COVERING RALLY`);
     } else if (oiSignal === 'LONG_UNWINDING') {
-      consensusScore -= 15;
-      reasonsList.push(`${indexShortName} Futures OI Change: ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi} ➔ Confirms LONG UNWINDING PRESSURE`);
+      consensusScore -= (15 + consecBonus);
+      reasonsList.push(`${indexShortName} Futures OI (20-tick window): ${formattedOiChange} contracts${formattedPct} | Total OI: ${formattedTotalOi}${consecLabel} ➔ LONG UNWINDING PRESSURE`);
     }
   } else {
     // Derive price & volume dynamics for Bank Nifty / Sensex
@@ -334,6 +384,8 @@ export function generateLiveOptionRecommendation(indexData, liveTicks = [], hist
       stopLossSpot: Number(stopLossSpot.toFixed(2)),
       riskRewardRatio: `1 : ${rrRatio}`,
     },
+    oiSignal,          // top-level for direct access
+    oiMomentumData,    // rolling-window metadata
     oiDetails: {
       totalOI,
       netOIChange,

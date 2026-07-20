@@ -3,14 +3,20 @@
     {
       "index": "nifty50",
       "name": "Nifty 50",
-      "price": 24334.3,
-      "changePercent": 1.0862882,
-      "rsi": 58.48,
+      "price": 24180.35,
+      "changePercent": -0.6326496,
+      "rsi": 53.96,
       "trend": "Mild Bearish / Reversal",
-      "momentum": "Bullish Momentum",
+      "momentum": "Normal",
       "patterns": [
         {
           "date": "2026-07-15T03:45:00.000Z",
+          "pattern": "Doji",
+          "type": "Neutral / Indecision",
+          "description": "Open and close are almost equal, signifying buyer/seller equilibrium."
+        },
+        {
+          "date": "2026-07-20T03:45:00.000Z",
           "pattern": "Doji",
           "type": "Neutral / Indecision",
           "description": "Open and close are almost equal, signifying buyer/seller equilibrium."
@@ -20,11 +26,11 @@
     {
       "index": "banknifty",
       "name": "Bank Nifty",
-      "price": 58521.4,
-      "changePercent": 1.6310582,
-      "rsi": 60.15,
+      "price": 57676.6,
+      "changePercent": -1.4435692,
+      "rsi": 52.78,
       "trend": "Neutral",
-      "momentum": "Bullish Momentum",
+      "momentum": "Normal",
       "patterns": [
         {
           "date": "2026-07-16T03:45:00.000Z",
@@ -37,11 +43,11 @@
     {
       "index": "sensex",
       "name": "Sensex",
-      "price": 78151.45,
-      "changePercent": 1.2496352,
-      "rsi": 59.84,
+      "price": 77571.06,
+      "changePercent": -0.742641,
+      "rsi": 54.77,
       "trend": "Mild Bearish / Reversal",
-      "momentum": "Bullish Momentum",
+      "momentum": "Normal",
       "patterns": [
         {
           "date": "2026-07-15T03:45:00.000Z",
@@ -52,6 +58,6 @@
       ]
     }
   ],
-  "timestamp": "2026-07-19T21:29:33.007Z",
+  "timestamp": "2026-07-20T06:35:38.820Z",
   "commentary": "Bearish momentum dominates the landscape, with indices trading below major moving average support clusters. Caution is advised. Volatility profiles are typical for current segments. Monitor pivot resistances for breakouts."
 }

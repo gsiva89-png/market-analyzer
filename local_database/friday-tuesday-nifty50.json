@@ -5700,16 +5700,38 @@
       "fridayDay": "Friday",
       "tuesdayDay": "Tuesday",
       "mondayDay": "Monday"
+    },
+    {
+      "fridayDate": "2026-07-17",
+      "fridayOpen": 24127.6,
+      "fridayClose": 24334.3,
+      "fridayVIX": 13.15,
+      "mondayDate": "2026-07-20",
+      "mondayOpen": 24190.05,
+      "mondayOpenVIX": 13.41,
+      "mondayClose": 24180.35,
+      "mondayVIX": 13.41,
+      "tuesdayDate": "2026-07-20",
+      "tuesdayOpen": 24190.05,
+      "tuesdayOpenVIX": 13.41,
+      "tuesdayClose": 24180.35,
+      "tuesdayVIX": 13.41,
+      "pointsMoved": -153.95,
+      "pctMoved": -0.633,
+      "direction": "DOWN",
+      "fridayDay": "Friday",
+      "tuesdayDay": "Monday",
+      "mondayDay": "Monday"
     }
   ],
   "summary": {
-    "totalWeeks": 259,
+    "totalWeeks": 260,
     "upWeeks": 151,
-    "downWeeks": 108,
-    "winRate": 58.3,
-    "avgPoints": 18.69,
-    "avgAbsPoints": 173.8,
-    "avgPct": 0.115,
+    "downWeeks": 109,
+    "winRate": 58.08,
+    "avgPoints": 18.03,
+    "avgAbsPoints": 173.73,
+    "avgPct": 0.112,
     "maxGain": {
       "fridayDate": "2023-12-01",
       "fridayOpen": 20194.1,
@@ -5754,7 +5776,7 @@
       "tuesdayDay": "Tuesday",
       "mondayDay": "Monday"
     },
-    "currentStreak": 1,
+    "currentStreak": 2,
     "streakDirection": "DOWN",
     "monthlyBreakdown": [
       {
@@ -6179,10 +6201,10 @@
       },
       {
         "month": "2026-07",
-        "winRate": 50,
-        "count": 2,
+        "winRate": 33.3,
+        "count": 3,
         "up": 1,
-        "down": 1
+        "down": 2
       }
     ]
   },
@@ -6191,101 +6213,101 @@
       {
         "label": "0.00% - 0.20%",
         "count": 37,
-        "percentage": 14.29
+        "percentage": 14.23
       },
       {
         "label": "0.20% - 0.30%",
         "count": 17,
-        "percentage": 6.56
+        "percentage": 6.54
       },
       {
         "label": "0.30% - 0.40%",
         "count": 19,
-        "percentage": 7.34
+        "percentage": 7.31
       },
       {
         "label": "0.40% - 0.50%",
         "count": 17,
-        "percentage": 6.56
+        "percentage": 6.54
       },
       {
         "label": "0.50% - 1.00%",
-        "count": 91,
-        "percentage": 35.14
+        "count": 92,
+        "percentage": 35.38
       },
       {
         "label": "1.00% - 2.00%",
         "count": 61,
-        "percentage": 23.55
+        "percentage": 23.46
       },
       {
         "label": "Above 2.00%",
         "count": 17,
-        "percentage": 6.56
+        "percentage": 6.54
       }
     ],
     "signed": [
       {
         "label": "Extreme Bullish (> +2.00%)",
         "count": 10,
-        "percentage": 3.86
+        "percentage": 3.85
       },
       {
         "label": "Strong Bullish (+1.00% to +2.00%)",
         "count": 30,
-        "percentage": 11.58
+        "percentage": 11.54
       },
       {
         "label": "Moderate Bullish (+0.50% to +1.00%)",
         "count": 57,
-        "percentage": 22.01
+        "percentage": 21.92
       },
       {
         "label": "Mild Bullish (+0.20% to +0.50%)",
         "count": 35,
-        "percentage": 13.51
+        "percentage": 13.46
       },
       {
         "label": "Flat Bullish (0.00% to +0.20%)",
         "count": 19,
-        "percentage": 7.34
+        "percentage": 7.31
       },
       {
         "label": "Flat Bearish (-0.20% to 0.00%)",
         "count": 18,
-        "percentage": 6.95
+        "percentage": 6.92
       },
       {
         "label": "Mild Bearish (-0.50% to -0.20%)",
         "count": 18,
-        "percentage": 6.95
+        "percentage": 6.92
       },
       {
         "label": "Moderate Bearish (-1.00% to -0.50%)",
-        "count": 34,
-        "percentage": 13.13
+        "count": 35,
+        "percentage": 13.46
       },
       {
         "label": "Strong Bearish (-2.00% to -1.00%)",
         "count": 31,
-        "percentage": 11.97
+        "percentage": 11.92
       },
       {
         "label": "Extreme Bearish (< -2.00%)",
         "count": 7,
-        "percentage": 2.7
+        "percentage": 2.69
       }
     ]
   },
   "yearlySeasonality": [
     {
       "year": "2026",
-      "totalWeeks": 28,
+      "totalWeeks": 29,
       "upWeeks": 13,
-      "downWeeks": 15,
-      "winRate": 46.43,
-      "avgPct": -0.106,
-      "avgAbsPct": 0.983
+      "downWeeks": 16,
+      "winRate": 44.83,
+      "avgPct": -0.125,
+      "avgAbsPct": 0.971
     },
     {
       "year": "2025",
@@ -6397,12 +6419,12 @@
     {
       "month": "July",
       "monthIndex": 6,
-      "totalWeeks": 21,
+      "totalWeeks": 22,
       "upWeeks": 14,
-      "downWeeks": 7,
-      "winRate": 66.67,
-      "avgPct": 0.263,
-      "avgAbsPct": 0.677
+      "downWeeks": 8,
+      "winRate": 63.64,
+      "avgPct": 0.223,
+      "avgAbsPct": 0.675
     },
     {
       "month": "August",
@@ -6508,8 +6530,8 @@
     },
     {
       "label": "2 Weeks DOWN",
-      "count": 18,
-      "percentage": 14.63
+      "count": 19,
+      "percentage": 15.45
     },
     {
       "label": "2 Weeks UP",
@@ -6518,8 +6540,8 @@
     },
     {
       "label": "1 Weeks DOWN",
-      "count": 33,
-      "percentage": 26.83
+      "count": 32,
+      "percentage": 26.02
     },
     {
       "label": "1 Weeks UP",

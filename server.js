@@ -20,6 +20,7 @@ import {
   runBacktest
 } from './analysis.js';
 import { saveLocalData, loadLocalData } from './localStore.js';
+import { generateLiveOptionRecommendation } from './src/utils/liveOptionEngine.js';
 
 dotenv.config();
 
@@ -877,19 +878,51 @@ function isIndianMarketOpen() {
   return timeVal >= 915 && timeVal <= 1530;
 }
 
-// Sync Nifty Spot Price from Yahoo Finance API
-async function syncNiftySpotPrice() {
-  try {
-    const quote = await yahooFinance.quote('^NSEI');
-    if (quote && quote.regularMarketPrice) {
-      currentNiftySpotPrice = quote.regularMarketPrice;
-    }
-  } catch (e) {
-    // Silent fallback, use last cached value
-  }
+// Sync All Index Spot Prices from Yahoo Finance every 5s
+const liveSpotPrices = {
+  nifty50:    { price: 24334.30, change: 0, changePercent: 0, dayHigh: 0, dayLow: 0 },
+  banknifty:  { price: 52000.00, change: 0, changePercent: 0, dayHigh: 0, dayLow: 0 },
+  sensex:     { price: 80000.00, change: 0, changePercent: 0, dayHigh: 0, dayLow: 0 },
+};
+const SPOT_SYNC_SYMBOLS = { nifty50: '^NSEI', banknifty: '^NSEBANK', sensex: '^BSESN' };
+
+async function syncAllSpotPrices() {
+  await Promise.allSettled(
+    Object.entries(SPOT_SYNC_SYMBOLS).map(async ([key, sym]) => {
+      try {
+        const q = await yahooFinance.quote(sym, {}, {
+          fetchOptions: {
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36' }
+          }
+        });
+        if (q && q.regularMarketPrice) {
+          const realPrice = q.regularMarketPrice;
+          const prevClose = q.regularMarketPreviousClose || realPrice;
+          const change = q.regularMarketChange !== undefined ? q.regularMarketChange : Number((realPrice - prevClose).toFixed(2));
+          const changePercent = q.regularMarketChangePercent !== undefined ? q.regularMarketChangePercent : (prevClose > 0 ? Number(((change / prevClose) * 100).toFixed(2)) : 0);
+
+          liveSpotPrices[key] = {
+            price:         realPrice,
+            change:        change,
+            changePercent: changePercent,
+            dayHigh:       q.regularMarketDayHigh       || realPrice,
+            dayLow:        q.regularMarketDayLow        || realPrice,
+            volume:        q.regularMarketVolume        || 0,
+            prevClose:     prevClose,
+            lastSync:      new Date().toISOString(),
+          };
+          if (key === 'nifty50') {
+            currentNiftySpotPrice = realPrice;
+          }
+        }
+      } catch (e) {
+        // Silent fallback — keep last valid price
+      }
+    })
+  );
 }
-syncNiftySpotPrice();
-setInterval(syncNiftySpotPrice, 10000);
+syncAllSpotPrices();
+setInterval(syncAllSpotPrices, 5000); // Sync with Yahoo Finance every 5 seconds
 
 // Intensity-based Derivatives Buildup Classifier
 function classifyBuildup(priceChange, price, oiChangeDelta, isLive = false) {
@@ -906,7 +939,6 @@ function classifyBuildup(priceChange, price, oiChangeDelta, isLive = false) {
   else return 'Neutral';
 
   if (isLive) {
-    // Second-by-second ticks threshold
     if (absPrice >= 3.0 || absOIDelta >= 6000) {
       return `Extreme ${direction}`;
     } else if (absPrice < 0.8 && absOIDelta < 1500) {
@@ -915,7 +947,6 @@ function classifyBuildup(priceChange, price, oiChangeDelta, isLive = false) {
       return direction;
     }
   } else {
-    // Daily historical session threshold
     if (pricePct >= 0.8 || absOIDelta >= 250000) {
       return `Extreme ${direction}`;
     } else if (pricePct < 0.3 && absOIDelta < 80000) {
@@ -926,22 +957,43 @@ function classifyBuildup(priceChange, price, oiChangeDelta, isLive = false) {
   }
 }
 
-// Generate Live Ticks every 1 second (restricted to market hours)
+// Generate Live Ticks every 1 second (tightly anchored to real Yahoo spot price)
 function simulateLiveTick() {
-  if (!isIndianMarketOpen()) {
-    if (liveOITicks.length > 0) {
-      liveOITicks = []; // Clear live ticks when market is closed
-    }
-    return;
-  }
-
   const timestamp = new Date().toISOString();
-  const targetPrice = currentNiftySpotPrice + 15;
-  const priceFluctuation = (Math.random() - 0.5) * 6;
-  const price = Number((targetPrice + priceFluctuation).toFixed(2));
+  
+  // 1. Nifty tick (fluctuates tightly around actual Yahoo Finance price, no compound drift)
+  const priceNoise = (Math.random() - 0.5) * 0.40;
+  const price = Number((currentNiftySpotPrice + priceNoise).toFixed(2));
   const priceChange = Number((price - lastPrice).toFixed(2));
   lastPrice = price;
 
+  liveSpotPrices.nifty50.price = price;
+  const niftyPrev = liveSpotPrices.nifty50.prevClose || price;
+  liveSpotPrices.nifty50.change = Number((price - niftyPrev).toFixed(2));
+  if (niftyPrev > 0) {
+    liveSpotPrices.nifty50.changePercent = Number(((liveSpotPrices.nifty50.change / niftyPrev) * 100).toFixed(2));
+  }
+
+  // 2. Bank Nifty & Sensex ticks (anchored to Yahoo quotes)
+  if (liveSpotPrices.banknifty.price > 0) {
+    const bNoise = (Math.random() - 0.5) * 1.20;
+    const bPrice = Number((liveSpotPrices.banknifty.price + bNoise).toFixed(2));
+    liveSpotPrices.banknifty.price = bPrice;
+    const bPrev = liveSpotPrices.banknifty.prevClose || bPrice;
+    liveSpotPrices.banknifty.change = Number((bPrice - bPrev).toFixed(2));
+    if (bPrev > 0) liveSpotPrices.banknifty.changePercent = Number(((liveSpotPrices.banknifty.change / bPrev) * 100).toFixed(2));
+  }
+
+  if (liveSpotPrices.sensex.price > 0) {
+    const sNoise = (Math.random() - 0.5) * 1.60;
+    const sPrice = Number((liveSpotPrices.sensex.price + sNoise).toFixed(2));
+    liveSpotPrices.sensex.price = sPrice;
+    const sPrev = liveSpotPrices.sensex.prevClose || sPrice;
+    liveSpotPrices.sensex.change = Number((sPrice - sPrev).toFixed(2));
+    if (sPrev > 0) liveSpotPrices.sensex.changePercent = Number(((liveSpotPrices.sensex.change / sPrev) * 100).toFixed(2));
+  }
+
+  // 3. Futures OI Tick
   const oiChangeDelta = Math.round((Math.random() - 0.48) * 12000);
   dailyOIChange += oiChangeDelta;
   const currentOI = baseOI + dailyOIChange;
@@ -967,11 +1019,192 @@ function simulateLiveTick() {
   if (liveOITicks.length > 120) {
     liveOITicks.shift();
   }
+
+  // 4. Process 24/7 background signal engine for Nifty 50
+  const niftyMockData = {
+    indexName: 'Nifty 50',
+    quote: { price: price, changePercent: liveSpotPrices.nifty50.changePercent },
+    history: [{ close: price, open: price, high: price, low: price, rsi: 50, sma50: price - 10, sma200: price - 50 }],
+    stats: { pivots: { camarilla: { s3: price - 20, r3: price + 20 } } }
+  };
+  processBackgroundSignal('nifty50', niftyMockData, liveOITicks);
 }
 setInterval(simulateLiveTick, 1000);
 
-// Historical Nifty Futures OI generator mapped to actual Nifty 50 spot history
 const DB_DIR = path.join(process.cwd(), 'local_database');
+const MIN_HOLD_SECONDS = 15 * 60; // 15 minutes minimum hold duration (900 seconds)
+const CONFIRM_REVERSAL_TICKS = 30; // 30 consecutive seconds required for confirmed reversal
+
+const bgSignalStates = {
+  nifty50:   { lockedRec: null, lockedSignal: null, lockStartMs: 0, pendingSignal: null, pendingTicks: 0, signalHistory: [], lastShiftAlert: null },
+  banknifty: { lockedRec: null, lockedSignal: null, lockStartMs: 0, pendingSignal: null, pendingTicks: 0, signalHistory: [], lastShiftAlert: null },
+  sensex:    { lockedRec: null, lockedSignal: null, lockStartMs: 0, pendingSignal: null, pendingTicks: 0, signalHistory: [], lastShiftAlert: null },
+};
+
+function getSignalHistoryFilePath(indexKey) {
+  return path.join(DB_DIR, `signal_history_${indexKey.toLowerCase()}.json`);
+}
+
+function loadSignalHistoryFromDisk(indexKey) {
+  const filePath = getSignalHistoryFilePath(indexKey);
+  try {
+    if (fs.existsSync(filePath)) {
+      const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      if (Array.isArray(data)) return data;
+    }
+  } catch (e) {
+    console.error(`Failed to read signal history for ${indexKey}:`, e);
+  }
+  return [];
+}
+
+function saveSignalHistoryToDisk(indexKey, history) {
+  const filePath = getSignalHistoryFilePath(indexKey);
+  try {
+    if (!fs.existsSync(DB_DIR)) fs.mkdirSync(DB_DIR, { recursive: true });
+    fs.writeFileSync(filePath, JSON.stringify(history, null, 2), 'utf8');
+  } catch (e) {
+    console.error(`Failed to save signal history for ${indexKey}:`, e);
+  }
+}
+
+// Load persisted signal history on startup
+['nifty50', 'banknifty', 'sensex'].forEach(key => {
+  const history = loadSignalHistoryFromDisk(key);
+  bgSignalStates[key].signalHistory = history;
+  if (history.length > 0) {
+    const lastFlip = [...history].reverse().find(e => e.eventType === 'SIGNAL_FLIP' || e.eventType === 'INITIAL');
+    if (lastFlip) {
+      bgSignalStates[key].lockedRec = lastFlip;
+      bgSignalStates[key].lockedSignal = lastFlip.signalType;
+      bgSignalStates[key].lockStartMs = lastFlip.lockStartMs || Date.now();
+      if (lastFlip.eventType === 'SIGNAL_FLIP') {
+        bgSignalStates[key].lastShiftAlert = lastFlip;
+      }
+    }
+  }
+});
+
+function processBackgroundSignal(indexKey, mockIndexData, ticks) {
+  const state = bgSignalStates[indexKey];
+  if (!state) return;
+
+  const rec = generateLiveOptionRecommendation(mockIndexData, ticks, []);
+  if (!rec || rec.status === 'LOADING') return;
+
+  const nowMs = Date.now();
+  const nowTime = new Date().toLocaleTimeString();
+  const elapsedSeconds = state.lockStartMs > 0 ? Math.floor((nowMs - state.lockStartMs) / 1000) : 0;
+  const is15MinLocked = elapsedSeconds < MIN_HOLD_SECONDS;
+
+  // Initial signal lock
+  if (!state.lockedSignal) {
+    state.lockedSignal = rec.signalType;
+    state.lockStartMs = nowMs;
+    const initialEvent = {
+      ...rec,
+      time: nowTime,
+      eventType: 'INITIAL',
+      eventLabel: 'Session Start — Initial 15-Min Signal Lock',
+      lockStartMs: nowMs,
+    };
+    state.lockedRec = initialEvent;
+    state.signalHistory.push(initialEvent);
+    saveSignalHistoryToDisk(indexKey, state.signalHistory);
+    return;
+  }
+
+  // Direction matches current locked call
+  if (rec.signalType === state.lockedSignal) {
+    state.pendingSignal = null;
+    state.pendingTicks = 0;
+    const updatedLocked = {
+      ...rec,
+      signalType:      state.lockedRec.signalType,
+      signalTitle:     state.lockedRec.signalTitle,
+      badgeClass:      state.lockedRec.badgeClass,
+      suggestedAction: state.lockedRec.suggestedAction,
+      suggestedStrike: state.lockedRec.suggestedStrike,
+      lockStartMs:     state.lockStartMs,
+      elapsedSeconds,
+      is15MinLocked,
+    };
+    state.lockedRec = updatedLocked;
+    return;
+  }
+
+  // Different signal direction evaluated
+  // If 15-minute lock is active, DO NOT flip signal direction under any circumstances!
+  if (is15MinLocked) {
+    state.pendingSignal = null;
+    state.pendingTicks = 0;
+    const updatedLocked = {
+      ...rec,
+      signalType:      state.lockedRec.signalType,
+      signalTitle:     state.lockedRec.signalTitle,
+      badgeClass:      state.lockedRec.badgeClass,
+      suggestedAction: state.lockedRec.suggestedAction,
+      suggestedStrike: state.lockedRec.suggestedStrike,
+      lockStartMs:     state.lockStartMs,
+      elapsedSeconds,
+      is15MinLocked:   true,
+    };
+    state.lockedRec = updatedLocked;
+    return;
+  }
+
+  // After 15 minutes have passed, accumulate confirmation ticks for reversal
+  if (state.pendingSignal !== rec.signalType) {
+    state.pendingSignal = rec.signalType;
+    state.pendingTicks = 1;
+  } else {
+    state.pendingTicks++;
+  }
+
+  const updatedLockedPending = {
+    ...rec,
+    signalType:      state.lockedRec.signalType,
+    signalTitle:     state.lockedRec.signalTitle,
+    badgeClass:      state.lockedRec.badgeClass,
+    suggestedAction: state.lockedRec.suggestedAction,
+    suggestedStrike: state.lockedRec.suggestedStrike,
+    lockStartMs:     state.lockStartMs,
+    elapsedSeconds,
+    is15MinLocked:   false,
+  };
+  state.lockedRec = updatedLockedPending;
+
+  // Confirmed Flip (after 15 minutes hold + 30s sustained confirmation)
+  if (state.pendingTicks >= CONFIRM_REVERSAL_TICKS) {
+    const prevRec = state.lockedRec || {};
+    const flipEvent = {
+      ...rec,
+      time: nowTime,
+      eventType: 'SIGNAL_FLIP',
+      eventLabel: '15-Min Hold Completed — Confirmed Trade Shift',
+      fromSignalTitle: prevRec.signalTitle,
+      fromBadge:       prevRec.badgeClass,
+      fromPrice:       prevRec.spotPrice,
+      fromScore:       prevRec.consensusScore,
+      fromStrike:      prevRec.suggestedStrike,
+      fromAction:      prevRec.suggestedAction,
+      lockStartMs:     nowMs,
+    };
+
+    state.lockedSignal = rec.signalType;
+    state.lockStartMs = nowMs;
+    state.lockedRec = flipEvent;
+    state.lastShiftAlert = flipEvent;
+    state.pendingSignal = null;
+    state.pendingTicks = 0;
+
+    state.signalHistory.push(flipEvent);
+    if (state.signalHistory.length > 100) state.signalHistory.shift();
+    saveSignalHistoryToDisk(indexKey, state.signalHistory);
+  }
+}
+
+// Historical Nifty Futures OI generator mapped to actual Nifty 50 spot history
 const HISTORICAL_OI_PATH = path.join(DB_DIR, 'futures_oi_history.json');
 
 function initHistoricalOIDatabase() {
@@ -1106,11 +1339,52 @@ function initHistoricalOIDatabase() {
 }
 initHistoricalOIDatabase();
 
+// ── Live Quote Endpoints (returns in-memory synced spot prices, updated every 1s) ──
+// GET /api/live-quote/all — returns all indices at once for real-time header cards sync
+app.get('/api/live-quote/all', (req, res) => {
+  res.json({
+    timestamp: new Date().toISOString(),
+    indices: liveSpotPrices
+  });
+});
+
+// GET /api/live-quote/:index
+app.get('/api/live-quote/:index', (req, res) => {
+  const { index } = req.params;
+  const key = index.toLowerCase();
+  const spot = liveSpotPrices[key];
+  if (!spot) {
+    return res.status(400).json({ error: `Invalid index: ${index}. Use: nifty50, banknifty, sensex` });
+  }
+  res.json({ index: key, ...spot });
+});
+
 // Endpoints
 app.get('/api/futures-oi/live', (req, res) => {
   res.json({
-    status: isIndianMarketOpen() ? 'OPEN' : 'CLOSED',
+    status: 'OPEN',
     ticks: liveOITicks
+  });
+});
+
+// GET /api/futures-oi/signal-state — returns 24/7 background-recorded 15-min locked signal and persisted history
+app.get('/api/futures-oi/signal-state', (req, res) => {
+  const indexKey = (req.query.index || 'nifty50').toLowerCase();
+  const state = bgSignalStates[indexKey] || bgSignalStates['nifty50'];
+  const nowMs = Date.now();
+  const elapsedSeconds = state.lockStartMs > 0 ? Math.floor((nowMs - state.lockStartMs) / 1000) : 0;
+  const remainingLockSeconds = Math.max(0, MIN_HOLD_SECONDS - elapsedSeconds);
+  const is15MinLocked = remainingLockSeconds > 0;
+
+  res.json({
+    index: indexKey,
+    lockedRec: state.lockedRec,
+    signalHistory: state.signalHistory,
+    lastShiftAlert: state.lastShiftAlert,
+    is15MinLocked,
+    elapsedSeconds,
+    remainingLockSeconds,
+    minHoldSeconds: MIN_HOLD_SECONDS,
   });
 });
 

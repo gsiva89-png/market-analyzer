@@ -208,6 +208,7 @@ export default function App() {
   const [correlationData, setCorrelationData] = useState(null);
   const [heatmapData, setHeatmapData] = useState(null);
   const [insightsData, setInsightsData] = useState(null);
+  const [liveQuotes, setLiveQuotes] = useState({});
   const [fridayTuesdayReport, setFridayTuesdayReport] = useState(null);
   const [tuesdayThursdayReport, setTuesdayThursdayReport] = useState(null);
   
@@ -753,56 +754,101 @@ export default function App() {
     fetchOptReport();
   }, [activeTab]);
 
-  // Fetch live ticks and historical database for Nifty Futures OI
+  // Fetch live ticks and historical database for Futures OI continuously
   useEffect(() => {
     let intervalId = null;
 
-    if (activeTab === 'futuresOI' || activeTab === 'liveOptionSignals' || activeTab === 'liveChart') {
-      const fetchLiveTicks = async () => {
-        try {
-          const res = await fetch('/api/futures-oi/live');
-          if (res.ok) {
-            const data = await res.json();
-            setLiveTicks(data.ticks || []);
-            setLiveConnected(data.status === 'OPEN');
-          }
-        } catch (e) {
-          console.error('Error fetching live ticks:', e);
-          setLiveConnected(false);
+    const fetchLiveTicks = async () => {
+      try {
+        const res = await fetch('/api/futures-oi/live');
+        if (res.ok) {
+          const data = await res.json();
+          setLiveTicks(data.ticks || []);
+          setLiveConnected(data.status === 'OPEN');
         }
-      };
+      } catch (e) {
+        console.error('Error fetching live ticks:', e);
+        setLiveConnected(false);
+      }
+    };
 
-      fetchLiveTicks();
-      intervalId = setInterval(fetchLiveTicks, 1000);
+    fetchLiveTicks();
+    intervalId = setInterval(fetchLiveTicks, 1000);
 
-      const fetchHistoricalOI = async () => {
-        try {
-          const res = await fetch(`/api/futures-oi/historical?index=${activeIndex}`);
-          if (res.ok) {
-            const data = await res.json();
-            setHistoricalOI(data);
-            
-            if (data.length > 0) {
-              const uniqueDays = Array.from(new Set(data.map(d => d.timestamp.split('T')[0]))).sort();
-              if (uniqueDays.length > 0) {
-                const latest = uniqueDays[uniqueDays.length - 1];
-                setHistEndDate(latest);
-                setHistStartDate(uniqueDays[Math.max(0, uniqueDays.length - 30)]);
-              }
+    const fetchHistoricalOI = async () => {
+      try {
+        const res = await fetch(`/api/futures-oi/historical?index=${activeIndex}`);
+        if (res.ok) {
+          const data = await res.json();
+          setHistoricalOI(data);
+          
+          if (data.length > 0) {
+            const uniqueDays = Array.from(new Set(data.map(d => d.timestamp.split('T')[0]))).sort();
+            if (uniqueDays.length > 0) {
+              const latest = uniqueDays[uniqueDays.length - 1];
+              setHistEndDate(latest);
+              setHistStartDate(uniqueDays[Math.max(0, uniqueDays.length - 30)]);
             }
           }
-        } catch (e) {
-          console.error('Error fetching historical OI:', e);
         }
-      };
+      } catch (e) {
+        console.error('Error fetching historical OI:', e);
+      }
+    };
 
-      fetchHistoricalOI();
-    }
+    fetchHistoricalOI();
 
     return () => {
       if (intervalId) clearInterval(intervalId);
     };
-  }, [activeTab, activeIndex]);
+  }, [activeIndex]);
+
+  // ── Live spot price polling (updates spot prices every 1s across the entire dashboard) ────
+  useEffect(() => {
+    const fetchAllLiveQuotes = async () => {
+      try {
+        const res = await fetch('/api/live-quote/all');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!data || !data.indices) return;
+
+        const allSpots = data.indices;
+        setLiveQuotes(allSpots);
+
+        const activeKey = activeIndex.toLowerCase();
+        const q = allSpots[activeKey];
+
+        // Update active index quote for main metrics panel & charts
+        if (q && q.price) {
+          setIndexData(prev => {
+            if (!prev) return prev;
+            return {
+              ...prev,
+              quote: {
+                ...prev.quote,
+                price:         q.price,
+                change:        q.change        ?? prev.quote?.change,
+                changePercent: q.changePercent ?? prev.quote?.changePercent,
+                dayHigh:       q.dayHigh       || prev.quote?.dayHigh,
+                dayLow:        q.dayLow        || prev.quote?.dayLow,
+                volume:        q.volume        || prev.quote?.volume,
+                prevClose:     q.prevClose     || prev.quote?.prevClose,
+              }
+            };
+          });
+        }
+      } catch (e) {
+        // Silent catch
+      }
+    };
+
+    fetchAllLiveQuotes();
+    const liveQuoteInterval = setInterval(fetchAllLiveQuotes, 1000); // 1-second live refresh
+
+    return () => {
+      clearInterval(liveQuoteInterval);
+    };
+  }, [activeIndex]);
 
   useEffect(() => {
     fetchInsightsData();
@@ -968,7 +1014,14 @@ export default function App() {
         {insightsData?.indices ? (
           insightsData.indices.map((idxInfo) => {
             const isSelected = activeIndex === idxInfo.index;
-            const changeIsPositive = idxInfo.changePercent >= 0;
+            const isNifty = idxInfo.index.toLowerCase() === 'nifty50';
+            const latestTickPrice = isNifty && liveTicks && liveTicks.length > 0
+              ? liveTicks[liveTicks.length - 1].price
+              : null;
+            const liveSpot = liveQuotes[idxInfo.index.toLowerCase()];
+            const cardPrice = latestTickPrice || liveSpot?.price || idxInfo.price;
+            const cardChangePct = liveSpot?.changePercent !== undefined ? liveSpot.changePercent : idxInfo.changePercent;
+            const changeIsPositive = cardChangePct >= 0;
             const cardColor = getThemeColor(idxInfo.index);
 
             return (
@@ -988,11 +1041,11 @@ export default function App() {
                 </div>
                 <div className="index-price-section">
                   <span className="index-price">
-                    {formatNumber(idxInfo.price)}
+                    {formatNumber(cardPrice)}
                   </span>
                   <span className={`index-change ${changeIsPositive ? 'price-up' : 'price-down'}`}>
                     {changeIsPositive ? '+' : ''}
-                    {formatNumber(idxInfo.changePercent)}%
+                    {formatNumber(cardChangePct)}%
                   </span>
                 </div>
                 <div className="index-card-footer">
@@ -1351,7 +1404,11 @@ export default function App() {
                     <div className="stat-row">
                       <span className="stat-label">Current Price</span>
                       <span className="stat-value" style={{ fontSize: '16px', color: activeThemeColor }}>
-                        {formatNumber(indexData.quote.price)}
+                        {formatNumber(
+                          (activeIndex.toLowerCase() === 'nifty50' && liveTicks && liveTicks.length > 0)
+                            ? liveTicks[liveTicks.length - 1].price
+                            : (liveQuotes[activeIndex.toLowerCase()]?.price || indexData.quote.price)
+                        )}
                       </span>
                     </div>
                     <div className="stat-row">
