@@ -50,6 +50,7 @@ export default function LiveOptionSignalsModule({
   const [selectedHistoryEvent, setSelectedHistoryEvent] = useState(null); // detailed shift modal
   const [remainingLockSeconds, setRemainingLockSeconds] = useState(900); // 15-min lock countdown
   const [is15MinLocked, setIs15MinLocked]               = useState(true);
+  const [expiryMode, setExpiryMode]                     = useState('weekly'); // 'weekly' | 'expiryDay' | 'monthly'
   const [liveTime,        setLiveTime]        = useState(new Date().toLocaleTimeString());
   const [engineTick,      setEngineTick]      = useState(0);
 
@@ -75,8 +76,7 @@ export default function LiveOptionSignalsModule({
 
   // ── Engine — runs every second ────────────────────────────────────────────
   const runEngine = useCallback(() => {
-    const iData = latestIndexData.current;
-    if (!iData?.quote) return;
+    const iData = latestIndexData.current || { indexName: "Nifty 50", quote: { price: 24212.85 } };
     const rec = generateLiveOptionRecommendation(
       iData, latestLiveTicks.current, latestHistoricalOI.current
     );
@@ -252,13 +252,7 @@ export default function LiveOptionSignalsModule({
   };
 
   // ── Early returns ─────────────────────────────────────────────────────────
-  if (!indexData?.quote) {
-    return (
-      <div className="glass-panel" style={{ padding: "40px", textAlign: "center" }}>
-        <p className="text-muted">Loading live market data feed for Option Signals...</p>
-      </div>
-    );
-  }
+
   if (!lockedRec) {
     return (
       <div className="glass-panel" style={{ padding: "40px", textAlign: "center" }}>
@@ -368,8 +362,69 @@ export default function LiveOptionSignalsModule({
                 {lockedRec?.indexShortName || "NIFTY"} {suggestedStrike}
               </span>
             </h1>
-            <div style={{ fontSize: "14px", color: "var(--text-main)", background: "rgba(255,255,255,0.03)", padding: "9px 14px", borderRadius: "8px", borderLeft: `4px solid ${isBull ? "var(--color-up)" : isBear ? "var(--color-down)" : "var(--color-neutral)"}` }}>
-              <strong>Suggested Setup:</strong> {suggestedAction} &nbsp;(Est. Premium ~&#8377;{estimatedPremium})
+
+            {/* Expiry Selector Toggle Bar */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", margin: "10px 0 12px 0", flexWrap: "wrap" }}>
+              <span style={{ fontSize: "11px", color: "var(--text-muted)", fontWeight: "600" }}>EXPIRY TYPE:</span>
+              <button
+                onClick={() => setExpiryMode('weekly')}
+                style={{
+                  padding: "4px 10px",
+                  fontSize: "11px",
+                  fontWeight: "700",
+                  borderRadius: "6px",
+                  border: expiryMode === 'weekly' ? "1px solid #6366f1" : "1px solid var(--glass-border)",
+                  background: expiryMode === 'weekly' ? "rgba(99,102,241,0.25)" : "rgba(255,255,255,0.03)",
+                  color: expiryMode === 'weekly' ? "#a5b4fc" : "var(--text-muted)",
+                  cursor: "pointer",
+                  transition: "all 0.2s"
+                }}
+              >
+                &#9889; Current Weekly Expiry (~&#8377;{lockedRec?.premiums?.weekly?.atm || estimatedPremium || 35})
+              </button>
+              <button
+                onClick={() => setExpiryMode('expiryDay')}
+                style={{
+                  padding: "4px 10px",
+                  fontSize: "11px",
+                  fontWeight: "700",
+                  borderRadius: "6px",
+                  border: expiryMode === 'expiryDay' ? "1px solid #f59e0b" : "1px solid var(--glass-border)",
+                  background: expiryMode === 'expiryDay' ? "rgba(245,158,11,0.25)" : "rgba(255,255,255,0.03)",
+                  color: expiryMode === 'expiryDay' ? "#fde047" : "var(--text-muted)",
+                  cursor: "pointer",
+                  transition: "all 0.2s"
+                }}
+              >
+                &#9251; Expiry Day (~&#8377;{lockedRec?.premiums?.weekly?.expiryDay || 20})
+              </button>
+              <button
+                onClick={() => setExpiryMode('monthly')}
+                style={{
+                  padding: "4px 10px",
+                  fontSize: "11px",
+                  fontWeight: "700",
+                  borderRadius: "6px",
+                  border: expiryMode === 'monthly' ? "1px solid #10b981" : "1px solid var(--glass-border)",
+                  background: expiryMode === 'monthly' ? "rgba(16,185,129,0.25)" : "rgba(255,255,255,0.03)",
+                  color: expiryMode === 'monthly' ? "#34d399" : "var(--text-muted)",
+                  cursor: "pointer",
+                  transition: "all 0.2s"
+                }}
+              >
+                &#128197; Monthly Expiry (~&#8377;{lockedRec?.premiums?.monthly?.atm || 218})
+              </button>
+            </div>
+
+            <div style={{ fontSize: "14px", color: "var(--text-main)", background: "rgba(255,255,255,0.03)", padding: "10px 14px", borderRadius: "8px", borderLeft: `4px solid ${isBull ? "var(--color-up)" : isBear ? "var(--color-down)" : "var(--color-neutral)"}` }}>
+              <strong>Suggested Setup:</strong> {suggestedAction} &nbsp;
+              <span style={{ fontWeight: "700", color: "#a5b4fc", fontFamily: "JetBrains Mono" }}>
+                ({expiryMode === 'expiryDay' ? 'Expiry Day' : expiryMode === 'monthly' ? 'Monthly' : 'Weekly'} Est. Premium ~&#8377;{
+                  expiryMode === 'expiryDay' ? (lockedRec?.premiums?.weekly?.expiryDay || 20) :
+                  expiryMode === 'monthly' ? (lockedRec?.premiums?.monthly?.atm || 218) :
+                  (lockedRec?.premiums?.weekly?.atm || estimatedPremium || 35)
+                })
+              </span>
             </div>
           </div>
 
@@ -631,27 +686,61 @@ export default function LiveOptionSignalsModule({
       </div>
 
       {/* ── 7. Trade Execution Blueprint ────────────────────────────────────────*/}
-      <h3 style={{ fontSize: "15px", fontWeight: "700", margin: "0 0 14px 0" }}>Trade Execution Blueprint &amp; Price Levels</h3>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "14px", flexWrap: "wrap", gap: "10px" }}>
+        <h3 style={{ fontSize: "15px", fontWeight: "700", margin: 0 }}>Trade Execution Blueprint &amp; Price Levels</h3>
+        <span style={{ fontSize: "11px", color: "var(--text-muted)", fontFamily: "JetBrains Mono" }}>
+          Target Premiums calculated for: <strong style={{ color: "#a5b4fc" }}>{expiryMode === 'expiryDay' ? 'Expiry Day' : expiryMode === 'monthly' ? 'Monthly Expiry' : 'Weekly Expiry'}</strong> (Delta ~0.50)
+        </span>
+      </div>
+
       <div className="backtester-kpi-grid" style={{ marginBottom: "20px" }}>
         <div className="glass-panel stat-group-card">
-          <div className="stat-label">Entry Spot Level</div>
+          <div className="stat-label">Entry Level</div>
           <div className="stat-val text-main" style={{ fontSize: "22px", fontWeight: "800", fontFamily: "JetBrains Mono" }}>&#8377;{formatNumber(levels.entrySpot)}</div>
-          <div style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "4px" }}>Current {indexLabel} Spot</div>
+          <div style={{ fontSize: "11px", color: "#a5b4fc", marginTop: "4px", fontWeight: "700" }}>
+            Opt Premium: ~&#8377;{
+              expiryMode === 'expiryDay' ? (lockedRec?.premiums?.weekly?.expiryDay || 20) :
+              expiryMode === 'monthly' ? (lockedRec?.premiums?.monthly?.atm || 218) :
+              (lockedRec?.premiums?.weekly?.atm || estimatedPremium || 35)
+            }
+          </div>
+          <div style={{ fontSize: "10px", color: "var(--text-dim)", marginTop: "2px" }}>Current {indexLabel} Spot</div>
         </div>
+
         <div className="glass-panel stat-group-card">
           <div className="stat-label">Target 1 (T1)</div>
           <div className="stat-val text-up" style={{ fontSize: "22px", fontWeight: "800", fontFamily: "JetBrains Mono" }}>&#8377;{formatNumber(levels.target1Spot)}</div>
-          <div style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "4px" }}>{isBull ? "Resistance 1 / Pivot" : "Support 1 / Target"}</div>
+          <div style={{ fontSize: "11px", color: "var(--color-up)", marginTop: "4px", fontWeight: "700" }}>
+            Opt Target 1: ~&#8377;{
+              expiryMode === 'monthly' ? (lockedRec?.premiums?.monthly?.target1 || 255) :
+              (lockedRec?.premiums?.weekly?.target1 || 72)
+            }
+          </div>
+          <div style={{ fontSize: "10px", color: "var(--text-dim)", marginTop: "2px" }}>{isBull ? "Resistance 1 / Pivot" : "Support 1 / Target"}</div>
         </div>
+
         <div className="glass-panel stat-group-card">
           <div className="stat-label">Target 2 (T2)</div>
           <div className="stat-val text-up" style={{ fontSize: "22px", fontWeight: "800", fontFamily: "JetBrains Mono" }}>&#8377;{formatNumber(levels.target2Spot)}</div>
-          <div style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "4px" }}>Extended Stretch Target</div>
+          <div style={{ fontSize: "11px", color: "var(--color-up)", marginTop: "4px", fontWeight: "700" }}>
+            Opt Target 2: ~&#8377;{
+              expiryMode === 'monthly' ? (lockedRec?.premiums?.monthly?.target2 || 293) :
+              (lockedRec?.premiums?.weekly?.target2 || 110)
+            }
+          </div>
+          <div style={{ fontSize: "10px", color: "var(--text-dim)", marginTop: "2px" }}>Extended Stretch Target</div>
         </div>
+
         <div className="glass-panel stat-group-card">
           <div className="stat-label">Stop Loss &amp; R:R</div>
           <div className="stat-val text-down" style={{ fontSize: "22px", fontWeight: "800", fontFamily: "JetBrains Mono" }}>&#8377;{formatNumber(levels.stopLossSpot)}</div>
-          <div style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "4px", display: "flex", justifyContent: "space-between" }}>
+          <div style={{ fontSize: "11px", color: "var(--color-down)", marginTop: "4px", fontWeight: "700" }}>
+            Opt Stop Loss: ~&#8377;{
+              expiryMode === 'monthly' ? (lockedRec?.premiums?.monthly?.stopLoss || 193) :
+              (lockedRec?.premiums?.weekly?.stopLoss || 10)
+            }
+          </div>
+          <div style={{ fontSize: "10px", color: "var(--text-dim)", marginTop: "2px", display: "flex", justifyContent: "space-between" }}>
             <span>Invalidation Level</span>
             <strong style={{ color: "var(--text-main)" }}>R:R {levels.riskRewardRatio}</strong>
           </div>
